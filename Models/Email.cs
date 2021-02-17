@@ -9,8 +9,12 @@ public Email(string observerName)
 {  
     updatecontent = observerName;  
 }  
+
+public Email()
+{}
   
 public string updatecontent { get; set; }  
+public string emailaddress { get; set; } 
   
 public void Subscribe(EmailNotification emailNotification)  
 {  

@@ -1,0 +1,14 @@
+@model  Project.Models.Notification.IEmail
+@{
+    ViewData["Title"] = "AdminNotification";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Admin Notification</h1>
+    @using(Html.BeginForm("AdminNotification","Home",FormMethod.Post))
+{
+    @Html.TextBoxFor(s=>s.emailaddress)
+    @Html.TextBoxFor(s => s.updatecontent)
+  <input type="submit" value="Submit" />
+}
+</div>

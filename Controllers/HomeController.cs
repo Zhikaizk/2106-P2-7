@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models;
+using Project.Models.Notification;
 
 namespace Project.Controllers
 {
@@ -25,6 +26,18 @@ namespace Project.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public ActionResult AdminNotification()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminNotification(Email emailaddressinput,Email emailcontent)
+        {
+            EmailControl emailcontrol = new EmailControl(emailaddressinput.emailaddress,emailcontent.updatecontent);
             return View();
         }
 

@@ -9,7 +9,9 @@ namespace Project.Models.Notification
     {  
         private readonly List<IEmail> _observers = new List<IEmail>();
 
-        public string SubjectName { get; set; }  
+        public string SubjectName { get; set; } 
+
+        public EmailNotification(){} 
   
         public EmailNotification(string subjectName)  
         {  
