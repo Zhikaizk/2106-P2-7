@@ -1,13 +1,20 @@
 using System;
+using System.Collections.Generic;
 namespace Project.Models.Notification
 {
  
  public class Email : IEmail  
  {
 private EmailNotification _emailNotification;  
-public Email(string observerName)  
+public Email(string emailcontent)  
 {  
-    updatecontent = observerName;  
+    updatecontent = emailcontent;
+
+}  
+public Email(string observerName,string emailcontent)  
+{  
+    emailaddress = observerName;  
+    updatecontent = emailcontent;
 }  
 
 public Email()
@@ -26,6 +33,7 @@ public void Unsubscribe()
 {  
     _emailNotification.Unsubscribe(this);  
 }  
+
   
 public void UpdateObserver()  
 {  

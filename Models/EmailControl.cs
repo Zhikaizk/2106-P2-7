@@ -7,17 +7,32 @@ namespace Project.Models.Notification
 {
     public class EmailControl   
     {  
-        public EmailControl (String emailaddress ,String emailnotifiy)
-        {
-            Console.WriteLine(emailaddress+emailnotifiy+"HI IM HEREE");
-            Softwareupdate(emailaddress,emailnotifiy);
+        private Boolean results;
+        //String emailaddress this is for backup just in case input needed
+        public String Success_or_Not(){
+            if(results == true){
+                return "All email have been sent successfully";
+            }else{
+                return "Error encountered, Please try again";
+            }
         }
-        private void Softwareupdate(String emailaddresses, String emailnotifiy)
+        public EmailControl (String emailcontenthere)
         {
-            EmailNotification S1 = new EmailNotification(emailnotifiy);  
-            Email O1 = new Email(emailaddresses);  
-            O1.Subscribe(S1);  
-            Console.WriteLine();     
+            results=Softwareupdate(emailcontenthere);
+        }
+        ///String emailaddresses this is for backup just in case got input needede
+        private Boolean Softwareupdate(String emailcontenthere)
+        {
+            EmailNotification S1 = new EmailNotification();  
+            //here will have the whole list of emails when retrieved from database
+            //the emails can use subscribe and notifyobservers all at one go
+            Email O1 = new Email("leongzhikaii@gmail.com",emailcontenthere);  
+            Email O2 = new Email("gameboys96@live.com",emailcontenthere);  
+            O1.Subscribe(S1);
+            O2.Subscribe(S1);  
+            Boolean results=S1.NotifyObservers(); 
+            return results; 
+              
         }
 }  
 }
