@@ -37,7 +37,6 @@ public void Unsubscribe()
   
 public void UpdateObserver()  
 {  
-    Console.WriteLine("{0} received the notification",updatecontent);  
 }  
 }
 }

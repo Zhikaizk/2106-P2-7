@@ -29,7 +29,7 @@ namespace Project.Controllers
             return View();
         }
 
-        public ActionResult AdminNotification()
+        public IActionResult AdminNotification()
         {
             return View();
         }
@@ -37,7 +37,7 @@ namespace Project.Controllers
         [HttpPost]
         // Email emailaddressinput, < input if needed
         //emailaddressinput.emailaddress,
-        public ActionResult AdminNotification(Email emailcontent)
+        public IActionResult AdminNotification(Email emailcontent)
         {
             EmailControl emailcontrol = new EmailControl(emailcontent.updatecontent);
             ViewBag.Message = emailcontrol.Success_or_Not();

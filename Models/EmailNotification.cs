@@ -10,10 +10,10 @@ namespace Project.Models.Notification
 
     public class EmailNotification   
     {  
-            private readonly string userid="leongzhikaii@gmail.com";
-            private readonly string password="imzhikai96";
+            private readonly string gmailuserid="leongzhikaii@gmail.com";
+            private readonly string gmailpassword="thisonereemmber";
 
-        private readonly List<IEmail> _observers = new List<IEmail>();
+        private readonly List<Email> _observers = new List<Email>();
         
 
         // public string SubjectName { get; set; } 
@@ -27,15 +27,15 @@ namespace Project.Models.Notification
         //     Console.WriteLine("Instantiated named Subject {0}", SubjectName);  
         // }  
   
-        public string SubjectState { get; set; }  
+        //public string SubjectState { get; set; }  
   
-        public void Subscribe(IEmail observer)  
+        public void Subscribe(Email observer)  
         {  
             _observers.Add(observer);  
         
         }  
   
-        public void Unsubscribe(IEmail observer)  
+        public void Unsubscribe(Email observer)  
         {  
             _observers.Remove(observer);  
            
@@ -43,12 +43,12 @@ namespace Project.Models.Notification
   
         public Boolean NotifyObservers()  
         {  
-            foreach (IEmail observer in _observers)  
+            foreach (Email observer in _observers)  
             {  
                 //observer.UpdateObserver();
                  MailMessage message = new MailMessage();  
         SmtpClient smtp = new SmtpClient();  
-        message.From = new MailAddress(userid);  
+        message.From = new MailAddress(gmailuserid);  
         message.To.Add(new MailAddress(observer.emailaddress));  
         message.Subject = "System updates";  
         message.IsBodyHtml = true; //to make message body as html  
@@ -57,17 +57,17 @@ namespace Project.Models.Notification
         smtp.Host = "smtp.gmail.com"; //for gmail host  
         smtp.EnableSsl = true;  
         smtp.UseDefaultCredentials = false;  
-        smtp.Credentials = new NetworkCredential(userid,password);  
+        smtp.Credentials = new NetworkCredential(gmailuserid,gmailpassword);  
         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;  
         smtp.Send(message);    
             } 
         return true; 
         }  
   
-        public void ModifySubjectStateOrData(string subjectStateOrData)  
-        {  
-            SubjectState = subjectStateOrData;  
-            NotifyObservers();  
-        }   
+        // public void ModifySubjectStateOrData(string subjectStateOrData)  
+        // {  
+        //     //SubjectState = subjectStateOrData;  
+        //     NotifyObservers();  
+        // }   
 }  
 }
