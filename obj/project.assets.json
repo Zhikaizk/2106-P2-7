@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gameb\\Project\\Project.csproj",
+      "projectUniqueName": "C:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Project.csproj",
       "projectName": "Project",
-      "projectPath": "C:\\Users\\gameb\\Project\\Project.csproj",
+      "projectPath": "C:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Project.csproj",
       "packagesPath": "C:\\Users\\gameb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gameb\\Project\\obj\\",
+      "outputPath": "C:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gameb\\AppData\\Roaming\\NuGet\\NuGet.Config"
