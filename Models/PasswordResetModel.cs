@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Project.Models.PasswordRetrivalModel
+namespace Project.Models.PasswordResetModel
 {
-    public class PasswordRetrivalModel{
+    public class PasswordResetModel{
         [Required,EmailAddress,Display(Name="Registered email address")]
 
         private string username{get;set;}

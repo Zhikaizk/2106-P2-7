@@ -7,21 +7,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models;
-using Project.Models.PasswordRetrivalModel;
+using Project.Models.PasswordResetModel;
 
-namespace Project.Controllers.PasswordRetrivalController
+namespace Project.Controllers.PasswordResetController
 {
-    public class PasswordRetrivalController : Controller
+    public class PasswordResetController : Controller
     {
-        private readonly ILogger<PasswordRetrivalController> _logger;
+        private readonly ILogger<PasswordResetController> _logger;
 
-        public PasswordRetrivalController(ILogger<PasswordRetrivalController> logger)
+        public PasswordResetController(ILogger<PasswordResetController> logger)
         {
             _logger = logger;
         }
 
         [AllowAnonymous, HttpGet("password-retrieve")]
-        public IActionResult PasswordRetrival()
+        public IActionResult PasswordReset()
         {
             return View();
         }
