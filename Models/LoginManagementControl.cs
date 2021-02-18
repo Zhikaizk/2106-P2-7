@@ -64,6 +64,16 @@ using System.Text;
             tripleDES.Clear();   
             return UTF8Encoding.UTF8.GetString(resultArray);  
         }  
+         /*
+        // Call function from Nodule 1 Team4. Whether pass or fail, will log in the account information
+        public createLogDB(int h_id, string actionname, string ipaddress, DateTime timestamp){
+
+        }
+
+        // Call function from Module 1 Team 4. If the login fail, will validate the account
+        public validateAccount(int h_id)
+
+        */
     }
                 }
             

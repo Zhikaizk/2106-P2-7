@@ -21,10 +21,8 @@ namespace Project.Controllers
             // login function
             return View();
         }
-
+       
         [HttpPost]
-      
-
         public ActionResult WelcomePage()
         {
             return View();

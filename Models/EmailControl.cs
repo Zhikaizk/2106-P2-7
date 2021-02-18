@@ -23,6 +23,8 @@ namespace Project.Models.Notification
         ///String emailaddresses this is for backup just in case got input needede
         private Boolean Softwareupdate(String emailcontenthere)
         {
+            testing testing = new testing();
+            testing.on();
             EmailNotification S1 = new EmailNotification();  
             //here will have the whole list of emails when retrieved from database
             //the emails can use subscribe and notifyobservers all at one go

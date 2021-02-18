@@ -23,11 +23,18 @@ public Email()
 public string updatecontent { get; set; }  
 public string emailaddress { get; set; } 
   
+// public void Subscribe(EmailNotification emailNotification)  
+// {  
+    
+//     _emailNotification = emailNotification;  
+//     emailNotification.Subscribe(this);  
+// } 
 public void Subscribe(EmailNotification emailNotification)  
 {  
+    
     _emailNotification = emailNotification;  
     emailNotification.Subscribe(this);  
-}  
+}   
   
 public void Unsubscribe()  
 {  
@@ -37,6 +44,7 @@ public void Unsubscribe()
   
 public void UpdateObserver()  
 {  
+    Console.WriteLine("this is my testing");
 }  
 }
 }
