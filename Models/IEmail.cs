@@ -6,7 +6,9 @@ namespace Project.Models.Notification
     {
          public String updatecontent{get;set;}
          public String emailaddress{get;set;}
-         void UpdateObserver();  
+         public void UpdateObserver();  
+        // public void Subscribe(EmailNotification emailNotification)  
+        //public void Subscribe(String emailNotification)  
          
     }
 

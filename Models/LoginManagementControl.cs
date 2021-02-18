@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models; 
+using System.Security.Cryptography;
+using System.Text; 
  
 
   namespace Project.Controllers
         {
-//             public class LoginManagementControl : ILoginManagement {
+             public class LoginManagementControl : ILoginManagement {
 //                 public LoginManagementControl(string UserName, string Password){
 //  if (ModelState.IsValid)
 //             {
@@ -35,5 +37,43 @@ using Project.Models;
 //             }
 //             return View(login);
 //         }
-//                 }
-            }
+
+        //To encypt the data to protect information
+        private static string Encrypt(string username, string password)  
+        {  
+            byte[] inputArray = UTF8Encoding.UTF8.GetBytes(username);  
+            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();  
+            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(password);  
+            tripleDES.Mode = CipherMode.ECB;  
+            tripleDES.Padding = PaddingMode.PKCS7;  
+            ICryptoTransform cTransform = tripleDES.CreateEncryptor();  
+            byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);  
+            tripleDES.Clear();  
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);  
+        } 
+         //To decrypt the data if needed
+        private static string Decrypt(string username, string password)  
+        {  
+            byte[] inputArray = Convert.FromBase64String(username);  
+            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();  
+            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(password);  
+            tripleDES.Mode = CipherMode.ECB;  
+            tripleDES.Padding = PaddingMode.PKCS7;  
+            ICryptoTransform cTransform = tripleDES.CreateDecryptor();  
+            byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);  
+            tripleDES.Clear();   
+            return UTF8Encoding.UTF8.GetString(resultArray);  
+        }  
+         /*
+        // Call function from Nodule 1 Team4. Whether pass or fail, will log in the account information
+        public createLogDB(int h_id, string actionname, string ipaddress, DateTime timestamp){
+
+        }
+
+        // Call function from Module 1 Team 4. If the login fail, will validate the account
+        public validateAccount(int h_id)
+
+        */
+    }
+                }
+            
