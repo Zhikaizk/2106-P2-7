@@ -3,6 +3,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Feedback System</h1>
+    <form>
+        <div class="form-group">
+            <label for="fbType">Select Feedback Type</label>
+            <select class="form-control" id="fbType" name="fbType">
+                <option>Software</option>
+                <option>Hardware</option>
+            </select>
+            <input type="text" name="feedback" />
+            <input type="submit" value="Submit Feedback"/>
+        </div>
+    </form>
+</div>
+<div>
+    <p></p>
 </div>
