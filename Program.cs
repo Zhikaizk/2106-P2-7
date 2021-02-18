@@ -14,21 +14,9 @@ namespace Project
     {
         public static void Main(string[] args)
         {
+            //FeedbackControl fc = new FeedbackControl("software", "i am facing an issue");
 
-           List<Feedback> count_fb = new List<Feedback>();
-            count_fb.Add(new Software());
-
-            // Display document page
-            foreach (var fb in count_fb)
-            {
-                Console.WriteLine("\n" + fb.GetType().Name + "--");
-                foreach (Inputs inputs in fb.Inputs)
-                {
-                    inputs.feedbackContent("jialin");
-                }
-            }
-
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -5,14 +5,14 @@ namespace Project.Models.Feedback
 {
  
   /// The 'Inputs' interface
-  public interface  Inputs
+  public interface Iinputs
 
   {
     void feedbackContent(String content);
   }
  
   /// A 'ContentProduct' (entity class thats implements Inputs)
-  class Content : Inputs
+  class Content : Iinputs
   {
       private String content;
       private String getContent(){
@@ -21,8 +21,6 @@ namespace Project.Models.Feedback
       private void setContent(String content){
           this.content = content;
       }
-
-
       
     public void feedbackContent(String content){
         if (this.content is null){
@@ -40,7 +38,7 @@ namespace Project.Models.Feedback
   /// The 'FeedbackCreator' abstract class
   abstract class Feedback
   { 
-    private List<Inputs> inputs = new List<Inputs>();
+    private List<Iinputs> inputs = new List<Iinputs>();
  
     // Constructor calls abstract Factory method
 
@@ -48,17 +46,19 @@ namespace Project.Models.Feedback
     {
       this.CreateFeedback();
     }
- 
-    public List<Inputs> Inputs
+
+    public List<Iinputs> Inputs
     {
       get { return inputs; }
     }
- 
+
+  
     // Factory Method
     public abstract void CreateFeedback();
   }
  
   //'SoftwareConcreteCreator' class (create the objects)
+  // inherits Feedback class
   class Software : Feedback
 
   {
@@ -72,6 +72,7 @@ namespace Project.Models.Feedback
   }
  
   //  'HardwareConcreteCreator' class
+  // inherits Feedback class
   class Hardware : Feedback
 
   {
@@ -81,6 +82,33 @@ namespace Project.Models.Feedback
     {
         Inputs.Add(new Content());
         
+    }
+  }
+
+  // control class for feedback system
+  class FeedbackControl {
+    public FeedbackControl(String type, String content){
+      if (type.Equals("software")){
+
+            Software fb = new Software();
+            Console.WriteLine("\n" + fb.GetType().Name + "--");
+            foreach (Iinputs inputs in fb.Inputs)
+            {
+                inputs.feedbackContent(content);
+            }
+      }
+      else if (type.Equals("hardware")){
+           Hardware fb = new Hardware();
+            Console.WriteLine("\n" + fb.GetType().Name + "--");
+            foreach (Iinputs inputs in fb.Inputs)
+            {
+                inputs.feedbackContent(content);
+            }
+      }
+      else{
+        Console.WriteLine("continue");
+      }
+
     }
   }
 }
