@@ -11,7 +11,7 @@ namespace Project.Models.Notification
     public class EmailNotification   
     {  
             private readonly string gmailuserid="leongzhikaii@gmail.com";
-            private readonly string gmailpassword="thisonereemmber";
+            private readonly string gmailpassword="imzhikai96";
 
         private readonly List<Email> _observers = new List<Email>();
         

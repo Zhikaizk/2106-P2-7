@@ -63,7 +63,6 @@ C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Fe
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminNotification.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\PasswordRetrival\PasswordRetrival.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -76,3 +75,5 @@ C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\staticwebasset
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\staticwebassets\Project.StaticWebAssets.xml
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Project.genruntimeconfig.cache
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Project.csproj.CopyComplete
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Delete\Delete.cshtml.g.cs
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\PasswordReset\PasswordReset.cshtml.g.cs

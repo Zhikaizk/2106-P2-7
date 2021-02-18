@@ -14402,11 +14402,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\PasswordRetrival\\PasswordRetrival.cshtml",
-      "TargetPath": "Views\\PasswordRetrival\\PasswordRetrival.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14427,6 +14422,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Delete\\Delete.cshtml",
+      "TargetPath": "Views\\Delete\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -14439,6 +14439,11 @@
     {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Feedback\\Feedback.cshtml",
       "TargetPath": "Views\\Feedback\\Feedback.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\PasswordReset\\PasswordReset.cshtml",
+      "TargetPath": "Views\\PasswordReset\\PasswordReset.cshtml",
       "FileKind": "mvc"
     }
   ],
