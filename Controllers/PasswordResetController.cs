@@ -20,7 +20,7 @@ namespace Project.Controllers.PasswordResetController
             _logger = logger;
         }
 
-    //get the passwordreset
+        //get the passwordreset
 
         [HttpGet]
         public ActionResult PasswordReset()
@@ -41,13 +41,35 @@ namespace Project.Controllers.PasswordResetController
 
 
         //     return View()
-            
+
         // }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //encrypt password
+        public static string EncodePassword(string newPassword)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[newPassword.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(newPassword);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in base64Encode" + ex.Message);
+            }
+        }
+
+        // protected void resetPasswordButton(object sender, EventArgs e)
+        // {
+        //     PasswordReset.Text = EncodePassword(TextBox1.Text);
+        // }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
-}
 }
