@@ -15,7 +15,6 @@ namespace Project
         public static void Main(string[] args)
         {
             //FeedbackControl fc = new FeedbackControl("software", "i am facing an issue");
-
             CreateHostBuilder(args).Build().Run();
         }
 

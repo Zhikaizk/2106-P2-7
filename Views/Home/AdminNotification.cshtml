@@ -4,11 +4,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Admin Notification</h1>
+    <h1 class="display-4">Admin Email Notification</h1>
+    <h4>This system sends out email to ALL household account about the software updates details </h4>
     @using(Html.BeginForm("AdminNotification","Home",FormMethod.Post))
 {
-    @Html.TextBoxFor(s=>s.emailaddress)
-    @Html.TextBoxFor(s => s.updatecontent)
-  <input type="submit" value="Submit" />
+    @* @Html.TextBoxFor(s=>s.emailaddress) *@
+    @Html.TextAreaFor(s => s.updatecontent,10,40, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
+  <input type="submit" value="Send Email" />
+   <h2>@ViewBag.Message</h2>
 }
 </div>
