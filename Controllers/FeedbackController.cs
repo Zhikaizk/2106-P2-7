@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models;
+using Project.Models.Feedback;
 
 namespace Project.Controllers
 {
@@ -19,8 +20,16 @@ namespace Project.Controllers
         }
 
        
-        public IActionResult Feedback()
+        public IActionResult Feedback(String fbType, String feedback)
         {
+            
+            String content = feedback;
+            String type = fbType;
+            FeedbackControl fc = new FeedbackControl(type, content);
+            // String content = feedback;
+            // String type = fbType;
+            // Console.WriteLine(type);
+            // Console.WriteLine(content);
             return View();
         }
 
