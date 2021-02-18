@@ -4,15 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project.Models.PasswordResetModel
 {
-    public class PasswordResetModel{
-        [Required,EmailAddress,Display(Name="Registered email address")]
-
-        private string username{get;set;}
-        private string email{ get;set; }
-        private string password{ get;set; }
-        private bool EmailSent {get;set;}
+    public class PasswordResetModel
+    {
+        private string email { get; set; }
+        private string oldPassword { get; set; }
+        private string encrpytionPassword { get; set; }
+        private string newPassword { get; set; }
+        private string confirmPassword {get;set;}
+        private bool EmailSent { get; set; }
 
     }
-       
+
 
 }
