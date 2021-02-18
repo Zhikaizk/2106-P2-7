@@ -14,9 +14,9 @@ namespace Project.Controllers
             return View();
         }
 
-        public IActionResult Delete(DeleteModel model)
+        public IActionResult Delete()
         {
-
+            // 
             return View();
         }
     }
