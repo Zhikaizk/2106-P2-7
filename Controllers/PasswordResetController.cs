@@ -20,32 +20,29 @@ namespace Project.Controllers.PasswordResetController
             _logger = logger;
         }
 
-        [AllowAnonymous, HttpGet("password-retrieve")]
-        public IActionResult PasswordReset()
+    //get the passwordreset
+
+        [HttpGet]
+        public ActionResult PasswordReset()
         {
             return View();
         }
-        // [AllowAnonymous, HttpPost("password-retrieve")]
-        // public IActionResult PasswordRetrival(PasswordRetrivalModel model)
-        // {
 
-        //     if (ModelState.IsValid)
-        //     {
+        //check the credentials
+        [HttpPost]
+        // public ActionResult PasswordReset(PasswordResetModel obj){
 
+        //     int userID = Convert.ToInt32(Session["User ID"]);
+        //     User user = db.User.Find(ID);
 
-        //         // var user = _accountRepository.GetUserByEmailAsync(model.Email);
-        //         // if (user != null)
-        //         // {
-        //         //     await _accountRepository.GeneratePasswordByTokenAsync(user);
-        //         // }
+        //     if (User.password == obj.oldPassword){
 
-        //         ModelState.Clear();
-        //         // model.EmailSent = true;
         //     }
 
-        //     return View(model);
+
+        //     return View()
+            
         // }
-    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
