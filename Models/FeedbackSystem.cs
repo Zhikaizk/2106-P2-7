@@ -88,25 +88,28 @@ namespace Project.Models.Feedback
   // control class for feedback system
   class FeedbackControl {
     public FeedbackControl(String type, String content){
-      if (type.Equals("software")){
+      String feedbackType = type;
+      String feedbackContent = content;
+      if (feedbackType == "Software"){
 
-            Software fb = new Software();
-            Console.WriteLine("\n" + fb.GetType().Name + "--");
-            foreach (Iinputs inputs in fb.Inputs)
-            {
-                inputs.feedbackContent(content);
-            }
+        Software fb = new Software();
+        Console.WriteLine("\n" + fb.GetType().Name + "--");
+        foreach (Iinputs inputs in fb.Inputs)
+        {
+            inputs.feedbackContent(feedbackContent);
+        }
       }
-      else if (type.Equals("hardware")){
-           Hardware fb = new Hardware();
-            Console.WriteLine("\n" + fb.GetType().Name + "--");
-            foreach (Iinputs inputs in fb.Inputs)
-            {
-                inputs.feedbackContent(content);
-            }
+      else if (feedbackType == "Hardware"){
+        Hardware fb = new Hardware();
+        Console.WriteLine("\n" + fb.GetType().Name + "--");
+        foreach (Iinputs inputs in fb.Inputs)
+        {
+            inputs.feedbackContent(feedbackContent);
+        }
       }
-      else{
-        Console.WriteLine("continue");
+      else if (feedbackType is null){
+        // return to view when there is no input, to run the feedback.cshtml
+        return;
       }
 
     }
