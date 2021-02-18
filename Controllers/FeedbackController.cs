@@ -26,10 +26,6 @@ namespace Project.Controllers
             String content = feedback;
             String type = fbType;
             FeedbackControl fc = new FeedbackControl(type, content);
-            // String content = feedback;
-            // String type = fbType;
-            // Console.WriteLine(type);
-            // Console.WriteLine(content);
             return View();
         }
 
