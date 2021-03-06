@@ -1,28 +1,61 @@
 @{
     ViewData["Title"] = "Household Feedback System";
 }
+
+@* Questions that household may faced *@
+<h1>Common Problem</h1>
 <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+    <div class="card-body">
+        <h5 class="card-title">Devices</h5>
+        <p class="card-text">How do I add a new device?</p>
+        <p class="card-text">Answer</p>
+        <p class="card-text">Why can't I find my device?</p>
+        <p class="card-text">Answer</p>
+    </div>
 </div>
-<div class="text-center">
-    <h1 class="display-4">Feedback System</h1>
-    <form>
-        <div class="form-group">
-            <label for="fbType">Select Feedback Type</label>
-            <select class="form-control" id="fbType" name="fbType">
-                <option>Software</option>
-                <option>Hardware</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="FeedbackContent">Content</label>
-            <textarea class="form-control" id="FeedbackContent" rows="3"
-                placeholder="Please give a description on the issues you are facing."></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Connection</h5>
+        <p class="card-text">Why can't my device connect to the network?</p>
+        <p class="card-text">Answer</p>
+        <p class="card-text">No router to connect when adding device?</p>
+        <p class="card-text">Answer</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Account/Profile</h5>
+        <p class="card-text">How do I reset my password?</p>
+        <p class="card-text">Answer</p>
+        <p class="card-text">I am unable to login to my account.</p>
+        <p class="card-text">Answer</p>
+    </div>
+</div>
+
+@* Submission of Feedback Form *@
+<div class="card bg-info">
+    <div class="card-body">
+        <h5 class="card-title">Submit Feedback</h5>
+        <form>
+            <div class="form-group row">
+                <label for="fbType" class="col-sm-2 col-form-label">Select Feedback Type</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="fbType" name="fbType">
+                        <option>Software</option>
+                        <option>Hardware</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="FeedbackContent" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="FeedbackContent" rows="3"
+                        placeholder="Please give a description on the issues you are facing."></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
 </div>
