@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Household Feedback System";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Feedback System</h1>
+    <form>
+        <div class="form-group">
+            <label for="fbType">Select Feedback Type</label>
+            <select class="form-control" id="fbType" name="fbType">
+                <option>Software</option>
+                <option>Hardware</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="FeedbackContent">Content</label>
+             <textarea class="form-control" id="FeedbackContent" rows="3" placeholder="Please give a description on the issues you are facing."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    @* <form>
+        <div class="form-group">
+        <label for="fbType">Select Feedback Type</label>
+        <select class="form-control" id="fbType" name="fbType">
+        <option>Software</option>
+        <option>Hardware</option>
+        </select>
+        <input type="text" name="feedback" />
+        <input type="submit" class="btn btn-primary" value="Submit Feedback"/>
+
+        </div>
+        </form> *@
+</div>
+<div>
+    <p></p>
+</div>

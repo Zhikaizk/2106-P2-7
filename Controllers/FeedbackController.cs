@@ -20,12 +20,17 @@ namespace Project.Controllers
         }
 
        
-        public IActionResult Feedback(String fbType, String feedback)
+        public IActionResult Feedback_user(String fbType, String feedback)
         {
             
             String content = feedback;
             String type = fbType;
             FeedbackControl fc = new FeedbackControl(type, content);
+            return View();
+        }
+        public IActionResult Feedback_admin(String fbType, String feedback)
+        {
+            
             return View();
         }
 
