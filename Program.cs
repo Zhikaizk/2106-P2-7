@@ -16,7 +16,7 @@ namespace Project
     {
         public static void Main(string[] args)
         {
-            InsertData();
+            // InsertData();
             PrintData();
             //FeedbackControl fc = new FeedbackControl("software", "i am facing an issue");
             // CreateHostBuilder(args).Build().Run();
@@ -62,6 +62,7 @@ namespace Project
                     data.AppendLine($"Content: {data1.FeedbackContent}");
                     data.AppendLine($"Email: {data1.HouseholdEmail}");
                     Console.WriteLine(data.ToString());
+                  
                 }
             }
         }
