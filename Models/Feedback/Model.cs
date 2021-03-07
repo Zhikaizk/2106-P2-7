@@ -9,7 +9,7 @@ namespace EFCoreSample
     
     public DbSet<Feedback> Feedback { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseMySQL($"server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;database=zk;user=root;password=qwerty123");
+        => options.UseMySQL($"");
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
