@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
 namespace EFCoreSample
-
-
 {
   public class FeedbackContext : DbContext
   {
@@ -21,11 +19,11 @@ namespace EFCoreSample
       base.OnModelCreating(modelBuilder);
       modelBuilder.Entity<FeedbackTableModule>(entity =>
       {
-        entity.HasKey(e => e.FeedbackId);
-        entity.Property(e => e.FeedbackType).IsRequired();
-        entity.Property(e => e.FeedbackStatus).IsRequired();
-        entity.Property(e => e.HouseholdEmail).IsRequired();
-        entity.Property(e => e.FeedbackContent).IsRequired();
+        entity.HasKey(e => e.feedbackId);
+        entity.Property(e => e.feedbackType).IsRequired();
+        entity.Property(e => e.feedbackStatus).IsRequired();
+        entity.Property(e => e.householdEmail).IsRequired();
+        entity.Property(e => e.feedbackContent).IsRequired();
       });
     }
   }

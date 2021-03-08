@@ -5,11 +5,11 @@ namespace EFCoreSample
         public class FeedbackTableModule
         {
             [MySqlCharset("latin1")]
-            public string FeedbackContent { get; set; }
-            public string HouseholdEmail { get; set; }
-            public string FeedbackStatus { get; set; }
-            public string FeedbackType { get; set; }
-            public int FeedbackId { get; set; }
+            public string feedbackContent { get; set; }
+            public string householdEmail { get; set; }
+            public string feedbackStatus { get; set; }
+            public string feedbackType { get; set; }
+            public int feedbackId { get; set; }
         }
     }
 

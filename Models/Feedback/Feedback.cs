@@ -9,14 +9,14 @@ namespace Project.Models.Feedback
     // Constructor calls abstract Factory method
     public Feedback()
     {
-      this.CreateFeedback();
+      this.createFeedback();
     }
     public List<Iinputs> Inputs
     {
       get { return inputs; }
     }
     // Factory Method
-    public abstract void CreateFeedback();
+    public abstract void createFeedback();
   }
 }
  

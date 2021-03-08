@@ -14,7 +14,7 @@ namespace EFCoreSample
 {
     public class FeedbackTDG{
         // insert feedback
-        public static void InsertData()
+        public static void insertData(String feedbackType, String feedbackContent)
         {
             using (var context = new FeedbackContext())
             {
@@ -24,10 +24,10 @@ namespace EFCoreSample
                 //insert feedback to db
                 context.Feedback.Add(new FeedbackTableModule
                 {
-                    FeedbackContent = "i am facing",
-                    FeedbackType = "Devices",
-                    FeedbackStatus = "pending",
-                    HouseholdEmail = "jialin@gmail.com"
+                    feedbackContent = feedbackContent,
+                    feedbackType = feedbackType,
+                    feedbackStatus = "pending",
+                    householdEmail = "jialin@gmail.com"
                 });
 
                 // Saves changes
@@ -35,7 +35,7 @@ namespace EFCoreSample
             }
         }
         // retrieve all feedback
-        public static void PrintData()
+        public static void printData()
         {
             // Gets and prints all books in database
             using (var context = new FeedbackContext())
@@ -46,11 +46,11 @@ namespace EFCoreSample
                 {
                     // var data = new StringBuilder();
                     var data = new StringBuilder();
-                    data.AppendLine($"Id: {data1.FeedbackId}");
-                    data.AppendLine($"Type: {data1.FeedbackType}");
-                    data.AppendLine($"Status: {data1.FeedbackStatus}");
-                    data.AppendLine($"Content: {data1.FeedbackContent}");
-                    data.AppendLine($"Email: {data1.HouseholdEmail}");
+                    data.AppendLine($"Id: {data1.feedbackId}");
+                    data.AppendLine($"Type: {data1.feedbackType}");
+                    data.AppendLine($"Status: {data1.feedbackStatus}");
+                    data.AppendLine($"Content: {data1.feedbackContent}");
+                    data.AppendLine($"Email: {data1.householdEmail}");
                     Console.WriteLine(data.ToString());
                     // Console.WriteLine(data.ToString());
                   

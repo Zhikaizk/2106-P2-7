@@ -77,8 +77,6 @@ C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Project.csproj
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Delete\Delete.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\PasswordReset\PasswordReset.cshtml.g.cs
 C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Delete\Delete.cshtml.g.cs
-C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\Feedback_admin.cshtml.g.cs
-C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\Feedback_user.cshtml.g.cs
 C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Home\AdminNotification.cshtml.g.cs
 C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\PasswordReset\PasswordReset.cshtml.g.cs
 C:\Users\Jia Lin\git\2106-P2-7\bin\Debug\netcoreapp3.1\MySqlConnector.dll
@@ -113,3 +111,5 @@ C:\Users\Jia Lin\git\2106-P2-7\bin\Debug\netcoreapp3.1\System.Configuration.Conf
 C:\Users\Jia Lin\git\2106-P2-7\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Jia Lin\git\2106-P2-7\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\Jia Lin\git\2106-P2-7\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackAdmin.cshtml.g.cs
+C:\Users\Jia Lin\git\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackUser.cshtml.g.cs
