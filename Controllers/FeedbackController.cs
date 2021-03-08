@@ -19,18 +19,31 @@ namespace Project.Controllers
             _logger = logger;
         }
 
-       
-        public IActionResult Feedback_user(String fbType, String feedback)
+        //deafult when page loads
+        public IActionResult feedbackUser()
         {
-            
-            String content = feedback;
-            String type = fbType;
-            FeedbackControl fc = new FeedbackControl(type, content);
             return View();
         }
-        public IActionResult Feedback_admin(String fbType, String feedback)
+
+        // when submit btn is clicked
+        //parameters are based on the .cshtml name attr
+        [HttpPost]
+        public IActionResult feedbackUser(String fbType, String feedback)
         {
-            
+            return View();
+        }
+        // public IActionResult feedbackUser(String fbType, String feedback)
+        // {
+
+        //     String content = feedback;
+        //     String type = fbType;
+        //     FeedbackControl fc = new FeedbackControl(type, content);
+        //     return View();
+        // }
+
+        public IActionResult feedbackAdmin()
+        {
+            // FeedbackControl fc = new FeedbackControl();
             return View();
         }
 

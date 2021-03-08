@@ -73,3 +73,11 @@ body {
 .card {
   margin-bottom: 20px;
 }
+
+.questions {
+  font-weight: bold;
+}
+
+.fb_topic{
+  color: black;
+}

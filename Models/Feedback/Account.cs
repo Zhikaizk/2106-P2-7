@@ -1,19 +1,20 @@
-  using System;
+  
+using System;
 using System.Collections.Generic;
  
 namespace Project.Models.Feedback
 {
-  //  'HardwareConcreteCreator' class
+  //'SoftwareConcreteCreator' class (create the objects)
   // inherits Feedback class
-  class Hardware : Feedback
-
+  class Account : Feedback
   {
     // Factory Method implementation
 
-    public override void CreateFeedback()
+    public override void createFeedback()
     {
         Inputs.Add(new Content());
         
     }
   }
 }
+ 

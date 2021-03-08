@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Project.csproj",
+  "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Project.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,58 +14392,63 @@
   "RootNamespace": "Project",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\_ViewImports.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Home\\AdminNotification.cshtml",
-      "TargetPath": "Views\\Home\\AdminNotification.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\PasswordReset\\PasswordReset.cshtml",
+      "TargetPath": "Views\\PasswordReset\\PasswordReset.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Delete\\Delete.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Delete\\Delete.cshtml",
       "TargetPath": "Views\\Delete\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Home\\AdminNotification.cshtml",
+      "TargetPath": "Views\\Home\\AdminNotification.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Feedback\\Feedback.cshtml",
-      "TargetPath": "Views\\Feedback\\Feedback.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Feedback\\feedbackUser.cshtml",
+      "TargetPath": "Views\\Feedback\\feedbackUser.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\PasswordReset\\PasswordReset.cshtml",
-      "TargetPath": "Views\\PasswordReset\\PasswordReset.cshtml",
+      "FilePath": "c:\\Users\\Jia Lin\\git\\2106-P2-7\\Views\\Feedback\\feedbackAdmin.cshtml",
+      "TargetPath": "Views\\Feedback\\feedbackAdmin.cshtml",
       "FileKind": "mvc"
     }
   ],

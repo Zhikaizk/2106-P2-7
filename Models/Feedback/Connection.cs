@@ -1,16 +1,16 @@
   
-  using System;
+using System;
 using System.Collections.Generic;
  
 namespace Project.Models.Feedback
-{//'SoftwareConcreteCreator' class (create the objects)
+{
+  //'SoftwareConcreteCreator' class (create the objects)
   // inherits Feedback class
-  class Software : Feedback
-
+  class Connection : Feedback
   {
     // Factory Method implementation
 
-    public override void CreateFeedback()
+    public override void createFeedback()
     {
         Inputs.Add(new Content());
         

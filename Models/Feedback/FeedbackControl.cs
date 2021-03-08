@@ -1,32 +1,51 @@
- using System;
+using System;
 using System.Collections.Generic;
+using EFCoreSample;
  
 namespace Project.Models.Feedback
 {
  // control class for feedback system
-  class FeedbackControl {
+  public class FeedbackControl {
+
+    //retrieve Data
+    public FeedbackControl(){
+      //querying db
+      // FeedbackTDG.printData();
+    }
+
+    //insert Data
     public FeedbackControl(String type, String content){
+
+      //querying db
+      FeedbackTDG.insertData(type, content);
+
       String feedbackType = type;
       String feedbackContent = content;
-      if (feedbackType == "Software"){
-
-        Software fb = new Software();
-        Console.WriteLine("\n" + fb.GetType().Name + "--");
+      
+      //create obj
+      if (feedbackType == "Devices"){
+        Devices fb = new Devices();
+        // Console.WriteLine("\n" + fb.GetType().Name + "--");
         foreach (Iinputs inputs in fb.Inputs)
         {
             inputs.feedbackContent(feedbackContent);
         }
       }
-      else if (feedbackType == "Hardware"){
-        Hardware fb = new Hardware();
-        Console.WriteLine("\n" + fb.GetType().Name + "--");
+      else if (feedbackType == "Account"){
+        Account fb = new Account();
+        // Console.WriteLine("\n" + fb.GetType().Name + "--");
         foreach (Iinputs inputs in fb.Inputs)
         {
             inputs.feedbackContent(feedbackContent);
         }
       }
-      else if (feedbackType is null){
-        // return to view when there is no input, to run the feedback.cshtml
+      else if (feedbackType == "Connection"){
+        Connection fb = new Connection();
+        // Console.WriteLine("\n" + fb.GetType().Name + "--");
+        foreach (Iinputs inputs in fb.Inputs)
+        {
+            inputs.feedbackContent(feedbackContent);
+        }
         return;
       }
 
