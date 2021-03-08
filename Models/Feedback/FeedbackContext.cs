@@ -3,17 +3,23 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
 namespace EFCoreSample
+
+
 {
   public class FeedbackContext : DbContext
   {
     
-    public DbSet<Feedback> Feedback { get; set; }
+    public DbSet<FeedbackTableModule> Feedback { get; set; }
+
+    //databse connection strings
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseMySQL($"");
+
+    //feedback db table    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
-      modelBuilder.Entity<Feedback>(entity =>
+      modelBuilder.Entity<FeedbackTableModule>(entity =>
       {
         entity.HasKey(e => e.FeedbackId);
         entity.Property(e => e.FeedbackType).IsRequired();
@@ -23,15 +29,6 @@ namespace EFCoreSample
       });
     }
   }
-  [MySqlCollation("latin1_spanish_ci")]
-  public class Feedback
-  {
-    [MySqlCharset("latin1")]
-    public string FeedbackContent { get; set; }
-    public string HouseholdEmail { get; set; }
-    public string FeedbackStatus { get; set; }
-    public string FeedbackType { get; set; }
-    public int FeedbackId { get; set; }
-  }
+
 
 }
