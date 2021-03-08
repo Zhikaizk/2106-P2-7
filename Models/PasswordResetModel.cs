@@ -2,22 +2,38 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Project.Models.PasswordResetModel
+namespace Project.Models
 {
     public class PasswordResetModel
     {
-        private string householdEmail { get; set; }
-        private bool requestPasswordReset {get;set;}
-        private bool confirmationEmailSend { get; set; }
-        private string resetlink{get;set;}
-        private string encrpytionKey { get; set; }
-        // private string newPassword { get; set; }
-        // private string confirmPassword {get;set;}
-        // private string oldPassword { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string householdEmail { get; set; }
 
+        //public bool requestPasswordReset {get;set;}
+        public bool confirmationEmailSend { get; set; }
+        public string administratorEmail { get; set; }
+        public string resetlink { get; set; }
+        //public bool PasswordResetNoti {get;set;}
 
+        //new de
+        // private string passwordReset { get; set; }
+
+        //private string oldPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        public string newPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("newPassword", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirm Password")]
+        public string confirmPassword { get; set; }
+
+        // public string encrpytionURL { get; set; }
 
     }
-
-
 }
