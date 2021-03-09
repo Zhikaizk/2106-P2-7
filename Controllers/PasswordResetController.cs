@@ -116,6 +116,13 @@ namespace Project.Controllers
         //     PasswordReset.Text = EncodePassword(TextBox1.Text);
         // }
 
+//newly added
+        public ActionResult ResetPasswordPage()
+        {
+        
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
