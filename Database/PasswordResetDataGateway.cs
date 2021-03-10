@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace Project.Database
 {
     //is a subset to the dbcontext
-    public class PasswordResetDataGateway<T> : IPasswordResetDataGateway<T> where T : class 
+    public class PasswordResetDataGateway<T> : IPasswordResetDataGateway<T> where T : class
     {
         internal PasswordResetContext db;
         internal DbSet<T> data = null;
 
-            public PasswordResetDataGateway(PasswordResetContext context)
+        public PasswordResetDataGateway(PasswordResetContext context)
         {
             this.db = context;
             this.data = db.Set<T>();
@@ -26,18 +26,19 @@ namespace Project.Database
         {
             return data.Find(householdEmail);
         }
-        
-        public void Update(T obj)
+
+        public void insert(T obj)
         {
             //declare that the data has been changed
             db.Entry(obj).State = EntityState.Modified;
             Save();
         }
 
-        public void Save(){
+        public void Save()
+        {
             db.SaveChanges();
         }
-         
+
     }
 }
 
