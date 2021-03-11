@@ -13,7 +13,7 @@ namespace Project.Database
     public class PasswordResetContext : DbContext
     {
 
-        public PasswordResetContext(DbContextOptions<PasswordResetContext> options) : base(options) { }
+        // public PasswordResetContext(DbContextOptions<PasswordResetContext> options) : base(options) { }
 
 
         //whatever we put in recordset passwordreset class is correspond to the database
@@ -21,7 +21,7 @@ namespace Project.Database
         public DbSet<PasswordResetTableModule> PasswordReset { get; set; }
 
         //trying to connect to mysql
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseMySQL($"");
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseMySQL($"server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123");
 
         //feedback db table    
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,8 +31,8 @@ namespace Project.Database
             {
                 entity.HasKey(e => e.passwordResetID);
                 entity.Property(e => e.householdEmail).IsRequired();
-                entity.Property(e => e.newPassword).IsRequired();
-                entity.Property(e => e.confirmPassword).IsRequired();
+                // entity.Property(e => e.newPassword);
+                // entity.Property(e => e.confirmPassword);
             });
         }
 

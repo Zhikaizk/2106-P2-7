@@ -9,12 +9,13 @@ using System.Net;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Web;
+using Project.Models.PasswordReset;
 
 namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
-        private PasswordResetDataGateway<PasswordResetModel> passwordResetDataGateway;
+        // private PasswordResetDataGateway<PasswordResetModel> passwordResetDataGateway;
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
@@ -42,10 +43,9 @@ namespace Project.Controllers
 
         //get the passwordreset
 
-        [HttpGet]
-        public ActionResult PasswordReset()
+        
+        public IActionResult PasswordReset()
         {
-            //old
             return View();
         }
 
@@ -93,17 +93,21 @@ namespace Project.Controllers
 
         //check the credentials
         [HttpPost]
-        public ActionResult PasswordReset(PasswordResetModel objPasswordResetModel)
+        public ActionResult PasswordReset(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
+            String email = householdEmail;
+            Console.WriteLine(email);
+    
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully requested reset password";
 
-            if (ModelState.IsValid)
-            {
-            }
-            else
-            {
-            }
+            PasswordResetControl pw = new PasswordResetControl(householdEmail);
+            // if (ModelState.IsValid)
+            // {
+            // }
+            // else
+            // {
+            // }
             return View();
         }
 

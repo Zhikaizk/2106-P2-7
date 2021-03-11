@@ -12,7 +12,7 @@ namespace Project.Database
             [MySqlCharset("latin1")]
             public string householdEmail { get; set; }
             public string newPassword { get; set; }
-            public string confirmPassword { get; set; }
+            public string confirmResetPassword { get; set; }
             public int passwordResetID { get; set; }
         }
     

@@ -8,7 +8,7 @@ namespace Project.Database{
         // IEnumerable<T> SelectAll();
         T SelectByHouseholdEmail(string? householdEmail);
         void Save();
-        void insert(T obj);
+        void insert(String householdEmail);
     }
 
 }
