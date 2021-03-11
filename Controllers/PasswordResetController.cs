@@ -7,13 +7,14 @@ using Project.Models;
 using Project.Database;
 using System.Net;
 using Microsoft.AspNetCore.Http;
-using System.Linq; 
+using System.Linq;
+using System.Web;
 
 namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
-        private PasswordResetDataGateway<PasswordResetModel> passwordResetDataGateway; 
+        private PasswordResetDataGateway<PasswordResetModel> passwordResetDataGateway;
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
@@ -21,7 +22,14 @@ namespace Project.Controllers
             _logger = logger;
         }
 
-// update the password GET PasswordReset/requestPassword
+        //route after admin click on the send email
+
+        public string url(string householdEmail){
+            return HttpUtility.HtmlEncode("Email have been send out");
+
+        }
+
+        // update the password GET PasswordReset/requestPassword
 
         // public ActionResult Edit(string? householdEmail){
         //     if (householdEmail == null){
@@ -53,8 +61,8 @@ namespace Project.Controllers
 
 
         // //update the household password
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
         // public ActionResult Edit([Bind("resetPassword")]
         //  PasswordResetModel passwordResetModel)
         //  {
@@ -64,9 +72,10 @@ namespace Project.Controllers
         //     }
         //     return View(passwordResetModel);
         // }
-       public ActionResult Edit(PasswordResetModel passwordResetModel)
+        public ActionResult Edit(PasswordResetModel passwordResetModel)
         {
-            if (ModelState.IsValid){
+            if (ModelState.IsValid)
+            {
                 // PasswordResetContext db = new PasswordResetContext();
                 // db.Entry(passwordResetModel).State = EntityState.Modified();
                 // db.SaveChanges();
@@ -77,20 +86,23 @@ namespace Project.Controllers
 
 
         //save the household password
-        [HttpPost]
+        // [HttpPost]
         // [ValidateAntiForgeryToken]
 
 
 
         //check the credentials
         [HttpPost]
-        public ActionResult PasswordReset(PasswordResetModel objPasswordResetModel){
+        public ActionResult PasswordReset(PasswordResetModel objPasswordResetModel)
+        {
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
-            ViewBag.Message="Successsfully requested reset password";
+            ViewBag.Message = "Successsfully requested reset password";
 
-            if (ModelState.IsValid){
+            if (ModelState.IsValid)
+            {
             }
-            else{
+            else
+            {
             }
             return View();
         }
@@ -116,10 +128,16 @@ namespace Project.Controllers
         //     PasswordReset.Text = EncodePassword(TextBox1.Text);
         // }
 
-//newly added
+        //newly added
         public ActionResult ResetPasswordPage()
         {
-        
+
+            return View();
+        }
+
+        public ActionResult AdminPasswordResetPage()
+        {
+
             return View();
         }
 
