@@ -19,7 +19,7 @@ public Email(string observerName,string emailcontent)
 
 public Email()
 {}
-  
+
 public string updatecontent { get; set; }  
 public string emailaddress { get; set; } 
   

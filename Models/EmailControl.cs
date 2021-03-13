@@ -23,10 +23,14 @@ namespace Project.Models.Notification
         ///String emailaddresses this is for backup just in case got input needede
         private Boolean Softwareupdate(String emailcontenthere)
         {
+
             // this is the part where people can link via interface with testing function 
             // testing function acts as other people file in order to intertract with IEmail 
-             testing testing = new testing();
-             testing.on();
+             EmailTDG emailtdg = new EmailTDG();
+             emailtdg.find();
+            Console.WriteLine("Endedhere");
+            //  testing testing = new testing();
+            //  testing.on();
             EmailNotification S1 = new EmailNotification();  
             //here will have the whole list of emails when retrieved from database
             //SelectEmails function here();
