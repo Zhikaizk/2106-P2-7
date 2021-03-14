@@ -8,6 +8,7 @@ namespace Project
 
         public static void Main(string[] args)
         { 
+            
             CreateHostBuilder(args).Build().Run();
             // FeedbackTDG.InsertData();
             // FeedbackTDG.PrintData();

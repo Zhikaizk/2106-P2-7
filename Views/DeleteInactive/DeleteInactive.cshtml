@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Delete page";
+}
+@model Project.Models.Delete.InactiveUsersList
+
+<div class="text-center">
+    <h1 class="display-4">Admin Delete page</h1>
+
+@using (Html.BeginForm())
+{
+    
+    <table class="table">
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Days of Inactivity</th>
+            <th>Last Active Date</th>
+            <th></th>
+        </tr>
+        @for (int i = 0; i < Model.InactiveU.Count; i++)
+        {
+            <tr>
+                <td>@Model.InactiveU[i].id</td>
+                <td>@Model.InactiveU[i].username</td>
+                <td>@Model.InactiveU[i].inactivityPeriod</td>
+                <td>@Model.InactiveU[i].lastActive</td>
+                <td>@Html.CheckBoxFor(m => Model.InactiveU[i].deleteChk)</td>
+                @Html.HiddenFor(model => model.InactiveU[i].id)
+                @Html.HiddenFor(model => model.InactiveU[i].username)
+                @Html.HiddenFor(model => model.InactiveU[i].inactivityPeriod)
+                @Html.HiddenFor(model => model.InactiveU[i].lastActive)
+            </tr>
+        }
+
+
+    </table>
+    <input type="submit" value="Delete Selected Accounts"/>
+    
+}
+</div>
+
+    
