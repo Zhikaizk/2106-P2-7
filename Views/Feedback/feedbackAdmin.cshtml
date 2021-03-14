@@ -1,5 +1,7 @@
-@{
-  ViewData["Title"] = "Administrator Feedback System";
+@page
+@model EFCoreSample.FeedbackTableModule
+{
+ViewData["Title"] = "Administrator Feedback System";
 }
 
 <div class="text-center">
@@ -26,18 +28,35 @@
       </tr>
     </thead>
     <tbody>
+      @* foreach (var item in Model.Feedback)
+        {
         <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Hardware</td>
-          <td>Resolved</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Lamb</td>
-          <td>Software</td>
-          <td>Resolved</td>
-        </tr>
+        <th scope="row">@Html.DisplayFor(modelItem => Model.feedbackId)</th>
+        <td>@Html.DisplayFor(modelItem => Model.householdEmail)</td>
+        <td>@Html.DisplayFor(modelItem => Model.feedbackType)</td>
+        <td>@Html.DisplayFor(modelItem => Model.feedbackStatus)</td>
+        </tr> *@
+
+      <tr>
+        <th scope="row">3</th>
+        <td>jialin@gmail.com</td>
+        <td>Account</td>
+        <td>
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
+                  <option>Pending</option>
+                  <option>Resolved</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
+          </form>
+
+        </td>
+      </tr>
+      @* } *@
     </tbody>
   </table>
 </div>

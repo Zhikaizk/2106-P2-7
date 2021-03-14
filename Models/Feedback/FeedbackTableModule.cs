@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.EntityFrameworkCore.DataAnnotations;
 namespace EFCoreSample
 {

@@ -10,7 +10,15 @@ namespace Project.Models.Feedback
     //retrieve Data
     public FeedbackControl(){
       //querying db
-      // FeedbackTDG.printData();
+      FeedbackTDG.printData();
+      
+    }
+
+    //update feedback status to db
+     public FeedbackControl(String feedbackStatus){
+      //querying db
+      FeedbackTDG.printData();
+      
     }
 
     //insert Data

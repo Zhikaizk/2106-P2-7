@@ -11,7 +11,7 @@ namespace EFCoreSample
 
     //databse connection strings
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseMySQL($"");
+        => options.UseMySQL($"server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;database=zk;user=root;password=qwerty123");
 
     //feedback db table    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +27,4 @@ namespace EFCoreSample
       });
     }
   }
-
-
 }

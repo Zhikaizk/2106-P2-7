@@ -30,22 +30,25 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult feedbackUser(String fbType, String feedback)
         {
+            String content = feedback;
+            String type = fbType;
+            FeedbackControl fc = new FeedbackControl(type, content);
             return View();
         }
-        // public IActionResult feedbackUser(String fbType, String feedback)
-        // {
-
-        //     String content = feedback;
-        //     String type = fbType;
-        //     FeedbackControl fc = new FeedbackControl(type, content);
-        //     return View();
-        // }
 
         public IActionResult feedbackAdmin()
         {
             // FeedbackControl fc = new FeedbackControl();
             return View();
         }
+
+        // [HttpPost]
+        // public IActionResult feedbackAdmin(String fbStatusUpdate)
+        // {
+        //     string status = fbStatusUpdate;
+        //     FeedbackControl fc = new FeedbackControl(status);
+        //     return View();
+        // }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

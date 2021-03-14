@@ -52,7 +52,6 @@ namespace EFCoreSample
                     data.AppendLine($"Content: {data1.feedbackContent}");
                     data.AppendLine($"Email: {data1.householdEmail}");
                     Console.WriteLine(data.ToString());
-                    // Console.WriteLine(data.ToString());
                   
                 }
             }
