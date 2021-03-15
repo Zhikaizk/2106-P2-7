@@ -4,7 +4,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models;
-using Project.Database;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
@@ -42,16 +41,14 @@ namespace Project.Controllers
 
 
         //get the passwordreset
-
-        
-        public IActionResult PasswordReset()
+        public IActionResult passwordReset()
         {
             return View();
         }
 
         // GET: 
         [HttpGet]
-        public ActionResult Edit(String householdEmail)
+        public ActionResult edit(String householdEmail)
         {
             // PasswordResetContext db  = new PasswordResetContext();
             // PasswordResetModel pwdreset = db.PasswordResetModel.Single(x=> x.householdEmail == householdEmail);
@@ -72,7 +69,7 @@ namespace Project.Controllers
         //     }
         //     return View(passwordResetModel);
         // }
-        public ActionResult Edit(PasswordResetModel passwordResetModel)
+        public ActionResult edit(PasswordResetModel passwordResetModel)
         {
             if (ModelState.IsValid)
             {
@@ -84,16 +81,9 @@ namespace Project.Controllers
             return View(passwordResetModel);
         }
 
-
-        //save the household password
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-
-
-
         //check the credentials
         [HttpPost]
-        public ActionResult PasswordReset(PasswordResetModel objPasswordResetModel, String householdEmail)
+        public ActionResult passwordReset(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
             String email = householdEmail;
             Console.WriteLine(email);
@@ -102,46 +92,17 @@ namespace Project.Controllers
             ViewBag.Message = "Successsfully requested reset password";
 
             PasswordResetControl pw = new PasswordResetControl(householdEmail);
-            // if (ModelState.IsValid)
-            // {
-            // }
-            // else
-            // {
-            // }
             return View();
         }
-
-        //encrypt password
-        // public static string EncodePassword(string newPassword)
-        // {
-        //     try
-        //     {
-        //         byte[] encData_byte = new byte[newPassword.Length];
-        //         encData_byte = System.Text.Encoding.UTF8.GetBytes(newPassword);
-        //         string encodedData = Convert.ToBase64String(encData_byte);
-        //         return encodedData;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         throw new Exception("Error in base64Encode" + ex.Message);
-        //     }
-        // }
-
-        // protected void resetPasswordButton(object sender, EventArgs e)
-        // {
-        //     PasswordReset.Text = EncodePassword(TextBox1.Text);
-        // }
 
         //newly added
-        public ActionResult ResetPasswordPage()
+        public ActionResult resetPasswordPage()
         {
-
             return View();
         }
 
-        public ActionResult AdminPasswordResetPage()
+        public ActionResult adminPasswordResetPage()
         {
-
             return View();
         }
 

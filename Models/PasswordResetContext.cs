@@ -7,14 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
 
-namespace Project.Database
+namespace Project.Models
 {
 
     public class PasswordResetContext : DbContext
     {
-
-        // public PasswordResetContext(DbContextOptions<PasswordResetContext> options) : base(options) { }
-
 
         //whatever we put in recordset passwordreset class is correspond to the database
         //recordset is a table datagatway , provide insert update delete 
@@ -31,8 +28,8 @@ namespace Project.Database
             {
                 entity.HasKey(e => e.passwordResetID);
                 entity.Property(e => e.householdEmail).IsRequired();
-                // entity.Property(e => e.newPassword);
-                // entity.Property(e => e.confirmPassword);
+                entity.Property(e => e.newPassword);
+                entity.Property(e => e.confirmResetPassword);
             });
         }
 
