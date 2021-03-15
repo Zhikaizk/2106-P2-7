@@ -1,8 +1,6 @@
 using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
-
-
-namespace Project.Database
+namespace Project.Models
 {
 
         [MySqlCollation("latin1_spanish_ci")]

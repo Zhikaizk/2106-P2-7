@@ -8,31 +8,14 @@ using System.Threading.Tasks;
 using System.Text;
 
 
-namespace Project.Database
+namespace Project.Models
 {
-    //is a subset to the dbcontext
-    // public class PasswordResetDataGateway<T> : IPasswordResetDataGateway<T> where T : class
     public class PasswordResetDataGateway
 
     {
-        // internal PasswordResetContext db;
-        // internal DbSet<T> data = null;
-
-        // public PasswordResetDataGateway(PasswordResetContext context)
-        // {
-        //     this.db = context;
-        //     this.data = db.Set<T>();
-        // }
-
-        // // private PasswordResetDataGateway db = new PasswordResetDataGateway();
-        // public T SelectByHouseholdEmail(string? householdEmail)
-        // {
-        //     return data.Find(householdEmail);
-        // }
-
 
 //when user resetPassword with new password
-        public void insert(String householdEmail,String newPassword,String confirmPassword)
+        public static void insert(String householdEmail,String newPassword,String confirmPassword)
         {
             //declare that the data has been changed
             // db.Entry(obj).State = EntityState.Modified;
@@ -80,12 +63,6 @@ namespace Project.Database
 
 
         }
-
-        // public void Save()
-        // {
-        //     db.SaveChanges();
-        // }
-
         public static void printData()
         {
             // Gets and prints all books in database

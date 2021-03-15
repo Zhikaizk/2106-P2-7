@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Models.PasswordReset;
-using Project.Database;
 
 namespace Project.Models.PasswordReset
 {
