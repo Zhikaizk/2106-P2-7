@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using EFCoreSample;
+using Project.Models.Feedback;
+
 namespace Project
 {
     public class Program
@@ -12,7 +13,7 @@ namespace Project
             CreateHostBuilder(args).Build().Run();
             // FeedbackTDG.InsertData();
             // FeedbackTDG.PrintData();
-            //FeedbackControl fc = new FeedbackControl("software", "i am facing an issue");
+            // FeedbackControl fc = new FeedbackControl();
            
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>

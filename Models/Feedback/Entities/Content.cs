@@ -17,10 +17,12 @@ namespace Project.Models.Feedback
     public void feedbackContent(String content){
         if (this.content is null){
             setContent(content);
-            Console.WriteLine(getContent());
+            //testing purpose
+            // Console.WriteLine(getContent());
         }
         else{
-            Console.WriteLine(getContent());
+            //testing purpose
+            // Console.WriteLine(getContent());
         }
         
 

@@ -22,7 +22,7 @@ namespace EFCoreSample
                 context.Database.EnsureCreated();
 
                 //insert feedback to db
-                context.Feedback.Add(new FeedbackTableModule
+                context.Feedback.Add(new FeedbackDBAttr
                 {
                     feedbackContent = feedbackContent,
                     feedbackType = feedbackType,

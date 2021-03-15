@@ -28,22 +28,23 @@ namespace Project.Controllers
         // when submit btn is clicked
         //parameters are based on the .cshtml name attr
         [HttpPost]
-        public IActionResult feedbackUser(String fbType, String feedback)
+        public IActionResult feedbackUser(string fbType, string feedback)
         {
-            String content = feedback;
-            String type = fbType;
-            FeedbackControl fc = new FeedbackControl(type, content);
+            string content = feedback;
+            string type = fbType;
+            string email = "jialin@gmail.com";
+            FeedbackControl fc = new FeedbackControl(type, content, email);
             return View();
         }
 
         public IActionResult feedbackAdmin()
         {
-            // FeedbackControl fc = new FeedbackControl();
+            FeedbackControl fc = new FeedbackControl();
             return View();
         }
 
         // [HttpPost]
-        // public IActionResult feedbackAdmin(String fbStatusUpdate)
+        // public IActionResult feedbackAdmin(string fbStatusUpdate)
         // {
         //     string status = fbStatusUpdate;
         //     FeedbackControl fc = new FeedbackControl(status);

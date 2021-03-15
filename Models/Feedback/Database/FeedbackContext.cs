@@ -7,7 +7,7 @@ namespace EFCoreSample
   public class FeedbackContext : DbContext
   {
     
-    public DbSet<FeedbackTableModule> Feedback { get; set; }
+    public DbSet<FeedbackDBAttr> Feedback { get; set; }
 
     //databse connection strings
     protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -17,7 +17,7 @@ namespace EFCoreSample
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       base.OnModelCreating(modelBuilder);
-      modelBuilder.Entity<FeedbackTableModule>(entity =>
+      modelBuilder.Entity<FeedbackDBAttr>(entity =>
       {
         entity.HasKey(e => e.feedbackId);
         entity.Property(e => e.feedbackType).IsRequired();

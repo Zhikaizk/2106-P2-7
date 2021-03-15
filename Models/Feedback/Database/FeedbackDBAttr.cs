@@ -3,7 +3,7 @@ using MySql.Data.EntityFrameworkCore.DataAnnotations;
 namespace EFCoreSample
 {
         [MySqlCollation("latin1_spanish_ci")]
-        public class FeedbackTableModule
+        public class FeedbackDBAttr
         {
             [MySqlCharset("latin1")]
             public string feedbackContent { get; set; }
