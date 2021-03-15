@@ -34,6 +34,7 @@ namespace Project.Controllers
             string type = fbType;
             string email = "jialin@gmail.com";
             FeedbackControl fc = new FeedbackControl(type, content, email);
+            ViewBag.Message = string.Format("Submitted Successfully! Please kindly wait for a reply back from us. THank you!");
             return View();
         }
 

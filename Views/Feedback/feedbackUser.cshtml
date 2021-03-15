@@ -26,8 +26,8 @@
     <div id="fbConnection">
         <div class="card">
             <div class="card-header" id="headingTwo">
-                <button class="btn btn-link fb_topic" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
+                <button class="btn btn-link fb_topic" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     Connection
                 </button>
             </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="fbAccount">
             <div class="card">
                 <div class="card-header" id="headingThree">
@@ -49,7 +49,8 @@
                         Account
                     </button>
                 </div>
-                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#fbConnection">
+                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                    data-parent="#fbConnection">
                     <div class="card-body">
                         <p class="card-text questions">How do I reset my password?</p>
                         <p class="card-text">Answer</p>
@@ -63,6 +64,7 @@
             <div class="card bg-info">
                 <div class="card-body">
                     <h5 class="card-title">Submit Feedback</h5>
+
                     <form method="post" asp-controller="Feedback" asp-action="feedbackUser">
                         <div class="form-group row">
                             <label for="fbType" class="col-sm-2 col-form-label">Topic</label>
@@ -85,3 +87,11 @@
                     </form>
                 </div>
             </div>
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.Message");
+                    };
+                </script>
+            }
