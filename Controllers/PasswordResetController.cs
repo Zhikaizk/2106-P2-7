@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project.Models;
@@ -9,12 +8,16 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Web;
 using Project.Models.PasswordReset;
+using System.Collections.Generic;
 
 namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
-        // private PasswordResetDataGateway<PasswordResetModel> passwordResetDataGateway;
+        //newly added to test on retrieve of data
+        PasswordResetContext dbObj = new PasswordResetContext(); 
+        //-----
+
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
@@ -73,9 +76,6 @@ namespace Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                // PasswordResetContext db = new PasswordResetContext();
-                // db.Entry(passwordResetModel).State = EntityState.Modified();
-                // db.SaveChanges();
                 return RedirectToAction("PasswordReset");
             }
             return View(passwordResetModel);
@@ -101,8 +101,27 @@ namespace Project.Controllers
             return View();
         }
 
-        public ActionResult adminPasswordResetPage()
+                //check the credentials
+        [HttpPost]
+        public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newPassword, String confirmResetPassword)
         {
+            String email = householdEmail;
+            String newResetPassword = newPassword;
+            String confirmNewResetPassword = confirmResetPassword;
+            Console.WriteLine(email,newResetPassword,confirmNewResetPassword);
+            Console.WriteLine(newResetPassword);
+            Console.WriteLine(confirmNewResetPassword);
+    
+            //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
+            ViewBag.Message = "Successsfully reset new password";
+
+            PasswordResetControl pw = new PasswordResetControl(householdEmail,newPassword,confirmResetPassword);
+            return View();
+        }
+
+        public IActionResult adminPasswordResetPage()
+        {
+            var res= dbObj.PasswordReset.ToList();
             return View();
         }
 
