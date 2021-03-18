@@ -30,8 +30,8 @@ namespace Project.Models
         [Required]
         [DataType(DataType.Password)]
         [Compare("newPassword", ErrorMessage = "The password and confirmation password do not match.")]
-        [Display(Name = "Confirm Password")]
-        public string confirmPassword { get; set; }
+        [Display(Name = "Confirm Reset Password")]
+        public string confirmResetPassword { get; set; }
 
         // public string encrpytionURL { get; set; }
 

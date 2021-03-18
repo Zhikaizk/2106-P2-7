@@ -15,7 +15,7 @@ namespace Project.Models
     {
 
 //when user resetPassword with new password
-        public static void insert(String householdEmail,String newPassword,String confirmPassword)
+        public static void insert(String householdEmail,String newPassword,String confirmResetPassword)
         {
             //declare that the data has been changed
             // db.Entry(obj).State = EntityState.Modified;
@@ -29,11 +29,10 @@ namespace Project.Models
                 {
                     householdEmail = householdEmail,
                     newPassword = newPassword,
-                    confirmResetPassword = confirmPassword
+                    confirmResetPassword = confirmResetPassword
                 });
 
                 // Saves changes
-                // Save();
                 context.SaveChanges();
             }
 
@@ -57,7 +56,6 @@ namespace Project.Models
                 });
 
                 // Saves changes
-                // Save();
                 context.SaveChanges();
             }
 
@@ -79,12 +77,9 @@ namespace Project.Models
                     data.AppendLine($"Password: {data1.newPassword}");
                     data.AppendLine($"Password: {data1.confirmResetPassword}");
                     Console.WriteLine(data.ToString());
-                    // Console.WriteLine(data.ToString());
-
                 }
             }
         }
-
     }
 }
 
