@@ -42,7 +42,7 @@ namespace Project.Models.Feedback
         //querying db
         FeedbackTDG1.insert(type, content, email);
       }
-      else if (type == "Account"){
+      else if (type == "Accounts"){
         Account fb = new Account();
         foreach (Iinputs inputs in fb.Inputs)
         {
