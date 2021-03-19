@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Models.Delete
+namespace Project.Models.DeleteInactive
 {
-    public class DeleteControl
+    public class DeleteInactiveControl
     {
-        public DeleteControl(){
+        public DeleteInactiveControl(){
             //constructor
             // this.btn = button;
             
@@ -18,30 +18,22 @@ namespace Project.Models.Delete
             //temp made this hardcoded for now.
             //Later will connect to database to store into the model
 
-            DateTime date1 = new DateTime(2011, 6, 10);
-
-            InactiveUsers d1 = new InactiveUsers();
-            d1.id = "1a";
-            d1.inactivityPeriod = calcInactiveDays(date1);
-            d1.lastActive = date1;
-            d1.username = "Test1";
-
-            InactiveUsers d2 = new InactiveUsers();
-            d2.id = "1b";
-            d2.inactivityPeriod = calcInactiveDays(date1);
-            d2.lastActive = date1;
-            d2.username = "Test2";
-
-            InactiveUsers d3 = new InactiveUsers();
-            d3.id = "1c";
-            d3.inactivityPeriod = calcInactiveDays(date1);
-            d3.lastActive = date1;
-            d3.username = "Test3";
-
             List<InactiveUsers> iU = new List<InactiveUsers>();
-            iU.Add(d1);
-            iU.Add(d2);
-            iU.Add(d3);
+
+            List<AccountDBAttr> accountList = AccountTDG.retrieveAccounts();
+
+            foreach (var acc in accountList)
+            {
+
+                InactiveUsers temp = new InactiveUsers();
+                temp.id = acc.idAccount;
+                temp.inactivityPeriod = calcInactiveDays(AccountLogsTDG.retrieveLastLoginFromEmail(acc.idAccount));
+                temp.lastActive = AccountLogsTDG.retrieveLastLoginFromEmail(acc.idAccount);
+                temp.username = HouseholdTDG.retrieveUsernameFromEmail(acc.email);
+
+                iU.Add(temp);
+            }
+
             return iU;
         }
 
