@@ -6,34 +6,41 @@ namespace Project.Models
 {
     public class PasswordResetModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string householdEmail { get; set; }
 
-        //public bool requestPasswordReset {get;set;}
-        public bool confirmationEmailSend { get; set; }
-        public string administratorEmail { get; set; }
-        public string resetlink { get; set; }
-        //public bool PasswordResetNoti {get;set;}
+        private string newPassword;
 
-        //new de
-        // private string passwordReset { get; set; }
+        private string getNewPassword(){
+            return this.newPassword;
+        }
+        private void setNewPassword(string newPassword){
+            this.newPassword = newPassword;
+        }
+        private string confirmResetPassword;
 
-        //private string oldPassword { get; set; }
+        private string getConfirmResetPassword(){
+            return this.confirmResetPassword;
+        }
 
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "New Password")]
-        public string newPassword { get; set; }
+        private void setConfirmResetPassword(string confirmResetPassword){
+            this.confirmResetPassword = confirmResetPassword;
+        }
+        private string householdEmail{get;set;}
 
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("newPassword", ErrorMessage = "The password and confirmation password do not match.")]
-        [Display(Name = "Confirm Reset Password")]
-        public string confirmResetPassword { get; set; }
+        private string getHouseholdEmail(){
+            return this.householdEmail;
+        }
+        private void setHouseholdEmail(string householdEmail){
+            this.householdEmail = householdEmail;
+        }
 
-        // public string encrpytionURL { get; set; }
+        public void insertModifiedPassword(string householdEmail,string newResetPassword , string confirmResetPassword){
+            setHouseholdEmail(householdEmail);
+            setNewPassword(newResetPassword);
+            setConfirmResetPassword(confirmResetPassword);
+        }
 
+        public void insertHouseholdEmail(string householdEmail){
+            setHouseholdEmail(householdEmail);
+        }
     }
 }

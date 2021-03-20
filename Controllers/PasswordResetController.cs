@@ -14,10 +14,6 @@ namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
-        //newly added to test on retrieve of data
-        PasswordResetContext dbObj = new PasswordResetContext(); 
-        //-----
-
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
@@ -48,6 +44,13 @@ namespace Project.Controllers
         {
             return View();
         }
+
+        //get the new password
+        public ActionResult resetPasswordPage()
+        {
+            return View();
+        }
+
 
         // GET: 
         [HttpGet]
@@ -96,32 +99,34 @@ namespace Project.Controllers
         }
 
         //newly added
-        public ActionResult resetPasswordPage()
-        {
-            return View();
-        }
 
-                //check the credentials
+        //check the credentials
         [HttpPost]
-        public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newPassword, String confirmResetPassword)
+        public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newResetPassword, String confirmResetPassword)
         {
             String email = householdEmail;
-            String newResetPassword = newPassword;
+            String newPassword = newResetPassword;
             String confirmNewResetPassword = confirmResetPassword;
-            Console.WriteLine(email,newResetPassword,confirmNewResetPassword);
-            Console.WriteLine(newResetPassword);
+            Console.WriteLine(email);
+            Console.WriteLine(newPassword);
             Console.WriteLine(confirmNewResetPassword);
     
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully reset new password";
 
-            PasswordResetControl pw = new PasswordResetControl(householdEmail,newPassword,confirmResetPassword);
+            PasswordResetControl pw = new PasswordResetControl(householdEmail,newResetPassword,confirmResetPassword);
             return View();
         }
 
-        public IActionResult adminPasswordResetPage()
+//display household email
+
+
+        [HttpGet]
+        public ActionResult adminPasswordResetPage(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
-            var res= dbObj.PasswordReset.ToList();
+            String email = householdEmail;
+            Console.WriteLine(email);
+            PasswordResetControl pw = new PasswordResetControl();
             return View();
         }
 
