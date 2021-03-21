@@ -93,38 +93,40 @@ namespace Project.Models
             }
         }
 
-        //trying to retrieve data 
+        //trying to retrieve data through the console
 
-        public static void find(String householdEmail)
-        {
-            String conStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
-            MySqlConnection con = new MySqlConnection(conStr);
-            try
-            {
-                con.Open();
+        // public static void find()
+        // {
+        //     String conStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+        //     MySqlConnection con = new MySqlConnection(conStr);
+        //     try
+        //     {
+        //         con.Open();
 
-                string sql = "SELECT householdEmail FROM PasswordReset";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                MySqlDataReader rdr = cmd.ExecuteReader();
+        //         string sql = "SELECT householdEmail FROM PasswordReset";
+        //         MySqlCommand cmd = new MySqlCommand(sql, con);
+        //         MySqlDataReader rdr = cmd.ExecuteReader();
 
-                if (rdr.HasRows)
-                {
-                    while (rdr.Read())
-                    {
-                        Console.WriteLine(rdr[0]);
-                        //  Console.WriteLine(rdr[1]);
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                // con.Close();
-                Console.WriteLine(ex.ToString());
-            }
-            con.Close();
-            Console.WriteLine("Done.");
-        }
+        //         if (rdr.HasRows)
+        //         {
+        //             while (rdr.Read())
+        //             {
+        //                 Console.WriteLine(rdr[0]);
+        //                 //  Console.WriteLine(rdr[1]);
+        //             }
+        //             rdr.Close();
+        //         }
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         // con.Close();
+        //         Console.WriteLine(ex.ToString());
+        //     }
+        //     con.Close();
+        //     Console.WriteLine("Done.");
+        // }
+        
+        //ends here
     }
 }
 

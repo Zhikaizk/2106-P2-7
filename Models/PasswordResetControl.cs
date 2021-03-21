@@ -18,7 +18,6 @@ namespace Project.Models.PasswordReset
             //querying db
             PasswordResetTDG.insertEmail(householdEmail);
             this.householdEmail = householdEmail;
-
         }
 
         //user click on the submit reset password button
@@ -31,10 +30,11 @@ namespace Project.Models.PasswordReset
             this.confirmResetPassword = confirmResetPassword;
         }
 
-        public PasswordResetControl()
-        {
-            PasswordResetTDG.find(householdEmail);
-            retrieveHouseholdEmail = householdEmail;
-        }
+//to retrieve through the console
+        // public PasswordResetControl()
+        // {
+        //     PasswordResetTDG.find();
+        //     retrieveHouseholdEmail = householdEmail;
+        // }
     }
 }

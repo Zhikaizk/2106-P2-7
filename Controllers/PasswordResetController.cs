@@ -9,21 +9,41 @@ using System.Linq;
 using System.Web;
 using Project.Models.PasswordReset;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
+
+//added new things to try to fetch data 
+using MySql.Data.MySqlClient;
+//ends here 
 
 namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
+
+        //trying to retrieve data
+        MySqlConnection con = new MySqlConnection();
+        MySqlCommand cmd = new MySqlCommand();
+        MySqlDataReader rdr;
+        List<PasswordResetModel> email = new List<PasswordResetModel>();
+        //ends here
+
+
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
         {
             _logger = logger;
+
+            //trying to retrieve data
+            con.ConnectionString = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            //ends here
         }
 
         //route after admin click on the send email
 
-        public string url(string householdEmail){
+        public string url(string householdEmail)
+        {
             return HttpUtility.HtmlEncode("Email have been send out");
 
         }
@@ -90,7 +110,7 @@ namespace Project.Controllers
         {
             String email = householdEmail;
             Console.WriteLine(email);
-    
+
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully requested reset password";
 
@@ -110,25 +130,68 @@ namespace Project.Controllers
             Console.WriteLine(email);
             Console.WriteLine(newPassword);
             Console.WriteLine(confirmNewResetPassword);
-    
+
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully reset new password";
 
-            PasswordResetControl pw = new PasswordResetControl(householdEmail,newResetPassword,confirmResetPassword);
+            PasswordResetControl pw = new PasswordResetControl(householdEmail, newResetPassword, confirmResetPassword);
             return View();
         }
 
-//display household email
+        //display household email
 
 
         [HttpGet]
-        public ActionResult adminPasswordResetPage(PasswordResetModel objPasswordResetModel, String householdEmail)
+        public IActionResult adminPasswordResetPage(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
-            String email = householdEmail;
-            Console.WriteLine(email);
-            PasswordResetControl pw = new PasswordResetControl();
-            return View();
+
+//to retrieve through console
+            // String email = householdEmail;
+            // Console.WriteLine(email);
+            // PasswordResetControl pw = new PasswordResetControl();
+            // return View();
+
+//to display on the web
+            find();
+            return View(email);
         }
+
+        //retrieve database item
+
+
+        //trying to retrieve data and display on the web
+
+        private void find()
+        {
+            if (email.Count > 0)
+            {
+                email.Clear();
+            }
+            try
+            {
+                con.Open();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT passwordResetID,householdEmail FROM PasswordReset";
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    email.Add(new PasswordResetModel()
+                    {
+                        passwordResetID = rdr["passwordResetID"].ToString(),
+                        householdEmailDetails = rdr["householdEmail"].ToString()
+
+                    });
+                }
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            Console.WriteLine("Done.");
+        }
+        //ends here
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

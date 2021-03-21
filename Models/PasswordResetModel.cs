@@ -9,38 +9,66 @@ namespace Project.Models
 
         private string newPassword;
 
-        private string getNewPassword(){
+        private string getNewPassword()
+        {
             return this.newPassword;
         }
-        private void setNewPassword(string newPassword){
+        private void setNewPassword(string newPassword)
+        {
             this.newPassword = newPassword;
         }
         private string confirmResetPassword;
 
-        private string getConfirmResetPassword(){
+        private string getConfirmResetPassword()
+        {
             return this.confirmResetPassword;
         }
 
-        private void setConfirmResetPassword(string confirmResetPassword){
+        private void setConfirmResetPassword(string confirmResetPassword)
+        {
             this.confirmResetPassword = confirmResetPassword;
         }
-        private string householdEmail{get;set;}
+        private string householdEmail { get; set; }
 
-        private string getHouseholdEmail(){
+        private string getHouseholdEmail()
+        {
             return this.householdEmail;
         }
-        private void setHouseholdEmail(string householdEmail){
+        private void setHouseholdEmail(string householdEmail)
+        {
             this.householdEmail = householdEmail;
         }
 
-        public void insertModifiedPassword(string householdEmail,string newResetPassword , string confirmResetPassword){
-            setHouseholdEmail(householdEmail);
-            setNewPassword(newResetPassword);
-            setConfirmResetPassword(confirmResetPassword);
-        }
+        // public void insertModifiedPassword(string householdEmail, string newResetPassword, string confirmResetPassword)
+        // {
+        //     setHouseholdEmail(householdEmail);
+        //     setNewPassword(newResetPassword);
+        //     setConfirmResetPassword(confirmResetPassword);
+        // }
+        // public void insertHouseholdEmail(string householdEmail)
+        // {
+        //     setHouseholdEmail(householdEmail);
+        // }
 
-        public void insertHouseholdEmail(string householdEmail){
-            setHouseholdEmail(householdEmail);
+
+        //trying to retrieve data
+        public String householdEmailDetails
+        {
+            get { return householdEmail; }
+            set { householdEmail = value; }
         }
+        public String passwordResetID { get; set; }
+        //ends here 
+
+
+
     }
+            //trying to retrieve data new try
+
+        // public class householdEmailListing
+        // {
+        //     public List<PasswordResetModel> emailListing { get; set; }
+        // }
+
+        //ends here
 }
