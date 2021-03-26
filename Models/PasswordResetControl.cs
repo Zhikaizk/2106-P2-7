@@ -8,26 +8,33 @@ namespace Project.Models.PasswordReset
     public class PasswordResetControl
     {
         private string householdEmail;
-        private string newPassword;
+        private string newResetPassword;
         private string confirmResetPassword;
+        private string retrieveHouseholdEmail;
 
         //user click on the request button
         public PasswordResetControl(String householdEmail)
         {
             //querying db
-            PasswordResetDataGateway.insertEmail(householdEmail);
+            PasswordResetTDG.insertEmail(householdEmail);
             this.householdEmail = householdEmail;
-
         }
 
         //user click on the submit reset password button
-        public PasswordResetControl(String householdEmail, String newPassword, String confirmResetPassword)
+        public PasswordResetControl(String householdEmail, String newResetPassword, String confirmResetPassword)
         {
             //querying db
-            PasswordResetDataGateway.insert(householdEmail, newPassword, confirmResetPassword);
+            PasswordResetTDG.insert(householdEmail, newResetPassword, confirmResetPassword);
             this.householdEmail = householdEmail;
-            this.newPassword = newPassword;
+            this.newResetPassword = newResetPassword;
             this.confirmResetPassword = confirmResetPassword;
         }
+
+//to retrieve through the console
+        // public PasswordResetControl()
+        // {
+        //     PasswordResetTDG.find();
+        //     retrieveHouseholdEmail = householdEmail;
+        // }
     }
 }

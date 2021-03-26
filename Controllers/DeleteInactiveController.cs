@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Project.Models.Delete;
+using Project.Models.DeleteInactive;
 
 namespace Project.Controllers
 {
@@ -17,7 +17,7 @@ namespace Project.Controllers
         public IActionResult DeleteInactive()
         {
             //initialize the delete control here
-            DeleteControl delCon = new DeleteControl();
+            DeleteInactiveControl delCon = new DeleteInactiveControl();
 
             //populate the Delete Model with inactive user information
             InactiveUsersList iUList = new InactiveUsersList();
@@ -29,7 +29,7 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult DeleteInactive(InactiveUsersList model){
 
-            DeleteControl delcon = new DeleteControl();
+            DeleteInactiveControl delcon = new DeleteInactiveControl();
             InactiveUsersList iUList = delcon.deleteAccount(model);
 
             return View(iUList);
