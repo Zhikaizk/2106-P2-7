@@ -3,22 +3,17 @@ using System.Collections.Generic;
 
 namespace Project.Models.Feedback
 {
-    abstract class Feedback
+    abstract class Feedback : IFeedback
     {
       private List<Iinputs> inputs = new List<Iinputs>();
-      private int feedbackId;
+
       private string feedbackStatus;
       private string householdEmail;
+
+    //   private Household _household;
       
       //getters and setters for variables
-      private int getFeedbackId()
-      {
-          return this.feedbackId;
-      }
-      private void setFeedbackId(int feedbackId)
-      {
-          this.feedbackId = feedbackId;
-      }
+     
       private string getFeedbackStatus()
       {
           return this.feedbackStatus;
@@ -37,18 +32,16 @@ namespace Project.Models.Feedback
       }
 
       // information hiding 
-      public void insertDetails(int feedbackId, string feedbackStatus, string householdEmail){
-        setFeedbackId(feedbackId);
+      public void insertDetails(string feedbackStatus, string householdEmail){
         setFeedbackStatus(feedbackStatus);
         setHouseholdEmail(householdEmail);
 
       }
 
       public void printDetails(){
-        int id = getFeedbackId();
         string status = getFeedbackStatus();
         string email = getHouseholdEmail();
-        Console.WriteLine("ID: " + id + "\nStatus:  " + status + "\nEmail: " + email);
+        Console.WriteLine("Status:  " + status + "\nEmail: " + email);
       }
       // Constructor calls abstract Factory method
       public Feedback()

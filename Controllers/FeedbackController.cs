@@ -30,10 +30,15 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult feedbackUser(string fbType, string feedback)
         {
+            // the feedback and fbType will cotains what is type in the view forms(tectbox etc..)
             string content = feedback;
             string type = fbType;
+            // try try if correct by 
+            Console.WriteLine(content);
+            Console.WriteLine(type);
             string email = "jialin@gmail.com";
             FeedbackControl fc = new FeedbackControl(type, content, email);
+            // alert message upon successful submission
             ViewBag.Message = string.Format("Submitted Successfully! Please kindly wait for a reply back from us. THank you!");
             return View();
         }

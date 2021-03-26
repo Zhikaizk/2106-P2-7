@@ -9,11 +9,9 @@ namespace Project.Models.Feedback
   class Connection : Feedback
   {
     // Factory Method implementation
-
     public override void createFeedback()
     {
         Inputs.Add(new Content());
-        
     }
   }
 }

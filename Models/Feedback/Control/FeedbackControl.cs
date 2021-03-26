@@ -14,7 +14,8 @@ namespace Project.Models.Feedback
       // FeedbackTM.getAllFeedback();
 
       Devices objCreated = new Devices();
-      objCreated.insertDetails(1, "pending", "jialin@gmail.com");
+      // objCreated.insertDetails(1, "pending", "jialin@gmail.com");
+      
       // Devices fb = new Devices();
       foreach (Iinputs inputs in objCreated.Inputs)
       {
@@ -32,9 +33,11 @@ namespace Project.Models.Feedback
     //insert Data
     public FeedbackControl(string type, string content, string email )
     {
-      //create obj
+      // change to switch case
+      // create obj
       if (type == "Devices"){
         Devices fb = new Devices();
+      
         foreach (Iinputs inputs in fb.Inputs)
         {
             inputs.feedbackContent(content);
