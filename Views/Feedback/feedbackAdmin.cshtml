@@ -1,5 +1,5 @@
 @{
-ViewData["Title"] = "Administrator Feedback System";
+  ViewData["Title"] = "Administrator Feedback System";
 }
 
 <div class="text-center">
@@ -26,19 +26,18 @@ ViewData["Title"] = "Administrator Feedback System";
       </tr>
     </thead>
     <tbody>
-      @* foreach (var item in Model.Feedback)
-        {
-        <tr>
-        <th scope="row">@Html.DisplayFor(modelItem => Model.feedbackId)</th>
-        <td>@Html.DisplayFor(modelItem => Model.householdEmail)</td>
-        <td>@Html.DisplayFor(modelItem => Model.feedbackType)</td>
-        <td>@Html.DisplayFor(modelItem => Model.feedbackStatus)</td>
-        </tr> *@
 
       <tr>
-        <th scope="row">3</th>
+        @* feedbackId *@
+        <th scope="row" ><a href = '@Url.Action("feedbackAdminReply", "Feedback")';>3</a></th>
+
+        @* hosueholdEmail *@
         <td>jialin@gmail.com</td>
+
+        @* feedbackTyoe *@
         <td>Account</td>
+
+        @* feedbackStatus *@
         <td>
           <form>
             <div class="form-group row">
@@ -49,12 +48,12 @@ ViewData["Title"] = "Administrator Feedback System";
                 </select>
               </div>
             </div>
+
             <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
           </form>
 
         </td>
       </tr>
-      @* } *@
     </tbody>
   </table>
 </div>

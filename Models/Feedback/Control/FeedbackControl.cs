@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
  
 namespace Project.Models.Feedback
@@ -9,25 +10,20 @@ namespace Project.Models.Feedback
     //retrieve Data
     public FeedbackControl()
     {
-
       //querying db (call data gateway to getAllFeedback, return as a list of arrays)
       // FeedbackTM.getAllFeedback();
-
-      Devices objCreated = new Devices();
-      // objCreated.insertDetails(1, "pending", "jialin@gmail.com");
+      // FeedbackTDG1.getResolvedFeedback();
+      List<string> arlist = FeedbackTDG1.getResolvedFeedback();
+      Console.WriteLine(arlist.Count);
+      Console.WriteLine(arlist[0]);
       
-      // Devices fb = new Devices();
-      foreach (Iinputs inputs in objCreated.Inputs)
-      {
-          inputs.feedbackContent("facing issues");
-      }
-      objCreated.printDetails();
-
     }
+
     //update feedback status to db
     public FeedbackControl(string feedbackStatus)
     {
       //querying db
+      FeedbackTDG1.getResolvedFeedback();
     }
 
     //insert Data
@@ -42,16 +38,16 @@ namespace Project.Models.Feedback
         {
             inputs.feedbackContent(content);
         }
-        //querying db
+        //querying db (TM called TDG)
         FeedbackTDG1.insert(type, content, email);
       }
       else if (type == "Accounts"){
-        Account fb = new Account();
+        FbAccount fb = new FbAccount();
         foreach (Iinputs inputs in fb.Inputs)
         {
             inputs.feedbackContent(content);
         }
-        //querying db
+        //querying db (TM called TDG)
         FeedbackTDG1.insert(type, content, email);
       }
       else if (type == "Connection"){
@@ -60,7 +56,7 @@ namespace Project.Models.Feedback
         {
             inputs.feedbackContent(content);
         }
-        //querying db
+       //querying db (TM called TDG)
         FeedbackTDG1.insert(type, content, email);
       }
       return;
