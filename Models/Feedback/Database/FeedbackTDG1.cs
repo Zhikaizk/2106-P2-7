@@ -9,8 +9,12 @@ namespace Project.Models.Feedback
 {
     public class FeedbackTDG1
     {
-        public static void findAll()
+        // retrieve all feedback
+        public static List<List<string>> findAll()
         {
+            // create arrayList to store data retrieved
+            List<List<string>> feedbackList = new List<List<string>>(); 
+
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
             MySqlConnection conn = new MySqlConnection(connStr);
             try
@@ -23,68 +27,79 @@ namespace Project.Models.Feedback
 
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr[0]);
-                    Console.WriteLine(rdr[1]);
-                    Console.WriteLine(rdr[2]);
-                    Console.WriteLine(rdr[3]);
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        data.Add(rdr[i].ToString());
+                    }
+
+                    // adding terms array into arrayList
+                    feedbackList.Add(data);
                 }
+
                 rdr.Close();
+
+                return feedbackList;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-
             conn.Close();
+            return feedbackList;
         }
 
-        public static List<string> getResolvedFeedback()
+        // retrieve resolved feedback
+        public static List<List<string>> getResolvedFeedback()
         {
             // create arrayList to store data retrieved
-            List<string> feedbackList = new List<string>();
-            // total number of column in zk.Feedback
-            string[] terms = new string[5];
-           
+            List<List<string>> feedbackList = new List<List<string>>();
+
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
             MySqlConnection conn = new MySqlConnection(connStr);
             try
             {
                 conn.Open();
-
                 string sql = "SELECT * FROM zk.Feedback WHERE feedbackStatus = 'resolved'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
                     for (int i = 0; i < 5; i++)
                     {
-                        // adding into terms array
-                        terms[i] = rdr[i].ToString();
+                        data.Add(rdr[i].ToString());
                     }
+
                     // adding terms array into arrayList
-                    feedbackList.AddRange(terms);
+                    feedbackList.Add(data);
                 }
+
                 rdr.Close();
 
-                // Loop over strings.
-                foreach (string s in feedbackList)
-                {
-                    Console.WriteLine(s);
-                }
-                
+                return feedbackList;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-
             conn.Close();
             return feedbackList;
         }
 
-        public static void getPendingFeedback()
+        // retrieve pending feedback
+        public static List<List<string>> getPendingFeedback()
         {
+            // create arrayList to store data retrieved
+            List<List<string>> feedbackList = new List<List<string>>();
+
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
             MySqlConnection conn = new MySqlConnection(connStr);
             try
@@ -97,19 +112,29 @@ namespace Project.Models.Feedback
 
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr[0]);
-                    Console.WriteLine(rdr[1]);
-                    Console.WriteLine(rdr[2]);
-                    Console.WriteLine(rdr[3]);
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        data.Add(rdr[i].ToString());
+                    }
+
+                    // adding terms array into arrayList
+                    feedbackList.Add(data);
                 }
+
                 rdr.Close();
+
+                return feedbackList;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-
             conn.Close();
+            return feedbackList;
         }
 
         // updating feedback status column

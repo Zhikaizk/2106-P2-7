@@ -81,3 +81,11 @@ body {
 .fb_topic{
   color: black;
 }
+
+.fbTypeFilter{
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.boderless{
+  border: 0;
+}

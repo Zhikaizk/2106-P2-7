@@ -1,18 +1,26 @@
+@using Project.Models.Feedback
+@{
+  var hello = FeedbackTDG1.findAll();
+  var hello1 = FeedbackTDG1.getPendingFeedback();
+  var hello2 = FeedbackTDG1.getResolvedFeedback();
+  @* var value = @ViewData["fbTypeKey"]; *@
+}
 @{
   ViewData["Title"] = "Administrator Feedback System";
 }
 
 <div class="text-center">
   <h1 class="display-4">Feedback System</h1>
-  <form>
+  <form class="form-inline" method="post" asp-controller="Feedback" asp-action="feedbackAdmin">
     <div class="form-group">
-      <label for="FeedbackStatus">Status</label>
-      <select class="form-control" id="FeedbackStatus" name="fbType">
-        <option>All</option>
-        <option>Resolved</option>
-        <option>Pending</option>
+      <label class="fbTypeFilter" for="FeedbackStatus">Status:</label>
+      <select class="form-control fbTypeFilter" id="FeedbackStatus" name="fbType">
+        <option value="1">All</option>
+        <option value="2">Pending</option>
+        <option value="3">Resolved</option>
       </select>
     </div>
+     <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success fbTypeFilter">Get Results</button>
   </form>
 </div>
 <div>
@@ -20,40 +28,140 @@
     <thead>
       <tr>
         <th scope="col">Feedback ID</th>
+        <th scope="col">Content</th>
         <th scope="col">Household Email</th>
         <th scope="col">Topic</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
+      @if ((int)(ViewData["fbTypeKey"]) == 1)
+      {
+          @for (int i = 0; i < hello.Count; i++)
+      {
+        <tr>
+          @* feedbackId *@
+          <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")'; value=@hello[i][0] name="feedbackId">@hello[i][0]</a></th>
+          @* hosueholdEmail *@
+          <td>@hello[i][1]</td>
+          @* hosueholdEmail *@
+          <td>@hello[i][2]</td>
 
-      <tr>
-        @* feedbackId *@
-        <th scope="row" ><a href = '@Url.Action("feedbackAdminReply", "Feedback")';>3</a></th>
+          @* feedbackType *@
+          <td>@hello[i][4]</td>
 
-        @* hosueholdEmail *@
-        <td>jialin@gmail.com</td>
-
-        @* feedbackTyoe *@
-        <td>Account</td>
-
-        @* feedbackStatus *@
-        <td>
-          <form>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
-                  <option>Pending</option>
-                  <option>Resolved</option>
-                </select>
+          @* feedbackStatus *@
+          <td>
+            <form>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
+                    @if (@hello[i][3] == "pending")
+                    {
+                      <option>@hello[i][3]</option>
+                      <option>resolved</option>
+                    }
+                    else
+                    {
+                      <option>@hello[i][3]</option>
+                      <option>pending</option>
+                    }
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
-          </form>
+              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
+            </form>
 
-        </td>
-      </tr>
+          </td>
+        </tr>
+      }
+      }
+      else if ((int)(ViewData["fbTypeKey"]) == 2){
+         @for (int i = 0; i < hello1.Count; i++)
+      {
+        <tr>
+          @* feedbackId *@
+          <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")' ;>@hello1[i][0]</a></th>
+          @* hosueholdEmail *@
+          <td>@hello1[i][1]</td>
+          @* hosueholdEmail *@
+          <td>@hello1[i][2]</td>
+
+          @* feedbackType *@
+          <td>@hello1[i][4]</td>
+
+          @* feedbackStatus *@
+          <td>
+            <form>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
+                    @if (@hello1[i][3] == "pending")
+                    {
+                      <option>@hello1[i][3]</option>
+                      <option>resolved</option>
+                    }
+                    else
+                    {
+                      <option>@hello1[i][3]</option>
+                      <option>pending</option>
+                    }
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
+            </form>
+
+          </td>
+        </tr>
+      }
+      }
+      else{
+         @for (int i = 0; i < hello2.Count; i++)
+      {
+        <tr>
+          @* feedbackId *@
+          <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")' ;>@hello2[i][0]</a></th>
+          @* hosueholdEmail *@
+          <td>@hello2[i][1]</td>
+          @* hosueholdEmail *@
+          <td>@hello2[i][2]</td>
+
+          @* feedbackType *@
+          <td>@hello2[i][4]</td>
+
+          @* feedbackStatus *@
+          <td>
+            <form>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
+                    @if (@hello2[i][3] == "pending")
+                    {
+                      <option>@hello2[i][3]</option>
+                      <option>resolved</option>
+                    }
+                    else
+                    {
+                      <option>@hello2[i][3]</option>
+                      <option>pending</option>
+                    }
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
+            </form>
+
+          </td>
+        </tr>
+      }
+      }
+      
+
+
     </tbody>
   </table>
 </div>

@@ -49,25 +49,37 @@ namespace Project.Controllers
         //deafult when page loads (administrator)
         public IActionResult feedbackAdmin()
         {
-            FeedbackControl fc = new FeedbackControl();
+            ViewData["fbTypeKey"] = 1;
+            // FeedbackControl fc = new FeedbackControl();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult feedbackAdmin(int fbType)
+        {
+            ViewData["fbTypeKey"] = fbType;
+            // string status = fbStatusUpdate;
+            // FeedbackControl fc = new FeedbackControl(fbType);
             return View();
         }
 
         // [HttpPost]
-        // public IActionResult feedbackAdmin(string fbStatusUpdate)
+        // public IActionResult feedbackAdmin(string fbStatusUpdate, string feedbackId)
         // {
+        //     Console.WriteLine(feedbackId);
         //     string status = fbStatusUpdate;
-        //     FeedbackControl fc = new FeedbackControl(status);
+        //     // FeedbackControl fc = new FeedbackControl(status);
         //     return View();
         // }
 
         //deafult when page loads (administrator)
-        public IActionResult feedbackAdminReply()
+        public IActionResult feedbackAdminReply(string fbStatusUpdate, int feedbackId)
         {
+            Console.WriteLine(feedbackId);
             return View();
         }
-        
-         [HttpPost]
+
+        [HttpPost]
         public IActionResult feedbackAdminReply(string subject, string feedback)
         {
             Console.WriteLine(subject);
