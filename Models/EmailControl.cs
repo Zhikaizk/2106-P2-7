@@ -5,7 +5,7 @@ using Project.Models.Notification;
 
 namespace Project.Models.Notification
 {
-    public class EmailControl   
+    public class EmailControl    
     {  
         private Boolean results;
         //String emailaddress this is for backup just in case input needed
@@ -31,16 +31,21 @@ namespace Project.Models.Notification
             Console.WriteLine("Endedhere");
             //  testing testing = new testing();
             //  testing.on();
-            EmailNotification S1 = new EmailNotification();  
             //here will have the whole list of emails when retrieved from database
             //SelectEmails function here();
             //the emails can use subscribe and notifyobservers all at one go
             // CreateEmails function here ();
-            Email O1 = new Email("leongzhikaii@gmail.com",emailcontenthere);  
-            Email O2 = new Email("gameboys96@live.com",emailcontenthere);  
-            O1.Subscribe(S1);
-            O2.Subscribe(S1);  
-            Boolean results=S1.NotifyObservers(); 
+                        // create some e-mail addresses to receive notifications
+            Email email1 = new Email("leongzhikaii@gmail.com");
+            Email email2 = new Email("gameboys96@live.com");  
+            email1.Update(emailcontenthere);
+            email2.Update(emailcontenthere);
+            EmailNotification notification = new EmailNotification();
+           // Email O1 = new Email("leongzhikaii@gmail.com",emailcontenthere);  
+            //Email O2 = new Email("gameboys96@live.com",emailcontenthere);  
+            notification.Attach(email1);
+            notification.Attach(email2);  
+            Boolean results= notification.NotifyObservers();
             return results; 
               
         }

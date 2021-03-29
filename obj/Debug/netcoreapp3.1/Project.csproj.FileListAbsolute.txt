@@ -149,3 +149,5 @@ C:\Users\gameb\Documents\GitHub\2106-P2-7\bin\Debug\netcoreapp3.1\System.Configu
 C:\Users\gameb\Documents\GitHub\2106-P2-7\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\gameb\Documents\GitHub\2106-P2-7\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\gameb\Documents\GitHub\2106-P2-7\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackAdminReply.cshtml.g.cs
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackAdminUpdate.cshtml.g.cs
