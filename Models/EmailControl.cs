@@ -46,6 +46,9 @@ namespace Project.Models.Notification
             notification.Attach(email1);
             notification.Attach(email2);  
             Boolean results= notification.NotifyObservers();
+                 //Get the only object available
+            //EncryptedAdminGmailSingleton.GetInstance().showMessage();
+      //show the message
             return results; 
               
         }
