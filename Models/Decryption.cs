@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Project.Models; 
 using System.Security.Cryptography;
-using System.Text; 
+using System.Text;
+using System.IO;
+
 namespace Project.Models
 {
  
@@ -22,19 +24,35 @@ namespace Project.Models
 
      }
 
-     public String decryptionPerformed(string password){
-            byte[] inputArray = Convert.FromBase64String("");  
-            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();  
-            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(password);  
-            tripleDES.Mode = CipherMode.ECB;  
-            tripleDES.Padding = PaddingMode.PKCS7;  
-            ICryptoTransform cTransform = tripleDES.CreateDecryptor();  
-            byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);  
-            tripleDES.Clear();   
-           // decryptedbefore == true
-            return UTF8Encoding.UTF8.GetString(resultArray);  
-
-
+     public String decryptionPerformed(string encryptedpassword){
+ try {  
+  string textToDecrypt = encryptedpassword;  
+  string ToReturn = "";  
+  string publickey = "santhosh";  
+  string privatekey = "engineer";  
+  byte[] privatekeyByte = {};  
+  privatekeyByte = System.Text.Encoding.UTF8.GetBytes(privatekey);  
+  byte[] publickeybyte = {};  
+  publickeybyte = System.Text.Encoding.UTF8.GetBytes(publickey);  
+  MemoryStream ms = null;  
+  CryptoStream cs = null;  
+  byte[] inputbyteArray = new byte[textToDecrypt.Replace(" ", "+").Length];  
+  inputbyteArray = Convert.FromBase64String(textToDecrypt.Replace(" ", "+"));  
+  using(DESCryptoServiceProvider des = new DESCryptoServiceProvider()) {  
+   ms = new MemoryStream();  
+   cs = new CryptoStream(ms, des.CreateDecryptor(publickeybyte, privatekeyByte), CryptoStreamMode.Write);  
+   cs.Write(inputbyteArray, 0, inputbyteArray.Length);  
+   cs.FlushFinalBlock();  
+   Encoding encoding = Encoding.UTF8;  
+   ToReturn = encoding.GetString(ms.ToArray());  
+  }  
+  decryptedbefore= true;
+  decryptedPassword = ToReturn;
+  Console.WriteLine(decryptedPassword+" OVERHERELA");
+  return ToReturn;  
+ } catch (Exception ae) {  
+  throw new Exception(ae.Message, ae.InnerException);  
+ }  
      }
 
 

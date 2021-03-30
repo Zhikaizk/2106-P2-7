@@ -11,7 +11,7 @@ namespace Project.Models.Notification
           // the list of services to be sent notifications
         private ICollection<IEmail> listeners;
             private readonly string gmailuserid="ict2106t7@gmail.com";
-            private readonly string gmailpassword="ICT2106PASS";
+
 
         // constructor
         public AbstractEmailNotification()
@@ -49,7 +49,7 @@ namespace Project.Models.Notification
         smtp.Host = "smtp.gmail.com"; //for gmail host  
         smtp.EnableSsl = true;  
         smtp.UseDefaultCredentials = false;  
-        smtp.Credentials = new NetworkCredential(gmailuserid,gmailpassword);  
+        smtp.Credentials = new NetworkCredential(gmailuserid,EncryptedAdminGmailSingleton.GetInstance().decryptedpasswordDone());  
         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;  
         smtp.Send(message);    
             }

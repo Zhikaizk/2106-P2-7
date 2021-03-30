@@ -15,6 +15,8 @@ public class EncryptedAdminGmailSingleton {
         private string adminGmail =null;
         private string decryptedPassword =null;
 
+        private Decryption decryptingObject = new Decryption();
+
         // constructor - note that it is declared private so that only this class can instantiate itself
         private EncryptedAdminGmailSingleton()
         {
@@ -30,11 +32,15 @@ public class EncryptedAdminGmailSingleton {
             return instance;
         }
 
-   public String DecryptedPassword(){
-
-       
+   public String decryptedpasswordDone(){
 
        return decryptedPassword;
+     
+   }
+      public void decryptedpasswordStart(string encryptedpassword){
+       decryptedPassword = decryptingObject.decryptionPerformed(encryptedpassword);
+       
+       
      
    }
 }

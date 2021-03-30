@@ -28,6 +28,9 @@ namespace Project.Models.Notification
             // testing function acts as other people file in order to intertract with IEmail 
              EmailTDG emailtdg = new EmailTDG();
              emailtdg.find();
+             AdminGmailTDG adminGmailTDG = new AdminGmailTDG();
+             adminGmailTDG.find();
+
             Console.WriteLine("Endedhere");
             //  testing testing = new testing();
             //  testing.on();

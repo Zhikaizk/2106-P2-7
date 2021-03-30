@@ -7,8 +7,9 @@ using System.Collections.Generic;
 
 namespace Project.Models.Notification
 {
-public class EmailTDG{
+public class AdminGmailTDG{
         public void find(){
+
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
              MySqlConnection conn = new MySqlConnection(connStr);
         try
@@ -16,13 +17,14 @@ public class EmailTDG{
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
 
-            string sql = "SELECT email FROM Account";
+            string sql = "SELECT * FROM AdminGmail";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-                Console.WriteLine(rdr[0]);
+               EncryptedAdminGmailSingleton.GetInstance().decryptedpasswordStart(rdr[1].ToString());
+
             }
             rdr.Close();
         }
