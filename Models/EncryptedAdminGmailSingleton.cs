@@ -38,7 +38,7 @@ public class EncryptedAdminGmailSingleton {
      
    }
       public void decryptedpasswordStart(string encryptedpassword){
-       decryptedPassword = decryptingObject.decryptionPerformed(encryptedpassword);
+       decryptingObject.decryptionPerformed(encryptedpassword);
        
        
      
