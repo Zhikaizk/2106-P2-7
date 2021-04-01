@@ -1,59 +1,97 @@
 using System;
 using System.Collections.Generic;
+using Project.Models.Notification;
 
 namespace Project.Models.Feedback
 {
-    abstract class Feedback : IFeedback
+    abstract class Feedback : Household, IFeedback
     {
-      private List<Iinputs> inputs = new List<Iinputs>();
+        private string inputs;
+        private string feedbackStatus;
+        private IEmail sentEmail;
+        private Household household;
+        private string householdEmail;
 
-      private string feedbackStatus;
-      private string householdEmail;
+        // inputsHandling
+        private void setinputs(string inputs)
+        {
+            this.inputs = inputs;
+        }
+        public void IHInputs(string inputs)
+        {
+            setinputs(inputs);
+        }
+        private string getInputs()
+        {
+            return this.inputs;
+        }
+        public string retrieveInputs()
+        {
+            return getInputs();
+        }  
 
-    //   private Household _household;
-      
-      //getters and setters for variables
-     
-      private string getFeedbackStatus()
-      {
-          return this.feedbackStatus;
-      }
-      private void setFeedbackStatus(string feedbackStatus)
-      {
-          this.feedbackStatus = feedbackStatus;
-      }
-      private string getHouseholdEmail()
-      {
-          return this.householdEmail;
-      }
-      private void setHouseholdEmail(string householdEmail)
-      {
-          this.householdEmail = householdEmail;
-      }
+        // emailHandling
+        private void setHouseholdEmail(string householdEmail)
+        {
+            this.householdEmail = householdEmail;
+        }
+        public void IHHouseholdEmail(string householdEmail)
+        {
+            setHouseholdEmail(householdEmail);
+        }
+        private string getHouseholdEmail()
+        {
+            return this.householdEmail;
+        }
+        public string retrieveHouseholdEmail()
+        {
+            return getHouseholdEmail();
+        }  
 
-      // information hiding 
-      public void insertDetails(string feedbackStatus, string householdEmail){
-        setFeedbackStatus(feedbackStatus);
-        setHouseholdEmail(householdEmail);
+        // housholdEmailHandling
+        // private void setEmail(string email)
+        // {
+        //     household.email = email;
+        // }
+        // public void IHEmail(string email)
+        // {
+        //     setEmail(email);
+        // }
+        // public string retrieveEmail()
+        // {
+        //     return household.email;
+        // }
 
-      }
+        // Sending of Email
+        public void on()
+        {
+            this.sentEmail = new Email(householdEmail);
+            //can only access to whatever was implemented in the interface.
+            // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
+            sentEmail.Update(inputs);
+            EmailNotification notification = new EmailNotification();
+            notification.Attach(sentEmail);
+            Boolean results = notification.NotifyObservers();
+        }
 
-      public void printDetails(){
-        string status = getFeedbackStatus();
-        string email = getHouseholdEmail();
-        Console.WriteLine("Status:  " + status + "\nEmail: " + email);
-      }
-      // Constructor calls abstract Factory method
-      public Feedback()
-      {
-          this.createFeedback();
-      }
-      public List<Iinputs> Inputs
-      {
-          get { return inputs; }
-      }
-      // Factory Method
-      public abstract void createFeedback();
+        // feedbackStatus handling
+        private string getFeedbackStatus()
+        {
+            return this.feedbackStatus;
+        }
+        private void setFeedbackStatus(string feedbackStatus)
+        {
+            this.feedbackStatus = feedbackStatus;
+        }
+
+        // Constructor calls abstract Factory method
+        public Feedback()
+        {
+            this.createFeedback();
+        }
+
+        // Factory Method
+        public abstract void createFeedback();
     }
 }
 

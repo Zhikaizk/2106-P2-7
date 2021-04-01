@@ -12,7 +12,7 @@ namespace Project.Models.Feedback
 
     public override void createFeedback()
     {
-        Inputs.Add(new Content());
+        //Inputs.Add(new Content());
         
     }
   }

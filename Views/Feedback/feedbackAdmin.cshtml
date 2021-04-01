@@ -41,8 +41,9 @@
       {
         <tr>
           @* feedbackId *@
-          <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")'; value=@hello[i][0] name="feedbackId">@hello[i][0]</a></th>
-          @* hosueholdEmail *@
+          <th scope="row"><a runat="server" href='@Url.Action("feedbackAdminReply", "Feedback")'; onclick="SetData(this)" value=@hello[i][0] name="feedbackId">@hello[i][0]</a></th>
+         
+          @* hosueholdContent *@
           <td>@hello[i][1]</td>
           @* hosueholdEmail *@
           <td>@hello[i][2]</td>
@@ -50,30 +51,8 @@
           @* feedbackType *@
           <td>@hello[i][4]</td>
 
-          @* feedbackStatus *@
-          <td>
-            <form>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
-                    @if (@hello[i][3] == "pending")
-                    {
-                      <option>@hello[i][3]</option>
-                      <option>resolved</option>
-                    }
-                    else
-                    {
-                      <option>@hello[i][3]</option>
-                      <option>pending</option>
-                    }
-                  </select>
-                </div>
-              </div>
-
-              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
-            </form>
-
-          </td>
+         @* feedbackStatus *@
+          <td>@hello[i][3]</td>
         </tr>
       }
       }
@@ -92,29 +71,7 @@
           <td>@hello1[i][4]</td>
 
           @* feedbackStatus *@
-          <td>
-            <form>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
-                    @if (@hello1[i][3] == "pending")
-                    {
-                      <option>@hello1[i][3]</option>
-                      <option>resolved</option>
-                    }
-                    else
-                    {
-                      <option>@hello1[i][3]</option>
-                      <option>pending</option>
-                    }
-                  </select>
-                </div>
-              </div>
-
-              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
-            </form>
-
-          </td>
+          <td>@hello1[i][3]</td>
         </tr>
       }
       }
@@ -133,29 +90,8 @@
           <td>@hello2[i][4]</td>
 
           @* feedbackStatus *@
-          <td>
-            <form>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
-                    @if (@hello2[i][3] == "pending")
-                    {
-                      <option>@hello2[i][3]</option>
-                      <option>resolved</option>
-                    }
-                    else
-                    {
-                      <option>@hello2[i][3]</option>
-                      <option>pending</option>
-                    }
-                  </select>
-                </div>
-              </div>
+          <td>@hello2[i][3]</td>
 
-              <button type="submit" id="fbSubmitBtnUpdate" class="btn btn-success">Update</button>
-            </form>
-
-          </td>
         </tr>
       }
       }
@@ -165,3 +101,8 @@
     </tbody>
   </table>
 </div>
+  <script type="text/javascript">
+    function SetData(obj){
+        var obj.href=obj.href+"&Text"=obj.innerHTML;
+    }
+    </script>

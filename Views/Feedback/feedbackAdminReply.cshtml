@@ -1,35 +1,40 @@
-
 @* Reply housholdUser feedback *@
-            <div class="card bg-info">
-                <div class="card-body">
-                    <h5 class="card-title">Reply Feedback</h5>
-
-                    <form method="post" asp-controller="Feedback" asp-action="feedbackAdminReply" >
-                           <div class="form-group row">
-                            <label for="FeedbackSubject" class="col-sm-2 col-form-label">Subject</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" name="subject" id="FeedbackSubject" 
-                                    placeholder="Enter subject"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="FeedbackContent" class="col-sm-2 col-form-label">Content</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" name="feedback" id="FeedbackContent" rows="3"
-                                    placeholder="Please give a description on the issues you are facing."></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" id="fb_submit_btn" class="btn btn-success">Submit</button>
-                    </form>
+<div class="card bg-info">
+    <div class="card-body">
+        <h5 class="card-title">Reply Feedback</h5>
+        <form method="post" asp-controller="Feedback" asp-action="feedbackAdminReply">
+            <div class="form-group row">
+                <label for="FeedbackSubject" class="col-sm-2 col-form-label">Subject</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="subject" id="FeedbackSubject" placeholder="Enter subject" />
                 </div>
             </div>
-            @if (ViewBag.Message != null)
-            {
-                <script type="text/javascript">
-                    window.onload = function () {
-                        alert("@ViewBag.Message");
-                    };
-                </script>
-            }
 
+            <div class="form-group row">
+                <label for="FeedbackContent" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="feedback" id="FeedbackContent" rows="3"
+                        placeholder="Please give a description on the issues you are facing."></textarea>
+                </div>
+            </div>
 
+            <div class="form-group row">
+                <label for="inputState">Status: </label>
+                <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
+                    <option>pending</option>
+                    <option>resolved</option>
+                </select>
+            </div>
+
+            <button type="submit" id="fb_submit_btn" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+}

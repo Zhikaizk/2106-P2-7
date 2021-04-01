@@ -11,7 +11,7 @@ namespace Project.Models.Feedback
     // Factory Method implementation
     public override void createFeedback()
     {
-        Inputs.Add(new Content());
+        //Inputs.Add(new Content());
     }
   }
 }

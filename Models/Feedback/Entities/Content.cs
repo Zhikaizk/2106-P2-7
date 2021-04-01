@@ -20,12 +20,9 @@ namespace Project.Models.Feedback
             //testing purpose
             // Console.WriteLine(getContent());
         }
-        else{
-            //testing purpose
-            // Console.WriteLine(getContent());
-        }
-        
-
+    }
+    public string retrieveContent(){
+        return this.content;
     }
   }
 }

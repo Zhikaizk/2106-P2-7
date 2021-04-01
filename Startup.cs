@@ -25,6 +25,8 @@ namespace Project
         {
             services.AddControllersWithViews();
             services.AddSignalR();// this might be one too 
+            services.AddDistributedMemoryCache();//To Store session in Memory, This is default implementation of IDistributedCache    
+            services.AddSession(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +48,10 @@ namespace Project
             app.UseRouting();
 
             app.UseAuthorization();
-
+            // added
+            app.UseCookiePolicy();      
+            app.UseSession();      
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chatHub");
@@ -54,6 +59,8 @@ namespace Project
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+     
         }
     }
 }

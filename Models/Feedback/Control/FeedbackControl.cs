@@ -74,35 +74,48 @@ namespace Project.Models.Feedback
             {
                 case "Devices":
                     Devices dev = new Devices();
+                    // dev.IHEmail(email);
+                    dev.IHInputs(content);
 
-                    foreach (Iinputs inputs in dev.Inputs)
-                    {
-                        inputs.feedbackContent(content);
-                    }
+                    //dev.insertDetails(content, email);
+                    // foreach (Iinputs inputs in dev.Inputs)
+                    // {
+                    //     inputs.feedbackContent(content);
+                        
+                    // }
+                    
                     //querying db (TM called TDG)
-                    FeedbackTDG1.insert(type, content, email);
+                    FeedbackTDG1.insert(dev.GetType().Name, dev.retrieveInputs(), email);
                     break;
                 case "Connection":
                     Connection conn = new Connection();
-                    foreach (Iinputs inputs in conn.Inputs)
-                    {
-                        inputs.feedbackContent(content);
-                    }
+                    // foreach (Iinputs inputs in conn.Inputs)
+                    // {
+                    //     inputs.feedbackContent(content);
+                    // }
                     //querying db (TM called TDG)
-                    FeedbackTDG1.insert(type, content, email);
+                    FeedbackTDG1.insert(conn.GetType().Name, content, email);
                     break;
 
                 default: // set default as "Accounts"
                     FbAccount acc = new FbAccount();
-                    foreach (Iinputs inputs in acc.Inputs)
-                    {
-                        inputs.feedbackContent(content);
-                    }
+                    // foreach (Iinputs inputs in acc.Inputs)
+                    // {
+                    //     inputs.feedbackContent(content);
+                    // }
                     //querying db (TM called TDG)
-                    FeedbackTDG1.insert(type, content, email);
+                    FeedbackTDG1.insert(acc.GetType().Name, content, email);
                     break;
             }
             return;
+        }
+
+        public FeedbackControl(string subject, string content, int feedbackId, string feedbackStatus, string email, string type){
+            Devices dc = new Devices();
+            dc.IHHouseholdEmail(email);
+            dc.IHInputs(content);
+            dc.on();
+
         }
     }
 }
