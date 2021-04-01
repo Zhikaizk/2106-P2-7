@@ -10,7 +10,7 @@ namespace Project.Models.PasswordReset
         private string householdEmail;
         private string newResetPassword;
         private string confirmResetPassword;
-        private string retrieveHouseholdEmail;
+        // private string retrieveHouseholdEmail;
 
         //user click on the request button
         public PasswordResetControl(String householdEmail)

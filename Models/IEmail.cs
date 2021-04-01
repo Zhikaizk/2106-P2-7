@@ -10,6 +10,10 @@ namespace Project.Models.Notification
         public String updatecontent{get;set;}
         public String emailaddress{get;set;}
         //  public void UpdateObserver();
-         //this will be change to Updatecontent(String);         
+         //this will be change to Updatecontent(String);  
+
+
+         public String householdEmailDetails{get;set;}      
+
     }
 }

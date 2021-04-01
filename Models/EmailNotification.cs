@@ -41,5 +41,12 @@ namespace Project.Models.Notification
         //     //SubjectState = subjectStateOrData;  
         //     NotifyObservers();  
         // }   
+
+        public Boolean NotifyResetPassword(String householdEmailDetails,String passwordResetId)  
+        {              Console.WriteLine("notify reset password Email Endedhere");
+
+            NotifyPassword(householdEmailDetails,passwordResetId);
+        return true; 
+        }
 }  
 }

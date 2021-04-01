@@ -22,8 +22,8 @@ namespace Project.Controllers
 {
     public class AdminPasswordResetController : Controller
     {
-        
-                //trying to retrieve data
+
+        //trying to retrieve data
         MySqlConnection con = new MySqlConnection();
         MySqlCommand cmd = new MySqlCommand();
         MySqlDataReader rdr;
@@ -32,7 +32,7 @@ namespace Project.Controllers
 
 
         //trying to retrieve url from the submit button
-        private string url;
+        // private string url;
 
         private readonly ILogger<PasswordResetController> _logger;
 
@@ -60,30 +60,33 @@ namespace Project.Controllers
         public IActionResult AdminPasswordResetPage()
         {
 
-//to display on the web
- Console.WriteLine("lol");
+            //to display on the web
+            Console.WriteLine("lol");
             find();
             Console.WriteLine("eneter");
             //Console.WriteLine("admin password page Endedhere");
-           // Console.WriteLine("mytestinghere"+householdEmailDetails);
-       return View(email);     
-        } 
+            // Console.WriteLine("mytestinghere"+householdEmailDetails);
+            return View(email);
+        }
 
-             [HttpPost]
-        public IActionResult AdminPasswordResetPage(string disabledInput)
+        [HttpPost]
+        public IActionResult AdminPasswordResetPage(string disabledId,string disabledInput)
         {
 
-
-             Console.WriteLine(disabledInput);
-              Console.WriteLine("sdiofnewfn");
-//to display on the web
+            Console.WriteLine(disabledId);
+            Console.WriteLine(disabledInput);
+            Console.WriteLine("sdiofnewfn");
+            //to display on the web
 
             //find();
             // Console.WriteLine(householdEmailDetails);
-           // Console.WriteLine("mytestinghere"+householdEmailDetails);
-       return View();     
-        } 
-           
+            // Console.WriteLine("mytestinghere"+householdEmailDetails);
+            
+
+            submitButton(disabledInput,disabledId);
+            return View();
+        }
+
 
         //retrieve database item
 
@@ -99,7 +102,7 @@ namespace Project.Controllers
             {
                 con.Open();
                 cmd.Connection = con;
-                 Console.WriteLine("JOJOJOJOJO");
+                Console.WriteLine("JOJOJOJOJO");
                 cmd.CommandText = "SELECT passwordResetID,householdEmail FROM PasswordReset";
                 rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -108,10 +111,7 @@ namespace Project.Controllers
                     {
                         passwordResetID = rdr["passwordResetID"].ToString(),
                         householdEmailDetails = rdr["householdEmail"].ToString()
-                       
-
                     });
-                     
                 }
                 con.Close();
             }
@@ -123,13 +123,13 @@ namespace Project.Controllers
         }
         //ends here
 
-    
-    
-    //to send email
+
+
+        //to send email
         [HttpGet]
-        public void submitButton(String householdEmailDetails,String passwordResetId)
+        public void submitButton(String householdEmailDetails, String passwordResetId)
         {
-            Console.WriteLine("testinghere"+householdEmailDetails);
+            Console.WriteLine("testinghere" +" " + householdEmailDetails + " " + passwordResetId);
             EmailControl emailControl = new EmailControl(householdEmailDetails, passwordResetId);
         }
 
