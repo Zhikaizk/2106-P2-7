@@ -25,7 +25,7 @@ namespace Project.Models.Feedback
                 Console.WriteLine(arList[i][2]);
                 Console.WriteLine(arList[i][3]);
                 Console.WriteLine(arList[i][4]);
-   
+
             }
         }
 
@@ -83,9 +83,9 @@ namespace Project.Models.Feedback
                     // foreach (Iinputs inputs in dev.Inputs)
                     // {
                     //     inputs.feedbackContent(content);
-                        
+
                     // }
-                    
+
                     //querying db (TM called TDG)
                     FeedbackTDG1.insert(dev.GetType().Name, dev.retrieveInputs(), email);
                     break;
@@ -112,18 +112,18 @@ namespace Project.Models.Feedback
             return;
         }
 
-        public FeedbackControl(string subject, string content, int feedbackId, string feedbackStatus, string email, string type){
-            // Devices dc = new Devices();
-            // dc.IHHouseholdEmail(email);
-            // dc.IHInputs(content);
-            // dc.on();
-             this.emailnotification= new Email(email);
-         //can only access to whatever was implemented in the interface.
-         // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
-          emailnotification.Update(content);
-           EmailNotification notification = new EmailNotification();
+        public FeedbackControl(string subject, string content, int feedbackId, string feedbackStatus, string email)
+        {
+
+            FeedbackTDG1.updateStatus(feedbackStatus, feedbackId);
+
+            this.emailnotification = new Email(email);
+            //can only access to whatever was implemented in the interface.
+            // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
+            emailnotification.Update(content);
+            EmailNotification notification = new EmailNotification();
             notification.Attach(emailnotification);
-            Boolean results= notification.NotifyObservers();
+            Boolean results = notification.NotifyObservers();
 
         }
     }

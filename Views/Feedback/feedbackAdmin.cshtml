@@ -41,7 +41,7 @@
       {
         <tr>
           @* feedbackId *@
-          <th scope="row"><a runat="server" href='@Url.Action("feedbackAdminReply", "Feedback")'; onclick="SetData(this)" value=@hello[i][0] name="feedbackId">@hello[i][0]</a></th>
+          <th scope="row"><a runat="server" href='@Url.Action("feedbackAdminReply", "Feedback",new {feedbackId=hello[i][0], email=hello[i][2], status=hello[i][3]})'>@hello[i][0]</a></th>
          
           @* hosueholdContent *@
           <td>@hello[i][1]</td>

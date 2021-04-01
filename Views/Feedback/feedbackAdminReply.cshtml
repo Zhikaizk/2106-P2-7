@@ -3,6 +3,21 @@
     <div class="card-body">
         <h5 class="card-title">Reply Feedback</h5>
         <form method="post" asp-controller="Feedback" asp-action="feedbackAdminReply">
+
+            <div class="form-group row">
+                <label for="FeedbackId" class="col-sm-2 col-form-label">Feedback ID </label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="feedbackId" id="feedbackId" type="text" value=@ViewData["feedbackId"] readonly/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="FeedbackSubject" class="col-sm-2 col-form-label">Household Email</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="hosueholdEmail" id="hosueholdEmail" type="text" value=@ViewData["householdEmail"] readonly/>
+                </div>
+            </div>
+
             <div class="form-group row">
                 <label for="FeedbackSubject" class="col-sm-2 col-form-label">Subject</label>
                 <div class="col-sm-10">
@@ -19,10 +34,18 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputState">Status: </label>
-                <select class="form-control" id="fbStatusUpdate" name="fbStatusUpdate">
-                    <option>pending</option>
-                    <option>resolved</option>
+                <label for="inputState" class="col-sm-2 col-form-label" >Status</label>
+                <select class="form-control col-sm-10" id="fbStatusUpdate" name="fbStatusUpdate">
+                    @if ((string)(ViewData["feedbackStatus"]) == "pending")
+                    {
+                        <option>pending</option>
+                        <option>resolved</option>
+                    }
+                    else{
+                         <option>resolved</option>
+                         <option>pending</option>
+                    }
+
                 </select>
             </div>
 

@@ -66,33 +66,31 @@ namespace Project.Controllers
             return View();
         }
 
-        // [HttpPost]
-        // public IActionResult feedbackAdmin(string fbStatusUpdate, string feedbackId)
-        // {
-        //     Console.WriteLine(feedbackId);
-        //     string status = fbStatusUpdate;
-        //     // FeedbackControl fc = new FeedbackControl(status);
-        //     return View();
-        // }
-
         //deafult when page loads (administrator)
-        public IActionResult feedbackAdminReply(int feedbackId)
+        public IActionResult feedbackAdminReply(string feedbackId, string email, string status)
         {
-            // var a = this.HttpContext.Session.GetString("login");    
-           // HttpContext.Session.SetString("login", feedbackId.ToString());  
+            Console.WriteLine(feedbackId);
+            Console.WriteLine(email);
+            Console.WriteLine(status);
+
+            ViewData["feedbackId"] = feedbackId;
+            ViewData["householdEmail"] = email;
+            ViewData["feedbackStatus"] = status;
             return View();
         }
 
         [HttpPost]
-        public IActionResult feedbackAdminReply(string subject, string feedback, string fbStatusUpdate)
+        public IActionResult feedbackAdminReply(string subject, string feedback, string fbStatusUpdate, int feedbackId, string householdEmail)
         {   
     
            // Console.WriteLine(this.HttpContext.Session.GetString("login").ToString());
             Console.WriteLine(subject);
             Console.WriteLine(feedback);
             Console.WriteLine(fbStatusUpdate);
-
-            FeedbackControl fc = new FeedbackControl(subject, feedback, 1, fbStatusUpdate, "jialin41@gmail.com", "Devices" );
+            Console.WriteLine(feedbackId.ToString());
+            Console.WriteLine(householdEmail);
+            
+            FeedbackControl fc = new FeedbackControl(subject, feedback, feedbackId, fbStatusUpdate, householdEmail);
             // alert message upon successful submission
             ViewBag.Message = string.Format("Reply has been sent out!");
             return View();
