@@ -8,7 +8,8 @@ using System.Collections.Generic;
 namespace Project.Models.Notification
 {
 public class EmailTDG{
-        public void find(){
+        private List<IEmail> emails = new List<IEmail>();
+        public List<IEmail> find(){
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
              MySqlConnection conn = new MySqlConnection(connStr);
         try
@@ -22,7 +23,8 @@ public class EmailTDG{
 
             while (rdr.Read())
             {
-                Console.WriteLine(rdr[0]);
+               IEmail email = new Email(rdr[0].ToString());
+               emails.Add(email);
             }
             rdr.Close();
         }
@@ -32,7 +34,7 @@ public class EmailTDG{
         }
 
         conn.Close();
-        Console.WriteLine("Done.");
+        return emails;
     }
     
         // find person record by id.

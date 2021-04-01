@@ -39,9 +39,14 @@ namespace Project.Controllers
         //emailaddressinput.emailaddress,
         public IActionResult AdminNotification(Email emailcontent)
         {
+            Console.Write(String.IsNullOrEmpty(emailcontent.updatecontent));
+            if(String.IsNullOrEmpty(emailcontent.updatecontent)){
+            ViewBag.Message = "Content cannot be Empty";
+            }else{
             EmailControl emailcontrol = new EmailControl(emailcontent.updatecontent);
             ViewBag.Message = emailcontrol.Success_or_Not();
-            return View();
+            }
+             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
