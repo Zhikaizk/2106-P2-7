@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using Project.Models.Notification;
 namespace Project.Models.Feedback
+
 {
     // control class for feedback system
     public class FeedbackControl
     {
+        private IEmail emailnotification;
         //retrieve Data (default: All)
         public FeedbackControl()
         {
@@ -111,10 +113,17 @@ namespace Project.Models.Feedback
         }
 
         public FeedbackControl(string subject, string content, int feedbackId, string feedbackStatus, string email, string type){
-            Devices dc = new Devices();
-            dc.IHHouseholdEmail(email);
-            dc.IHInputs(content);
-            dc.on();
+            // Devices dc = new Devices();
+            // dc.IHHouseholdEmail(email);
+            // dc.IHInputs(content);
+            // dc.on();
+             this.emailnotification= new Email(email);
+         //can only access to whatever was implemented in the interface.
+         // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
+          emailnotification.Update(content);
+           EmailNotification notification = new EmailNotification();
+            notification.Attach(emailnotification);
+            Boolean results= notification.NotifyObservers();
 
         }
     }

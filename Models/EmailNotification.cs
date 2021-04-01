@@ -30,6 +30,8 @@ namespace Project.Models.Notification
     
         public Boolean NotifyObservers()  
         {  
+            AdminGmailTDG adminGmailTDG = new AdminGmailTDG();
+             adminGmailTDG.find();
             Notify();
         return true; 
         }  

@@ -29,8 +29,6 @@ namespace Project.Models.Notification
             //This is where i collect lal the household email
              EmailTDG emailtdg = new EmailTDG();
              allHouseholdEmails=emailtdg.find(); 
-             AdminGmailTDG adminGmailTDG = new AdminGmailTDG();
-             adminGmailTDG.find();
             EmailNotification notification = new EmailNotification();
                         //Attach the content to all the emails.
                         foreach (var email in allHouseholdEmails)
