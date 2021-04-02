@@ -68,7 +68,7 @@ namespace Project.Models.Feedback
             this.sentEmail = new Email(householdEmail);
             //can only access to whatever was implemented in the interface.
             // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
-            sentEmail.Update(inputs);
+            sentEmail.Update("SUBJECTHERE",inputs);
             EmailNotification notification = new EmailNotification();
             notification.Attach(sentEmail);
             Boolean results = notification.NotifyObservers();

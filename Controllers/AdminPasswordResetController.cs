@@ -28,6 +28,7 @@ namespace Project.Controllers
         MySqlCommand cmd = new MySqlCommand();
         MySqlDataReader rdr;
         List<PasswordResetModel> email = new List<PasswordResetModel>();
+        private IEmail emailAccess;
         //ends here
 
 
@@ -129,8 +130,12 @@ namespace Project.Controllers
         [HttpGet]
         public void submitButton(String householdEmailDetails, String passwordResetId)
         {
-            Console.WriteLine("testinghere" +" " + householdEmailDetails + " " + passwordResetId);
-            EmailControl emailControl = new EmailControl(householdEmailDetails, passwordResetId);
+           this.emailAccess = new Email(householdEmailDetails);
+         // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
+           emailAccess.Update("subjecthere",passwordResetId);//(subject,contentofemail)
+           EmailNotification notification = new EmailNotification();
+            notification.Attach(emailAccess);// if need more emails , do a list and for loop 
+            Boolean results= notification.NotifyObservers();// this do one time can liao
         }
 
 

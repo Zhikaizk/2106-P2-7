@@ -14422,11 +14422,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\PasswordReset\\AdminPasswordResetPage.cshtml",
-      "TargetPath": "Views\\PasswordReset\\AdminPasswordResetPage.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -14449,6 +14444,11 @@
     {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Feedback\\feedbackAdmin.cshtml",
       "TargetPath": "Views\\Feedback\\feedbackAdmin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\AdminPasswordReset\\AdminPasswordResetPage.cshtml",
+      "TargetPath": "Views\\AdminPasswordReset\\AdminPasswordResetPage.cshtml",
       "FileKind": "mvc"
     },
     {

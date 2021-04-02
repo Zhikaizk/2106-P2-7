@@ -12,20 +12,7 @@ namespace Project.Models.Notification
     {  
 
 
-        
-
-        // public string SubjectName { get; set; } 
-
         public EmailNotification(){} 
-  
-        // public EmailNotification(string subjectName)  
-        // {  
-        //     SubjectName = subjectName;  
-        //     SubjectState = "Created";  
-        //     Console.WriteLine("Instantiated named Subject {0}", SubjectName);  
-        // }  
-  
-        //public string SubjectState { get; set; }  
   
     
         public Boolean NotifyObservers()  
@@ -35,18 +22,5 @@ namespace Project.Models.Notification
             Notify();
         return true; 
         }  
-  
-        // public void ModifySubjectStateOrData(string subjectStateOrData)  
-        // {  
-        //     //SubjectState = subjectStateOrData;  
-        //     NotifyObservers();  
-        // }   
-
-        public Boolean NotifyResetPassword(String householdEmailDetails,String passwordResetId)  
-        {              Console.WriteLine("notify reset password Email Endedhere");
-
-            NotifyPassword(householdEmailDetails,passwordResetId);
-        return true; 
-        }
 }  
 }

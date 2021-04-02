@@ -6,38 +6,25 @@ namespace Project.Models.Notification
     public class Email : IEmail
     {
         //private EmailNotification _emailNotification;  
-        public String updatecontent { get; set; }
-        public String emailaddress { get; set; }
+        public String updateSubject { get; set; }
+        public String updateContent { get; set; }
+        public String emailAddress { get; set; }
         public Email()
         {
-          Console.WriteLine("Email() Email Endedhere");
-          EmailPassword(householdEmailDetails);
         }
 
         public Email(string addressIn)
         {
             // save the address for later
-            emailaddress = addressIn;
+            emailAddress = addressIn;
         }
 
 
-        public void Update(string message)
+        public void Update(string subject,string message)
         {
-            updatecontent = message;
+            updateSubject=subject;
+            updateContent = message;
 
         }
-
-
-        public String householdEmailDetails { get; set; }
-        public void EmailPassword(string householdEmailDetails)
-        {
-            Console.WriteLine("EmailPassword() Email Endedhere");
-
-            // save the address for later
-            this.householdEmailDetails = householdEmailDetails;
-        }
-
-
-
     }
 }

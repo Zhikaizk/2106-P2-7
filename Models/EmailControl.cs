@@ -33,7 +33,7 @@ namespace Project.Models.Notification
                         //Attach the content to all the emails.
                         foreach (var email in allHouseholdEmails)
                 {
-                    email.Update(emailcontenthere);
+                    email.Update("System Update",emailcontenthere);
                     notification.Attach(email);
 
                 } 
@@ -43,31 +43,6 @@ namespace Project.Models.Notification
         }
 
 
-private Boolean emailResetPassword;
-
-        public EmailControl(String householdEmailDetails, String passwordResetId)
-        {
-            Console.WriteLine("email control Endedhere");
-            emailResetPassword = emailReset(householdEmailDetails, passwordResetId);
-        }
-
-
-        private Boolean emailReset(String householdEmailDetails, String passwordResetId)
-        {
-            EmailTDG emailtdg = new EmailTDG();
-            emailtdg.find();
-            Console.WriteLine("Password Email Endedhere");
-            Email email = new Email();
-            Console.WriteLine("email reset Email Endedhere");
-            EmailNotification notification = new EmailNotification();
-            Console.WriteLine("email notification Email Endedhere");
-            notification.Attach(email);
-            Console.WriteLine("email notificication notification attach Email Endedhere");
-            Boolean emailResetPassword = notification.NotifyResetPassword(householdEmailDetails, passwordResetId);
-            Console.WriteLine("email boolean Email Endedhere");
-            return emailResetPassword;
-
-        }
 
     }
 }

@@ -6,14 +6,10 @@ namespace Project.Models.Notification
     {
          //this will be change to UnSubscribe (String email)
          // this will be change to Subscribe(String email); 
-        void Update(string message);
-        public String updatecontent{get;set;}
-        public String emailaddress{get;set;}
-        //  public void UpdateObserver();
-         //this will be change to Updatecontent(String);  
-
-
-         public String householdEmailDetails{get;set;}      
+        void Update(string subject,string message);
+        public String updateContent{get;set;}
+        public String emailAddress{get;set;}
+         public String updateSubject{get;set;}
 
     }
 }
