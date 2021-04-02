@@ -69,9 +69,9 @@ namespace Project.Controllers
         //deafult when page loads (administrator)
         public IActionResult feedbackAdminReply(string feedbackId, string email, string status)
         {
-            Console.WriteLine(feedbackId);
-            Console.WriteLine(email);
-            Console.WriteLine(status);
+            // Console.WriteLine(feedbackId);
+            // Console.WriteLine(email);
+            // Console.WriteLine(status);
 
             ViewData["feedbackId"] = feedbackId;
             ViewData["householdEmail"] = email;
@@ -82,14 +82,7 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult feedbackAdminReply(string subject, string feedback, string fbStatusUpdate, int feedbackId, string householdEmail)
         {   
-    
-           // Console.WriteLine(this.HttpContext.Session.GetString("login").ToString());
-            Console.WriteLine(subject);
-            Console.WriteLine(feedback);
-            Console.WriteLine(fbStatusUpdate);
-            Console.WriteLine(feedbackId.ToString());
-            Console.WriteLine(householdEmail);
-            
+
             FeedbackControl fc = new FeedbackControl(subject, feedback, feedbackId, fbStatusUpdate, householdEmail);
             // alert message upon successful submission
             ViewBag.Message = string.Format("Reply has been sent out!");

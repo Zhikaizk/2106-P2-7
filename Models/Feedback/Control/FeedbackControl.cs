@@ -116,11 +116,11 @@ namespace Project.Models.Feedback
         {
 
             FeedbackTDG1.updateStatus(feedbackStatus, feedbackId);
-
+           
             this.emailnotification = new Email(email);
             //can only access to whatever was implemented in the interface.
             // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
-            emailnotification.Update("SUBJECTHERE",content);
+            emailnotification.Update(subject,content);
             EmailNotification notification = new EmailNotification();
             notification.Attach(emailnotification);
             Boolean results = notification.NotifyObservers();

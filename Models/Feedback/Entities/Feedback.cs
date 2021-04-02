@@ -8,7 +8,6 @@ namespace Project.Models.Feedback
     {
         private string inputs;
         private string feedbackStatus;
-        private IEmail sentEmail;
         private Household household;
         private string householdEmail;
 
@@ -29,50 +28,6 @@ namespace Project.Models.Feedback
         {
             return getInputs();
         }  
-
-        // emailHandling
-        private void setHouseholdEmail(string householdEmail)
-        {
-            this.householdEmail = householdEmail;
-        }
-        public void IHHouseholdEmail(string householdEmail)
-        {
-            setHouseholdEmail(householdEmail);
-        }
-        private string getHouseholdEmail()
-        {
-            return this.householdEmail;
-        }
-        public string retrieveHouseholdEmail()
-        {
-            return getHouseholdEmail();
-        }  
-
-        // housholdEmailHandling
-        // private void setEmail(string email)
-        // {
-        //     household.email = email;
-        // }
-        // public void IHEmail(string email)
-        // {
-        //     setEmail(email);
-        // }
-        // public string retrieveEmail()
-        // {
-        //     return household.email;
-        // }
-
-        // Sending of Email
-        public void on()
-        {
-            this.sentEmail = new Email(householdEmail);
-            //can only access to whatever was implemented in the interface.
-            // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
-            sentEmail.Update("SUBJECTHERE",inputs);
-            EmailNotification notification = new EmailNotification();
-            notification.Attach(sentEmail);
-            Boolean results = notification.NotifyObservers();
-        }
 
         // feedbackStatus handling
         private string getFeedbackStatus()
