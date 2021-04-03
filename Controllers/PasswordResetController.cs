@@ -77,20 +77,28 @@ namespace Project.Controllers
 
         //check the credentials
         [HttpPost]
-        public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newResetPassword, String confirmResetPassword)
+        public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newResetPassword, String confirmResetPassword,String householdPassword)
         {
             String email = householdEmail;
             String newPassword = newResetPassword;
             String confirmNewResetPassword = confirmResetPassword;
+
             Console.WriteLine(email);
             Console.WriteLine(newPassword);
             Console.WriteLine(confirmNewResetPassword);
 
+            //trying to update household password
+            householdPassword = newPassword;
+            Console.WriteLine(email + "under the update password email");
+            Console.WriteLine(newPassword + "under update password password" );
+
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully reset new password";
 
-
             PasswordResetControl pw = new PasswordResetControl(householdEmail, newResetPassword, confirmResetPassword);
+
+            //trying to update password at household account db
+            PasswordResetControl pw1 = new PasswordResetControl(householdEmail, householdPassword);
             return View();
         }
     

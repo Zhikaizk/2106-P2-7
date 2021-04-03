@@ -26,8 +26,6 @@ namespace Project.Models
 
             using (var context = new NewPasswordResetContext())
             {
-
-
                 // Creates the database if not exists
                 context.Database.EnsureCreated();
 
@@ -39,137 +37,168 @@ namespace Project.Models
                     // confirmResetPassword = confirmResetPassword
 
 
-            newResetPassword = encryption.encryptionPerformed(newResetPassword),
-            confirmResetPassword = encryption.encryptionPerformed(confirmResetPassword)
+                    newResetPassword = encryption.encryptionPerformed(newResetPassword),
+                    confirmResetPassword = encryption.encryptionPerformed(confirmResetPassword)
 
-            });
-            // Saves changes
-            context.SaveChanges();
+                });
+                // Saves changes
+                context.SaveChanges();
+            }
+
+            Console.WriteLine(newResetPassword.ToString());
+            Console.WriteLine(confirmResetPassword.ToString());
+
         }
 
-        Console.WriteLine(newResetPassword.ToString());
-        Console.WriteLine(confirmResetPassword.ToString());
 
-    }
-
-    
-
-
-    //when user request reset password (only store their email)
-    public static void insertEmail(String householdEmail)
-    {
-        using (var context = new PasswordResetContext())
+        //when user request reset password (only store their email)
+        public static void insertEmail(String householdEmail)
         {
-            // Creates the database if not exists
-            context.Database.EnsureCreated();
-
-            //insert feedback to db
-            context.PasswordReset.Add(new PasswordResetTableModule
+            using (var context = new PasswordResetContext())
             {
-                householdEmail = householdEmail
-            });
+                // Creates the database if not exists
+                context.Database.EnsureCreated();
 
-            // Saves changes
-            context.SaveChanges();
+                //insert feedback to db
+                context.PasswordReset.Add(new PasswordResetTableModule
+                {
+                    householdEmail = householdEmail
+                });
+
+                // Saves changes
+                context.SaveChanges();
+            }
+
         }
 
-    }
 
-
-    //when admin try to delete data onclick submit button
-    public static void remove(String householdEmail, int passwordResetId)
-    {
-        using (var context = new PasswordResetContext())
+        //when admin try to delete data onclick submit button
+        public static void remove(String householdEmail, int passwordResetId)
         {
-            // Creates the database if not exists
-            context.Database.EnsureCreated();
-
-            //insert feedback to db
-            context.PasswordReset.Remove(new PasswordResetTableModule
+            using (var context = new PasswordResetContext())
             {
-                householdEmail = householdEmail,
-                passwordResetID = passwordResetId
-            });
+                // Creates the database if not exists
+                context.Database.EnsureCreated();
 
-            // Saves changes
-            context.SaveChanges();
+                //insert feedback to db
+                context.PasswordReset.Remove(new PasswordResetTableModule
+                {
+                    householdEmail = householdEmail,
+                    passwordResetID = passwordResetId
+                });
+
+                // Saves changes
+                context.SaveChanges();
+            }
+
         }
 
-    }
+        //when admin try to update the password at the household account
 
-
-    public static void printData()
-    {
-        // Gets and prints all books in database
-        using (var context = new PasswordResetContext())
+        public static void update(String householdEmail, String householdPassword)
         {
-            var datas = context.PasswordReset;
-            foreach (var data1 in datas)
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
             {
-                var data = new StringBuilder();
-                data.AppendLine($"Id: {data1.passwordResetID}");
-                data.AppendLine($"Email: {data1.householdEmail}");
-                Console.WriteLine(data.ToString());
+                conn.Open();
+
+                MySqlCommand command;
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                String sql = "";
+
+                sql = "Update zk.testingHouseholdAccount set householdPassword = '" + householdPassword + "' WHERE householdEmail = '" + householdEmail + "'";
+
+Console.WriteLine(sql);
+                command = new MySqlCommand(sql, conn);
+                adapter.InsertCommand = new MySqlCommand(sql, conn);
+                adapter.InsertCommand.ExecuteNonQuery();
+
+                command.Dispose();
+
+                // Saves changes
+                // context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+        }
+
+        public static void printData()
+        {
+            // Gets and prints all books in database
+            using (var context = new PasswordResetContext())
+            {
+                var datas = context.PasswordReset;
+                foreach (var data1 in datas)
+                {
+                    var data = new StringBuilder();
+                    data.AppendLine($"Id: {data1.passwordResetID}");
+                    data.AppendLine($"Email: {data1.householdEmail}");
+                    Console.WriteLine(data.ToString());
+                }
             }
         }
-    }
 
-    public static void printDataNewPasswordReset()
-    {
-        // Gets and prints all books in database
-        using (var context = new NewPasswordResetContext())
+        public static void printDataNewPasswordReset()
         {
-
-            var datas = context.NewPasswordReset;
-            foreach (var datas1 in datas)
+            // Gets and prints all books in database
+            using (var context = new NewPasswordResetContext())
             {
-                var data = new StringBuilder();
-                data.AppendLine($"Id: {datas1.newPasswordResetID}");
-                data.AppendLine($"Email: {datas1.householdEmail}");
-                data.AppendLine($"Password: {datas1.newResetPassword}");
-                data.AppendLine($"Password: {datas1.confirmResetPassword}");
-                Console.WriteLine(data.ToString());
+
+                var datas = context.NewPasswordReset;
+                foreach (var datas1 in datas)
+                {
+                    var data = new StringBuilder();
+                    data.AppendLine($"Id: {datas1.newPasswordResetID}");
+                    data.AppendLine($"Email: {datas1.householdEmail}");
+                    data.AppendLine($"Password: {datas1.newResetPassword}");
+                    data.AppendLine($"Password: {datas1.confirmResetPassword}");
+                    Console.WriteLine(data.ToString());
+                }
             }
         }
+
+        //trying to retrieve data through the console
+
+        // public static void find()
+        // {
+        //     String conStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+        //     MySqlConnection con = new MySqlConnection(conStr);
+        //     try
+        //     {
+        //         con.Open();
+
+        //         string sql = "SELECT householdEmail FROM PasswordReset";
+        //         MySqlCommand cmd = new MySqlCommand(sql, con);
+        //         MySqlDataReader rdr = cmd.ExecuteReader();
+
+        //         if (rdr.HasRows)
+        //         {
+        //             while (rdr.Read())
+        //             {
+        //                 Console.WriteLine(rdr[0]);
+        //                 //  Console.WriteLine(rdr[1]);
+        //             }
+        //             rdr.Close();
+        //         }
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         // con.Close();
+        //         Console.WriteLine(ex.ToString());
+        //     }
+        //     con.Close();
+        //     Console.WriteLine("Done.");
+        // }
+
+        //ends here
+
+
+
     }
-
-    //trying to retrieve data through the console
-
-    // public static void find()
-    // {
-    //     String conStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
-    //     MySqlConnection con = new MySqlConnection(conStr);
-    //     try
-    //     {
-    //         con.Open();
-
-    //         string sql = "SELECT householdEmail FROM PasswordReset";
-    //         MySqlCommand cmd = new MySqlCommand(sql, con);
-    //         MySqlDataReader rdr = cmd.ExecuteReader();
-
-    //         if (rdr.HasRows)
-    //         {
-    //             while (rdr.Read())
-    //             {
-    //                 Console.WriteLine(rdr[0]);
-    //                 //  Console.WriteLine(rdr[1]);
-    //             }
-    //             rdr.Close();
-    //         }
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         // con.Close();
-    //         Console.WriteLine(ex.ToString());
-    //     }
-    //     con.Close();
-    //     Console.WriteLine("Done.");
-    // }
-
-    //ends here
-
-
-
-}
 }
 

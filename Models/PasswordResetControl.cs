@@ -11,6 +11,8 @@ namespace Project.Models.PasswordReset
         private string newResetPassword;
         private string confirmResetPassword;
 
+        private string householdPassword;
+
         private int passwordResetId;
         // private string retrieveHouseholdEmail;
 
@@ -39,6 +41,16 @@ namespace Project.Models.PasswordReset
             PasswordResetTDG.remove(householdEmail,passwordResetId);
             this.householdEmail = householdEmail;
             this.passwordResetId = passwordResetId;
+        }
+
+
+        //trying to update password
+        public PasswordResetControl(String householdEmail, String householdPassword)
+        {
+            //querying db
+            PasswordResetTDG.update(householdEmail,householdPassword);
+            // this.householdEmail = householdEmail;
+            this.householdPassword = householdPassword;
         }
 
 //to retrieve through the console
