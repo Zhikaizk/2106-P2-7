@@ -89,6 +89,7 @@ namespace Project.Controllers
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
             ViewBag.Message = "Successsfully reset new password";
 
+
             PasswordResetControl pw = new PasswordResetControl(householdEmail, newResetPassword, confirmResetPassword);
             return View();
         }

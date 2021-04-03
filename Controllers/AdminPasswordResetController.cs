@@ -71,7 +71,7 @@ namespace Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdminPasswordResetPage(string disabledId,string disabledInput)
+        public IActionResult AdminPasswordResetPage(int disabledId,string disabledInput)
         {
 
             Console.WriteLine(disabledId);
@@ -128,7 +128,7 @@ namespace Project.Controllers
 
         //to send email
         [HttpGet]
-        public void submitButton(String householdEmailDetails, String passwordResetId)
+        public void submitButton(String householdEmailDetails, int passwordResetId)
         {
            this.emailAccess = new Email(householdEmailDetails);
          // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.

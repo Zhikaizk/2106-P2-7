@@ -77,7 +77,7 @@ namespace Project.Models
 
 
     //when admin try to delete data onclick submit button
-    public static void remove(String householdEmail, String passwordResetId)
+    public static void remove(String householdEmail, int passwordResetId)
     {
         using (var context = new PasswordResetContext())
         {

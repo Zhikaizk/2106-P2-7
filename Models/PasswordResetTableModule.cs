@@ -9,7 +9,7 @@ namespace Project.Models
         {
             [MySqlCharset("latin1")]
             public string householdEmail { get; set; }
-            public string passwordResetID { get; set; }
+            public int passwordResetID { get; set; }
         }
     
 }

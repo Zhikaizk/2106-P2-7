@@ -11,7 +11,7 @@ namespace Project.Models.PasswordReset
         private string newResetPassword;
         private string confirmResetPassword;
 
-        private string passwordResetId;
+        private int passwordResetId;
         // private string retrieveHouseholdEmail;
 
         //user click on the request button
@@ -33,7 +33,7 @@ namespace Project.Models.PasswordReset
         }
 
         //trying to delete data
-        public PasswordResetControl(String householdEmail, string passwordResetId)
+        public PasswordResetControl(String householdEmail, int passwordResetId)
         {
             //querying db
             PasswordResetTDG.remove(householdEmail,passwordResetId);
