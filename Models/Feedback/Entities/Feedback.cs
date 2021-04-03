@@ -6,27 +6,34 @@ namespace Project.Models.Feedback
 {
     abstract class Feedback : Household, IFeedback
     {
-        private string inputs;
+        private List<Iinputs> inputs = new List<Iinputs>();
+        // private string inputs;
         private string feedbackStatus;
-        private Household household;
+        //private Household household;
         private string householdEmail;
 
         // inputsHandling
-        private void setinputs(string inputs)
+        public List<Iinputs> Inputs
         {
-            this.inputs = inputs;
+            get { return inputs; }
         }
-        public void IHInputs(string inputs)
+
+        // emailHandling
+        private void setHouseholdEmail(string householdEmail)
         {
-            setinputs(inputs);
+            this.householdEmail = householdEmail;
         }
-        private string getInputs()
+        public void IHHouseholdEmail(string householdEmail)
         {
-            return this.inputs;
+            setHouseholdEmail(householdEmail);
         }
-        public string retrieveInputs()
+        private string getHouseholdEmail()
         {
-            return getInputs();
+            return this.householdEmail;
+        }
+        public string retrieveHouseholdEmail()
+        {
+            return getHouseholdEmail();
         }  
 
         // feedbackStatus handling

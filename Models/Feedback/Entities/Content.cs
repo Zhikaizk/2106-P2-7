@@ -15,14 +15,10 @@ namespace Project.Models.Feedback
       }
       
     public void feedbackContent(String content){
-        if (this.content is null){
             setContent(content);
-            //testing purpose
-            // Console.WriteLine(getContent());
-        }
     }
     public string retrieveContent(){
-        return this.content;
+        return getContent();
     }
   }
 }
