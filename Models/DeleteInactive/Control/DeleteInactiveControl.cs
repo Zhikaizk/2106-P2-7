@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,58 +11,75 @@ namespace Project.Models.DeleteInactive
 {
     public class DeleteInactiveControl
     {
-        public DeleteInactiveControl(){
+
+
+        private List<InactiveUsers> iU = new List<InactiveUsers>();
+        public DeleteInactiveControl()
+        {
             //constructor
             // this.btn = button;
-            
+
 
         }
-        public List<InactiveUsers> populateInactiveModel(){
+
+        public List<InactiveUsers> populateInactiveModel()
+        {
 
             //temp made this hardcoded for now.
             //Later will connect to database to store into the model
+            int days = 180;
 
-            List<InactiveUsers> iU = new List<InactiveUsers>();
+            DeleteInactiveTDG delTDG = new DeleteInactiveTDG();
 
-            List<AccountDBAttr> accountList = AccountTDG.retrieveAccounts();
+            DateTime startOfInactiveDays = getStartOfInactiveDate(days);
 
-            foreach (var acc in accountList)
+            iU = delTDG.findInactiveUsers(startOfInactiveDays);
+
+
+            foreach (var usr in iU)
             {
-
-                InactiveUsers temp = new InactiveUsers();
-                temp.id = acc.idAccount;
-                temp.inactivityPeriod = calcInactiveDays(AccountLogsTDG.retrieveLastLoginFromEmail(acc.idAccount));
-                temp.lastActive = AccountLogsTDG.retrieveLastLoginFromEmail(acc.idAccount);
-                temp.username = HouseholdTDG.retrieveUsernameFromEmail(acc.email);
-
-                iU.Add(temp);
+                //calculate and set inactivity period
+                usr.inactivityPeriod = calcInactiveDays(usr.lastActive);
             }
 
             return iU;
         }
 
-        public int calcInactiveDays(DateTime date){
+        public int calcInactiveDays(DateTime date)
+        {
             //get current date
-            DateTime currentDate = DateTime.Now;  
+            DateTime currentDate = DateTime.Now;
             //return number of days in int
             return (currentDate - date).Days;
         }
 
-        public bool checkIfInactive(int inactDays){
-            //if more than 200 inactive days then display as inactive user for admin to delete
-            if(inactDays>200)
-            {return true;}
-            else
-            {return false;}
+        public DateTime getStartOfInactiveDate(int days)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime dateConsideredInactive = currentDate.AddDays(-days);
+
+            return dateConsideredInactive;
         }
 
-        public InactiveUsersList deleteAccount(InactiveUsersList inactUsersList){
+        /*        public bool checkIfInactive(int inactDays){
+                    //if more than 200 inactive days then display as inactive user for admin to delete
+                    if(inactDays>200)
+                    {return true;}
+                    else
+                    {return false;}
+                }*/
+
+        public InactiveUsersList deleteAccount(InactiveUsersList inactUsersList)
+        {
 
             //will change return type to bool to show success or failed
             InactiveUsersList temp = inactUsersList;
             int indexTrack = 0;
-            for(int i =0; i< inactUsersList.InactiveU.Count; i++){
-                if(inactUsersList.InactiveU[i].deleteChk == true){
+            for (int i = 0; i < inactUsersList.InactiveU.Count; i++)
+            {
+                if (inactUsersList.InactiveU[i].deleteChk == true)
+                {
+                    //checking which were selected to delete
                     temp.InactiveU.RemoveAt(indexTrack);
                     indexTrack++;
                 }

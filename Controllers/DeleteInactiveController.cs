@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace Project.Controllers
             return View(iUList);
         }
         [HttpPost]
-        public IActionResult DeleteInactive(InactiveUsersList model){
+        public IActionResult DeleteInactive(InactiveUsersList model)
+        {
 
             DeleteInactiveControl delcon = new DeleteInactiveControl();
             InactiveUsersList iUList = delcon.deleteAccount(model);
