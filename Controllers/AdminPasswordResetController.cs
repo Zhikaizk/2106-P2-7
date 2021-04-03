@@ -136,6 +136,10 @@ namespace Project.Controllers
            EmailNotification notification = new EmailNotification();
             notification.Attach(emailAccess);// if need more emails , do a list and for loop 
             Boolean results= notification.NotifyObservers();// this do one time can liao
+
+            //trying to delete data
+            PasswordResetControl pw = new PasswordResetControl(householdEmailDetails, passwordResetId);
+
         }
 
 

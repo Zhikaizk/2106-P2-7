@@ -75,6 +75,29 @@ namespace Project.Models
 
     }
 
+
+    //when admin try to delete data onclick submit button
+    public static void remove(String householdEmail, String passwordResetId)
+    {
+        using (var context = new PasswordResetContext())
+        {
+            // Creates the database if not exists
+            context.Database.EnsureCreated();
+
+            //insert feedback to db
+            context.PasswordReset.Remove(new PasswordResetTableModule
+            {
+                householdEmail = householdEmail,
+                passwordResetID = passwordResetId
+            });
+
+            // Saves changes
+            context.SaveChanges();
+        }
+
+    }
+
+
     public static void printData()
     {
         // Gets and prints all books in database
@@ -144,6 +167,9 @@ namespace Project.Models
     // }
 
     //ends here
+
+
+
 }
 }
 

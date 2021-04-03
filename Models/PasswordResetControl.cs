@@ -10,6 +10,8 @@ namespace Project.Models.PasswordReset
         private string householdEmail;
         private string newResetPassword;
         private string confirmResetPassword;
+
+        private string passwordResetId;
         // private string retrieveHouseholdEmail;
 
         //user click on the request button
@@ -28,6 +30,15 @@ namespace Project.Models.PasswordReset
             this.householdEmail = householdEmail;
             this.newResetPassword = newResetPassword;
             this.confirmResetPassword = confirmResetPassword;
+        }
+
+        //trying to delete data
+        public PasswordResetControl(String householdEmail, string passwordResetId)
+        {
+            //querying db
+            PasswordResetTDG.remove(householdEmail,passwordResetId);
+            this.householdEmail = householdEmail;
+            this.passwordResetId = passwordResetId;
         }
 
 //to retrieve through the console
