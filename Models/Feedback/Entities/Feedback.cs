@@ -4,7 +4,7 @@ using Project.Models.Notification;
 
 namespace Project.Models.Feedback
 {
-    abstract class Feedback : Household, IFeedback
+    abstract class Feedback : IFeedback
     {
         private List<Iinputs> inputs = new List<Iinputs>();
         // private string inputs;

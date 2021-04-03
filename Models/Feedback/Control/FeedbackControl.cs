@@ -9,63 +9,9 @@ namespace Project.Models.Feedback
     public class FeedbackControl
     {
         private IEmail emailnotification;
-        //retrieve Data (default: All)
+
         public FeedbackControl()
         {
-            //querying db (call data gateway to findAll, return as a list of lists)
-            List<List<string>> arList = FeedbackTDG1.findAll();
-            //testing
-            Console.WriteLine(arList.Count);
-
-            for (int i = 0; i < arList.Count; i++)
-            {
-                Console.WriteLine("----------");
-                Console.WriteLine(arList[i][0]);
-                Console.WriteLine(arList[i][1]);
-                Console.WriteLine(arList[i][2]);
-                Console.WriteLine(arList[i][3]);
-                Console.WriteLine(arList[i][4]);
-
-            }
-        }
-
-        public FeedbackControl(int fbType)
-        {
-            // calling TDG
-            switch (fbType)
-            {
-                case 1:
-                    List<List<string>> all = FeedbackTDG1.findAll();
-                    //testing
-                    Console.WriteLine(all.Count);
-                    break;
-                case 2:
-                    List<List<string>> resolved = FeedbackTDG1.getResolvedFeedback();
-                    //testing
-                    Console.WriteLine(resolved.Count);
-                    // getting all values
-                    foreach (var list in resolved)
-                    {
-                        foreach (var value in list)
-                        {
-                            Console.WriteLine(value);
-                        }
-                    }
-                    break;
-
-                default: // set default as 3
-                    List<List<string>> pending = FeedbackTDG1.getPendingFeedback();
-                    //testing
-                    Console.WriteLine(pending.Count);
-                    break;
-            }
-        }
-
-        //update feedback status to db
-        public FeedbackControl(string feedbackStatus)
-        {
-            //querying db
-            FeedbackTDG1.getResolvedFeedback();
         }
 
         //insert Data
@@ -81,9 +27,8 @@ namespace Project.Models.Feedback
                     {
                         inputs.feedbackContent(content);
                         //querying db (TM called TDG)
-                        FeedbackTDG1.insert(dev.GetType().Name, inputs.retrieveContent(), dev.retrieveHouseholdEmail());
+                        FeedbackTDG.insert(dev.GetType().Name, inputs.retrieveContent(), dev.retrieveHouseholdEmail());
                     }
-
                     break;
                 case "Connection":
                     Feedback conn = new Connection();
@@ -92,12 +37,9 @@ namespace Project.Models.Feedback
                     {
                         inputs.feedbackContent(content);
                          //querying db (TM called TDG)
-                        FeedbackTDG1.insert(conn.GetType().Name,  inputs.retrieveContent(), conn.retrieveHouseholdEmail());
-
+                        FeedbackTDG.insert(conn.GetType().Name,  inputs.retrieveContent(), conn.retrieveHouseholdEmail());
                     }
-                   
                     break;
-
                 default: // set default as "Accounts"
                     Feedback acc = new FbAccount();
                     acc.IHHouseholdEmail(email);
@@ -105,9 +47,8 @@ namespace Project.Models.Feedback
                     {
                         inputs.feedbackContent(content);
                         //querying db (TM called TDG)
-                        FeedbackTDG1.insert(acc.GetType().Name, inputs.retrieveContent(), acc.retrieveHouseholdEmail());
+                        FeedbackTDG.insert(acc.GetType().Name, inputs.retrieveContent(), acc.retrieveHouseholdEmail());
                     }
-
                     break;
             }
             return;
@@ -118,7 +59,7 @@ namespace Project.Models.Feedback
         public FeedbackControl(string subject, string content, int feedbackId, string feedbackStatus, string email)
         {
 
-            FeedbackTDG1.updateStatus(feedbackStatus, feedbackId);
+            FeedbackTDG.updateStatus(feedbackStatus, feedbackId);
            
             this.emailnotification = new Email(email);
             //can only access to whatever was implemented in the interface.

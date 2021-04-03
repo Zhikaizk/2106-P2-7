@@ -1,63 +1,191 @@
 using System;
+using System.Data;
+
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using EFCoreSample;
-using System.Text;
 
-namespace EFCoreSample
+namespace Project.Models.Feedback
 {
-    public class FeedbackTDG{
-        // insert feedback
-        public static void insertData(String feedbackType, String feedbackContent)
-        {
-            using (var context = new FeedbackContext())
-            {
-                // Creates the database if not exists
-                context.Database.EnsureCreated();
-
-                //insert feedback to db
-                context.Feedback.Add(new FeedbackDBAttr
-                {
-                    feedbackContent = feedbackContent,
-                    feedbackType = feedbackType,
-                    feedbackStatus = "pending",
-                    householdEmail = "jialin@gmail.com"
-                });
-
-                // Saves changes
-                context.SaveChanges();
-            }
-        }
+    public class FeedbackTDG
+    {
         // retrieve all feedback
-        public static void printData()
+        public static List<List<string>> findAll()
         {
-            // Gets and prints all books in database
-            using (var context = new FeedbackContext())
+            // create arrayList to store data retrieved
+            List<List<string>> feedbackList = new List<List<string>>(); 
+
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
             {
-                
-                var datas = context.Feedback;
-                foreach (var data1 in datas)
+                conn.Open();
+
+                string sql = "SELECT * FROM zk.Feedback";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
                 {
-                    // var data = new StringBuilder();
-                    var data = new StringBuilder();
-                    data.AppendLine($"Id: {data1.feedbackId}");
-                    data.AppendLine($"Type: {data1.feedbackType}");
-                    data.AppendLine($"Status: {data1.feedbackStatus}");
-                    data.AppendLine($"Content: {data1.feedbackContent}");
-                    data.AppendLine($"Email: {data1.householdEmail}");
-                    Console.WriteLine(data.ToString());
-                  
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        data.Add(rdr[i].ToString());
+                    }
+
+                    // adding terms array into arrayList
+                    feedbackList.Add(data);
                 }
+
+                rdr.Close();
+
+                return feedbackList;
+
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+            return feedbackList;
         }
-        // retrieve pending feedback
+
         // retrieve resolved feedback
+        public static List<List<string>> getResolvedFeedback()
+        {
+            // create arrayList to store data retrieved
+            List<List<string>> feedbackList = new List<List<string>>();
+
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                string sql = "SELECT * FROM zk.Feedback WHERE feedbackStatus = 'resolved'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        data.Add(rdr[i].ToString());
+                    }
+
+                    // adding terms array into arrayList
+                    feedbackList.Add(data);
+                }
+
+                rdr.Close();
+
+                return feedbackList;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+            return feedbackList;
+        }
+
+        // retrieve pending feedback
+        public static List<List<string>> getPendingFeedback()
+        {
+            // create arrayList to store data retrieved
+            List<List<string>> feedbackList = new List<List<string>>();
+
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+
+                string sql = "SELECT * FROM zk.Feedback WHERE feedbackStatus = 'pending'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+
+                    // total number of column in zk.Feedback
+                    List<string> data = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        data.Add(rdr[i].ToString());
+                    }
+
+                    // adding terms array into arrayList
+                    feedbackList.Add(data);
+                }
+
+                rdr.Close();
+
+                return feedbackList;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+            return feedbackList;
+        }
+
+        // updating feedback status column
+        public static void updateStatus(string status, int id)
+        {
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+
+                string sql = "UPDATE zk.Feedback SET feedbackStatus = '" + status + "' WHERE feedbackId = '" + id + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    Console.WriteLine(rdr[0]);
+                    Console.WriteLine(rdr[1]);
+                    Console.WriteLine(rdr[2]);
+                    Console.WriteLine(rdr[3]);
+                }
+                rdr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
+        }
+
+        //insert data
+        public static void insert(string type, string content, string email)
+        {
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                conn.Open();
+                // not good to do like this because can be easily attack by hackers
+                string sql = "INSERT INTO zk.Feedback(feedbackContent, householdEmail, feedbackStatus, feedbackType) VALUES('" + content + "', '" + email + "', 'pending', '" + type + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
+        }
     }
-    
 }

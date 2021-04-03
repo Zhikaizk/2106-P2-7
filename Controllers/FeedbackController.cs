@@ -39,7 +39,7 @@ namespace Project.Controllers
             string type = fbType;
 
             // need to get email from session (when integrated!)
-            string email = "jialin@gmail.com";
+            string email = "jialin41@gmail.com";
 
             //obj created to do logic in control class
             FeedbackControl fc = new FeedbackControl(type, content, email);
@@ -52,8 +52,8 @@ namespace Project.Controllers
         //deafult when page loads (administrator)
         public IActionResult feedbackAdmin(string feedbackId)
         {
+            // 1 -> retrieve all details
             ViewData["fbTypeKey"] = 1;
-            // FeedbackControl fc = new FeedbackControl();
             return View();
         }
 
@@ -61,18 +61,13 @@ namespace Project.Controllers
         public IActionResult feedbackAdmin(int fbType)
         {
             ViewData["fbTypeKey"] = fbType;
-            // string status = fbStatusUpdate;
-            // FeedbackControl fc = new FeedbackControl(fbType);
             return View();
         }
 
         //deafult when page loads (administrator)
         public IActionResult feedbackAdminReply(string feedbackId, string email, string status)
         {
-            // Console.WriteLine(feedbackId);
-            // Console.WriteLine(email);
-            // Console.WriteLine(status);
-
+            // store and pass required information to feedbackAdminReply
             ViewData["feedbackId"] = feedbackId;
             ViewData["householdEmail"] = email;
             ViewData["feedbackStatus"] = status;

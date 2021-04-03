@@ -80,7 +80,7 @@
                             <label for="FeedbackContent" class="col-sm-2 col-form-label">Content</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="feedback" id="FeedbackContent" rows="3"
-                                    placeholder="Please give a description on the issues you are facing."></textarea>
+                                    placeholder="Please give a description on the issues you are facing." required></textarea>
                             </div>
                         </div>
                         <button type="submit" id="fb_submit_btn" class="btn btn-success">Submit</button>
@@ -92,6 +92,7 @@
                 <script type="text/javascript">
                     window.onload = function () {
                         alert("@ViewBag.Message");
+                        
                     };
                 </script>
             }
