@@ -14,6 +14,9 @@ namespace Project.Models.DeleteInactive
 
 
         private List<InactiveUsers> iU = new List<InactiveUsers>();
+
+        private DeleteInactiveTDG delTDG = new DeleteInactiveTDG();
+
         public DeleteInactiveControl()
         {
             //constructor
@@ -28,8 +31,6 @@ namespace Project.Models.DeleteInactive
             //temp made this hardcoded for now.
             //Later will connect to database to store into the model
             int days = 180;
-
-            DeleteInactiveTDG delTDG = new DeleteInactiveTDG();
 
             DateTime startOfInactiveDays = getStartOfInactiveDate(days);
 
@@ -73,19 +74,52 @@ namespace Project.Models.DeleteInactive
         {
 
             //will change return type to bool to show success or failed
-            InactiveUsersList temp = inactUsersList;
-            int indexTrack = 0;
-            for (int i = 0; i < inactUsersList.InactiveU.Count; i++)
+
+            InactiveUsersList updateInactiveUserList = new InactiveUsersList();
+            updateInactiveUserList.InactiveU = iU;
+
+
+            int indexTrack = 0;//for tracking the index once deleted
+
+            if(inactUsersList.InactiveU != null)
             {
-                if (inactUsersList.InactiveU[i].deleteChk == true)
+                updateInactiveUserList = inactUsersList;
+                for (int i = 0; i < inactUsersList.InactiveU.Count; i++)
                 {
                     //checking which were selected to delete
-                    temp.InactiveU.RemoveAt(indexTrack);
+                    if (inactUsersList.InactiveU[i].deleteChk == true)
+                    {
+                        //get household info for each
+                        IHousehold householdInfo = new Household();
+                        householdInfo = delTDG.findHouseholdInfo(inactUsersList.InactiveU[i].email);
+
+
+                        DateTime currentDate = DateTime.Now;
+
+                        //create new deleteLog
+                        DeletedHouseholdLogs delLog = new DeletedHouseholdLogs();
+                        delLog.accountID = inactUsersList.InactiveU[i].id;
+                        delLog.email = householdInfo.email;
+                        delLog.username = householdInfo.username;
+                        delLog.hlocation = householdInfo.hlocation;
+                        delLog.eplan = householdInfo.eplan;
+                        delLog.property_size = householdInfo.property_size;
+                        delLog.roomlist = householdInfo.roomlist;
+                        delLog.deleted_date = currentDate;
+                        delLog.reason_for_deletion = "Account has been inactive for more than 6 months and hence has been Deleted";
+
+                        //add deleteLog to database
+                        delTDG.insertDeleteLog(delLog);
+
+                        //remove InactiveUsers by index
+                        updateInactiveUserList.InactiveU.RemoveAt(indexTrack);
+                        indexTrack++;
+                    }
                     indexTrack++;
                 }
-                indexTrack++;
             }
-            return temp;
+
+            return updateInactiveUserList;
 
         }
 

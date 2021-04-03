@@ -22,17 +22,18 @@
         </tr>
         @for (int i = 0; i < Model.InactiveU.Count; i++)
         {
-            <tr>
-                <td>@Model.InactiveU[i].id</td>
-                <td>@Model.InactiveU[i].username</td>
-                <td>@Model.InactiveU[i].inactivityPeriod</td>
-                <td>@Model.InactiveU[i].lastActive</td>
-                <td>@Html.CheckBoxFor(m => Model.InactiveU[i].deleteChk)</td>
-                @Html.HiddenFor(model => model.InactiveU[i].id)
-                @Html.HiddenFor(model => model.InactiveU[i].username)
-                @Html.HiddenFor(model => model.InactiveU[i].inactivityPeriod)
-                @Html.HiddenFor(model => model.InactiveU[i].lastActive)
-            </tr>
+    <tr>
+        <td>@Model.InactiveU[i].id</td>
+        <td>@Model.InactiveU[i].username</td>
+        <td>@Model.InactiveU[i].inactivityPeriod</td>
+        <td>@Model.InactiveU[i].lastActive</td>
+        <td>@Html.CheckBoxFor(m => Model.InactiveU[i].deleteChk)</td>
+        @Html.HiddenFor(model => model.InactiveU[i].id)
+        @Html.HiddenFor(model => model.InactiveU[i].username)
+        @Html.HiddenFor(model => model.InactiveU[i].email)
+        @Html.HiddenFor(model => model.InactiveU[i].inactivityPeriod)
+        @Html.HiddenFor(model => model.InactiveU[i].lastActive)
+    </tr>
         }
 
 

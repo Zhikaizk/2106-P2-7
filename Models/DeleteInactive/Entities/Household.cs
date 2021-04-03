@@ -13,5 +13,22 @@ namespace Project.Models.DeleteInactive
         public string eplan { get; set; }
         public int property_size { get; set; }
         public string roomlist { get; set; }
+        
+        public Household()
+        {
+
+        }
+
+        public Household(string email, string username, int hlocation, string eplan, int property_size, string roomlist)
+        {
+            this.email = email;
+            this.username = username;
+            this.hlocation = hlocation;
+            this.eplan = eplan;
+            this.property_size = property_size;
+            this.roomlist = roomlist;
+        }
+
+
     }
 }
