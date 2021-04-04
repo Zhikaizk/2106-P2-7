@@ -1,8 +1,8 @@
 @using Project.Models.Feedback
 @{
-  var hello = FeedbackTDG.findAll();
-  var hello1 = FeedbackTDG.getPendingFeedback();
-  var hello2 = FeedbackTDG.getResolvedFeedback();
+  var retrieveAll = FeedbackTDG.findAll();
+  var retrievePending = FeedbackTDG.getPendingFeedback();
+  var retrieveResolved = FeedbackTDG.getResolvedFeedback();
 }
 @{
   ViewData["Title"] = "Administrator Feedback System";
@@ -36,62 +36,63 @@
     <tbody>
       @switch ((int)(ViewData["fbTypeKey"]))
       {
-        case 2 :
-        @for (int i = 0; i < hello1.Count; i++)
+        case 1 :
+        @for (int i = 0; i < retrieveAll.Count; i++)
         {
           <tr>
             @* feedbackId *@
-            <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")' ;>@hello1[i][0]</a></th>
+            <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback",new {feedbackId=retrieveAll[i][0], email=retrieveAll[i][2], status=retrieveAll[i][3]})' ;>@retrieveAll[i][0]</a></th>
             @* hosueholdEmail *@
-            <td>@hello1[i][1]</td>
+            <td>@retrieveAll[i][1]</td>
             @* hosueholdEmail *@
-            <td>@hello1[i][2]</td>
+            <td>@retrieveAll[i][2]</td>
 
             @* feedbackType *@
-            <td>@hello1[i][4]</td>
+            <td>@retrieveAll[i][4]</td>
 
             @* feedbackStatus *@
-            <td>@hello1[i][3]</td>
+            <td>@retrieveAll[i][3]</td>
           </tr>
           }
         break;
-        case 3 :
-          @for (int i = 0; i < hello2.Count; i++)
+        case 2 :
+          @for (int i = 0; i < retrievePending.Count; i++)
         {
           <tr>
             @* feedbackId *@
-            <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback")' ;>@hello2[i][0]</a></th>
+            <th scope="row"><a href='@Url.Action("feedbackAdminReply", "Feedback",new {feedbackId=retrievePending[i][0], email=retrievePending[i][2], status=retrievePending[i][3]})' ;>@retrievePending[i][0]</a></th>
             @* hosueholdEmail *@
-            <td>@hello2[i][1]</td>
+            <td>@retrievePending[i][1]</td>
             @* hosueholdEmail *@
-            <td>@hello2[i][2]</td>
+            <td>@retrievePending[i][2]</td>
 
             @* feedbackType *@
-            <td>@hello2[i][4]</td>
+            <td>@retrievePending[i][4]</td>
 
             @* feedbackStatus *@
-            <td>@hello2[i][3]</td>
+            <td>@retrievePending[i][3]</td>
 
           </tr>
         }
         break;
         default:
-          @for (int i = 0; i < hello.Count; i++)
+          @for (int i = 0; i < retrieveResolved.Count; i++)
         {
           <tr>
             @* feedbackId *@
-            <th scope="row"><a runat="server" href='@Url.Action("feedbackAdminReply", "Feedback",new {feedbackId=hello[i][0], email=hello[i][2], status=hello[i][3]})'>@hello[i][0]</a></th>
+            <th scope="row"><a runat="server" href='@Url.Action("feedbackAdminReply", "Feedback",new {feedbackId=retrieveResolved[i][0], email=retrieveResolved[i][2], status=retrieveResolved[i][3]})'>@retrieveResolved[i][0]</a></th>
           
             @* hosueholdContent *@
-            <td>@hello[i][1]</td>
+            <td>@retrieveResolved[i][1]</td>
+
             @* hosueholdEmail *@
-            <td>@hello[i][2]</td>
+            <td>@retrieveResolved[i][2]</td>
 
             @* feedbackType *@
-            <td>@hello[i][4]</td>
+            <td>@retrieveResolved[i][4]</td>
 
             @* feedbackStatus *@
-            <td>@hello[i][3]</td>
+            <td>@retrieveResolved[i][3]</td>
           </tr>
         }
         break;
