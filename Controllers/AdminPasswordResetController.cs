@@ -85,6 +85,10 @@ namespace Project.Controllers
             
 
             submitButton(disabledInput,disabledId);
+
+            // PasswordResetController passwordResetController = new PasswordResetController();
+            // passwordResetController.resetPasswordPage(disabledInput);
+            // return View(disabledInput);
             return View();
         }
 
@@ -139,7 +143,6 @@ namespace Project.Controllers
 
             //trying to delete data
             PasswordResetControl pw = new PasswordResetControl(householdEmailDetails, passwordResetId);
-
         }
 
 

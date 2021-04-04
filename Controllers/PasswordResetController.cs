@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 
 using Project.Models.Notification;
 
+using System.Net.Http;
+
 
 //added new things to try to fetch data 
 using MySql.Data.MySqlClient;
@@ -37,7 +39,7 @@ namespace Project.Controllers
             return View();
         }
 
-        //get the new password
+        // get the new password
         public ActionResult resetPasswordPage()
         {
             return View();
@@ -73,23 +75,34 @@ namespace Project.Controllers
             return View();
         }
 
-  
+//trying to retrieve the household email when they click on the url 
+        [HttpGet]
+        public ActionResult resetPasswordPage(String householdEmailDetails)
+        {
+            // String email = householdEmail;
+            ViewData["householdEmailDetails"] = householdEmailDetails;
+
+            Console.WriteLine(ViewData["householdEmailDetails"] +"  get only email details" + householdEmailDetails +  "  get only email details" );
+
+            return View();
+        }
 
         //check the credentials
         [HttpPost]
         public ActionResult resetPasswordPage(PasswordResetModel objPasswordResetModel, String householdEmail, String newResetPassword, String confirmResetPassword,String householdPassword)
         {
-            String email = householdEmail;
+            // String email = householdEmail;
+            // ViewData["householdEmailDetails"] = householdEmail;
             String newPassword = newResetPassword;
             String confirmNewResetPassword = confirmResetPassword;
 
-            Console.WriteLine(email);
+            // Console.WriteLine(ViewData["householdEmailDetails"] + " under the resetj password email" );
             Console.WriteLine(newPassword);
             Console.WriteLine(confirmNewResetPassword);
 
             //trying to update household password
             householdPassword = newPassword;
-            Console.WriteLine(email + "under the update password email");
+            // Console.WriteLine(ViewData["householdEmailDetails"] + " under the update password email");
             Console.WriteLine(newPassword + "under update password password" );
 
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
@@ -101,6 +114,8 @@ namespace Project.Controllers
             PasswordResetControl pw1 = new PasswordResetControl(householdEmail, householdPassword);
             return View();
         }
+
+
     
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
