@@ -35,8 +35,6 @@ namespace Project.Models
                     householdEmail = householdEmail,
                     // newResetPassword = newResetPassword,
                     // confirmResetPassword = confirmResetPassword
-
-
                     newResetPassword = encryption.encryptionPerformed(newResetPassword),
                     confirmResetPassword = encryption.encryptionPerformed(confirmResetPassword)
 

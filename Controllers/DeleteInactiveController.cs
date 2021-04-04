@@ -36,5 +36,18 @@ namespace Project.Controllers
 
             return View(iUList);
         }
+
+        public IActionResult ViewDeleted()
+        {
+            //initialize the delete control here
+            DeleteInactiveControl delCon = new DeleteInactiveControl();
+
+            //populate the Delete Model with inactive user information
+            List<DeletedHouseholdLogs> delList = new List<DeletedHouseholdLogs>();
+            delList = delCon.populateDeletedLogsView();
+
+            //populate the view with the deleted logs
+            return View(delList);
+        }
     }
 }
