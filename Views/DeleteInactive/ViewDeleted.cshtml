@@ -1,0 +1,28 @@
+﻿
+@{ ViewData["Title"] = "ViewDeleted"; }
+
+<div class="text-center">
+    <h1 class="display-4">Admin Deleted Logs page</h1>
+
+    <table class="table">
+        <tr>
+            <th>User ID</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Date Deleted</th>
+            <th>Reason for Deletion</th>
+        </tr>
+        @foreach (var data in Model)
+        {
+<tr>
+    <td>@data.accountID</td>
+    <td>@data.email</td>
+    <td>@data.username</td>
+    <td>@data.deleted_date</td>
+    <td>@data.reason_for_deletion</td>
+</tr>            }
+
+
+    </table>
+
+</div>

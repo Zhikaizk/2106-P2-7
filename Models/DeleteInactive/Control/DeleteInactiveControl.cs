@@ -2,6 +2,7 @@
 
 
 
+using Project.Models.Notification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Project.Models.DeleteInactive
 
         private DeleteInactiveTDG delTDG = new DeleteInactiveTDG();
 
+        private IEmail emailAccess;
+
         public DeleteInactiveControl()
         {
             //constructor
@@ -28,9 +31,7 @@ namespace Project.Models.DeleteInactive
         public List<InactiveUsers> populateInactiveModel()
         {
 
-            //temp made this hardcoded for now.
-            //Later will connect to database to store into the model
-            int days = 180;
+            int days = 180;//180 days is 6 months
 
             DateTime startOfInactiveDays = getStartOfInactiveDate(days);
 
@@ -44,6 +45,12 @@ namespace Project.Models.DeleteInactive
             }
 
             return iU;
+        }
+
+        public List<DeletedHouseholdLogs> populateDeletedLogsView()
+        {
+
+            return delTDG.findDeletedLogs();
         }
 
         public int calcInactiveDays(DateTime date)
@@ -97,19 +104,30 @@ namespace Project.Models.DeleteInactive
                         DateTime currentDate = DateTime.Now;
 
                         //create new deleteLog
-                        DeletedHouseholdLogs delLog = new DeletedHouseholdLogs();
-                        delLog.accountID = inactUsersList.InactiveU[i].id;
-                        delLog.email = householdInfo.email;
-                        delLog.username = householdInfo.username;
-                        delLog.hlocation = householdInfo.hlocation;
-                        delLog.eplan = householdInfo.eplan;
-                        delLog.property_size = householdInfo.property_size;
-                        delLog.roomlist = householdInfo.roomlist;
-                        delLog.deleted_date = currentDate;
-                        delLog.reason_for_deletion = "Account has been inactive for more than 6 months and hence has been Deleted";
+                        DeletedHouseholdLogs delLog = new DeletedHouseholdLogs(
+                            inactUsersList.InactiveU[i].id,
+                            householdInfo.email,
+                            householdInfo.username,
+                            householdInfo.hlocation,
+                            householdInfo.eplan,
+                            householdInfo.property_size,
+                            householdInfo.roomlist,
+                            currentDate,
+                            "Account has been inactive for more than 6 months and hence has been Deleted");
+
 
                         //add deleteLog to database
                         delTDG.insertDeleteLog(delLog);
+
+                        //sending email to user about account deletion 
+                        this.emailAccess = new Email(householdInfo.email);
+                        emailAccess.Update("Account Inactive deletion", "Hi there "+ householdInfo.username + ", this email is to notify you that your Acount was deleted due to inactivity for more than 6 months. last login was on the "
+                            + inactUsersList.InactiveU[i].lastActive.ToString() + ". Please email Smart Home Management System help team at help@SHMS.com.sg for reactivating account.");
+
+                        EmailNotification notification = new EmailNotification();
+                        notification.Attach(emailAccess);
+                        notification.NotifyObservers();
+
 
                         //remove InactiveUsers by index
                         updateInactiveUserList.InactiveU.RemoveAt(indexTrack);
