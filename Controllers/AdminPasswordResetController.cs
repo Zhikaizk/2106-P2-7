@@ -85,6 +85,10 @@ namespace Project.Controllers
             
 
             submitButton(disabledInput,disabledId);
+
+            // PasswordResetController passwordResetController = new PasswordResetController();
+            // passwordResetController.resetPasswordPage(disabledInput);
+            // return View(disabledInput);
             return View();
         }
 
@@ -132,14 +136,13 @@ namespace Project.Controllers
         {
            this.emailAccess = new Email(householdEmailDetails);
          // my Email have Subscribe and unSubscribe but IEmail don't allow others to access it.
-           emailAccess.Update("Reset Password","This is the link to reset password https://localhost:5001/PasswordReset/ResetPasswordPage/" +  passwordResetId + householdEmailDetails);//(subject,contentofemail)
+           emailAccess.Update("Reset Password","This is the link to reset password https://localhost:5001/PasswordReset/ResetPasswordPage?passwordResetId=" +  passwordResetId +"&householdEmailDetails="+ householdEmailDetails);//(subject,contentofemail)
            EmailNotification notification = new EmailNotification();
             notification.Attach(emailAccess);// if need more emails , do a list and for loop 
             Boolean results= notification.NotifyObservers();// this do one time can liao
 
             //trying to delete data
             PasswordResetControl pw = new PasswordResetControl(householdEmailDetails, passwordResetId);
-
         }
 
 
