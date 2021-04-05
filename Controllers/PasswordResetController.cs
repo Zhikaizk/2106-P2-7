@@ -13,25 +13,24 @@ using System.Threading.Tasks;
 
 using Project.Models.Notification;
 
-using System.Net.Http;
 
+
+using System.Net.Http;
 
 //added new things to try to fetch data 
 using MySql.Data.MySqlClient;
-//ends here 
+//ends here
 
 namespace Project.Controllers
 {
     public class PasswordResetController : Controller
     {
-
         private readonly ILogger<PasswordResetController> _logger;
 
         public PasswordResetController(ILogger<PasswordResetController> logger)
         {
             _logger = logger;
         }
-
 
         //get the passwordreset
         public IActionResult passwordReset()
@@ -61,18 +60,60 @@ namespace Project.Controllers
             return View(passwordResetModel);
         }
 
-        //check the credentials
+        // //check the credentials
         [HttpPost]
         public ActionResult passwordReset(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
-            String email = householdEmail;
-            Console.WriteLine(email);
+            find(householdEmail);
+            // String email = householdEmail;
+            // Console.WriteLine(email);
 
             //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
-            ViewBag.Message = "Successsfully requested reset password";
+            // ViewBag.Message = "Successsfully requested reset password";
 
-            PasswordResetControl pw = new PasswordResetControl(householdEmail);
+            // PasswordResetControl pw = new PasswordResetControl(householdEmail);
             return View();
+        }
+
+
+        //check the credentials
+        private void find(String householdEmail)
+        {
+                            Console.WriteLine("enter find()");
+            String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try{
+                conn.Open();
+                MySqlCommand command;
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                String sql = "";
+                MySqlDataReader rdr;
+                Console.WriteLine("enter connection()");
+                sql="SELECT householdEmail FROM zk.testingHouseholdAccount where householdEmail = '" + householdEmail +"' ";
+                Console.WriteLine("enter sql " + sql);
+                command = new MySqlCommand(sql, conn);
+                rdr = command.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    Console.WriteLine("enter row()");
+                    Console.WriteLine("enter valid");
+                    ViewBag.Message = "Valid Account, Please check your email for the request of reset password";
+                    String email = householdEmail;
+                    Console.WriteLine(email);
+                    PasswordResetControl pw = new PasswordResetControl(householdEmail);
+            }
+            else{
+                Console.WriteLine("enter invalid()");
+                ViewBag.Message = "Invalid Account, Please key in a valid account";
+            }
+            Console.WriteLine("Done.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            conn.Close();
+
         }
 
 //trying to retrieve the household email when they click on the url 
