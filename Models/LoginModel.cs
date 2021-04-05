@@ -9,7 +9,7 @@ namespace Project.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Please enter user name.")]
+        [Required(ErrorMessage = "Please enter user name.")] //test
         [DataType(DataType.EmailAddress)]
         [Display(Name = "User Name")]
         [StringLength(30)]
