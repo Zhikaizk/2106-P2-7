@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Home Management";
+}
+
+<!DOCTYPE html>
+<p>TEAM 8 HOMEPAGE</p>
+@* <head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $("body").on('click', '#btnEdit', function () {
+                $("#house-modal").modal("hide");
+                var obj = {};
+                obj.Id = $(this).attr('data-id');
+
+                $.ajax({
+                    url: 'Household/Edit',
+                    data: JSON.stringify(obj),
+                    type: 'POST',
+                    dataType: 'html',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var id = JSON.parse(response).id;
+                        var email = JSON.parse(response).email;
+                        var propertysize = JSON.parse(response).propertysize;
+                        $('#id').val(id);
+                        $('#email').val(email);
+                        $('#name').val(name);
+                        $('#password').val(password);
+                        $('#postalcode').val(postalcode);
+                        $('#propertysize').val(propertysize);
+                        $("#house-modal").modal("show");
+                    }
+                });
+            });
+        });
+    </script>
+</head> *@
+
+@* <body>
+    <div class="text-center">
+        <h1 class="display-4">Home Management</h1>
+    </div>
+
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Household ID
+                    </th>
+                    <th>
+                        Household name
+                    </th>
+                   
+                    <th>
+                        Email Address
+                    </th>
+                    <th>
+                        Postal Code
+                    </th>
+                    <th>
+                        Property Size
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                @foreach (var home in Model)
+                {
+            <tr>
+                <td>@home.id</td>
+                <td>@home.name</td>
+                <td>@home.email</td>
+                <td>@home.postalcode</td>
+                <td>@home.property_size</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary btn-block" id="btnEdit" data-toggle="modal" data-target="#house-modal">Update</button>
+
+                </td>
+                <td>
+                    <button name="id" class="btn btn-outline-primary btn-block" value="@home.id" type="submit" asp-action="Delete">Delete</button>
+                </td>
+            </tr>
+                }
+            </thead>
+        </table>
+    </form>
+
+    <!-- update household modal-->
+    @foreach (var home in Model)
+    {
+        <div class="modal fade" id="house-modal" tabindex="-1" role="dialog" aria-labelledby="eModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eModalLabel">Update Household Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="content">
+                            <form asp-action="Update" asp-controller="Household" method="post">
+                                <label for="text">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="@home.name" pattern="^[a-z\s]*$*" title="Alphabets only!"/>
+                                <label for="text">Password</label>
+                                <input type="password" class="form-control" id="pass" name="pass" value="@home.password" />
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="@home.email" />
+                                <label for="email">Postal Code</label>
+                                <input type="text" class="form-control" id="postalcode" name="postalcode" value="@home.postalcode" pattern="^\d{6}$" title="6 Numbers only"/>
+                                <label for="email">Property Size</label>
+                                <input type="text" class="form-control" id="property_size" name="property_size" value="@home.property_size" pattern="^\d{4}$" title="4 Numbers only"/>
+                                <input type="hidden" class="form-control" ids="id" name="id" value="@home.id" />
+                                <br />
+                                <button class="btn btn-primary" type="submit">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body> *@

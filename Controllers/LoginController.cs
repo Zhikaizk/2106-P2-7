@@ -21,11 +21,19 @@ namespace Project.Controllers
             // login function
             return View();
         }
-       
-        [HttpPost]
-        public ActionResult WelcomePage()
+
+               
+         [HttpPost]
+        public ActionResult Login(LoginModel model)
         {
-            return View();
+        LoginManagementControl logincontrol = new LoginManagementControl(model.UserName.ToString(),model.Password.ToString());
+        String accounttype = logincontrol.Accounttype();
+        if(accounttype == "household"){
+        return View("~/Views/Household/Home.cshtml"); // astra page here
+        }else{
+        return View("~/Views/Home/Index.cshtml"); // our page here
         }
+        }
+       
     }
 }

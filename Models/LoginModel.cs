@@ -9,6 +9,19 @@ namespace Project.Models
 {
     public class LoginModel
     {
+        public String id { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
+
+        public String type { get; set; }
+
+        public LoginModel(){}
+        public LoginModel(String id,String username,String password, String type){
+            this.id = id;
+            this.username = username;
+            this.password = password;
+        
+        }
         [Required(ErrorMessage = "Please enter user name.")] //test
         [DataType(DataType.EmailAddress)]
         [Display(Name = "User Name")]
