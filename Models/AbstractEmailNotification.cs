@@ -10,7 +10,7 @@ namespace Project.Models.Notification
     {
         // the list of services to be sent notifications
         private ICollection<IEmail> listeners;
-        private readonly string gmailuserid = "ict2106t7@gmail.com";
+        private readonly string gmailUserId = "ict2106t7@gmail.com";
 
 
         // constructor
@@ -40,7 +40,7 @@ namespace Project.Models.Notification
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress(gmailuserid);
+                message.From = new MailAddress(gmailUserId);
                 message.To.Add(new MailAddress(listener.emailAddress));
                 message.Subject = listener.updateSubject;
                 message.IsBodyHtml = true; //to make message body as html  
@@ -49,7 +49,7 @@ namespace Project.Models.Notification
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(gmailuserid, EncryptedAdminGmailSingleton.GetInstance().decryptedpasswordDone());
+                smtp.Credentials = new NetworkCredential(gmailUserId, EncryptedAdminGmailSingleton.GetInstance().decryptedpasswordDone());
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
             }
