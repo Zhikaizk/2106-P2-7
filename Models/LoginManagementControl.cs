@@ -8,11 +8,46 @@ using Microsoft.Extensions.Logging;
 using Project.Models; 
 using System.Security.Cryptography;
 using System.Text; 
+using ICT_2106.Models;
  
 
   namespace Project.Controllers
         {
-             public class LoginManagementControl : ILoginManagement {
+             public class LoginManagementControl  {
+
+                 private String typeofaccess;
+
+
+
+                 public LoginManagementControl(String enteredusername,String enteredpassword){
+                 
+                LoginTDG testing = new LoginTDG();
+                // array of string of details
+                List<String> Details=testing.find(enteredusername,enteredpassword);
+                String[] str = Details.ToArray();
+                AccountFactory factory = new AccountFactory();
+                Account type=AccountFactory.createAccount(str);
+                Console.WriteLine(type.getRole().ToString());
+                if(type.getRole().ToString() =="household"){
+                    typeofaccess = "household";
+                }
+                else{
+                    typeofaccess = "admin";
+                }
+                 }
+
+                 public string Accounttype(){
+                     return typeofaccess;
+                 }
+
+
+
+
+
+
+
+
+
 //                 public LoginManagementControl(string UserName, string Password){
 //  if (ModelState.IsValid)
 //             {
@@ -38,32 +73,6 @@ using System.Text;
 //             return View(login);
 //         }
 
-        //To encypt the data to protect information
-        private static string Encrypt(string username, string password)  
-        {  
-            byte[] inputArray = UTF8Encoding.UTF8.GetBytes(username);  
-            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();  
-            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(password);  
-            tripleDES.Mode = CipherMode.ECB;  
-            tripleDES.Padding = PaddingMode.PKCS7;  
-            ICryptoTransform cTransform = tripleDES.CreateEncryptor();  
-            byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);  
-            tripleDES.Clear();  
-            return Convert.ToBase64String(resultArray, 0, resultArray.Length);  
-        } 
-         //To decrypt the data if needed
-        private static string Decrypt(string username, string password)  
-        {  
-            byte[] inputArray = Convert.FromBase64String(username);  
-            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();  
-            tripleDES.Key = UTF8Encoding.UTF8.GetBytes(password);  
-            tripleDES.Mode = CipherMode.ECB;  
-            tripleDES.Padding = PaddingMode.PKCS7;  
-            ICryptoTransform cTransform = tripleDES.CreateDecryptor();  
-            byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);  
-            tripleDES.Clear();   
-            return UTF8Encoding.UTF8.GetString(resultArray);  
-        }  
          /*
         // Call function from Nodule 1 Team4. Whether pass or fail, will log in the account information
         public createLogDB(int h_id, string actionname, string ipaddress, DateTime timestamp){

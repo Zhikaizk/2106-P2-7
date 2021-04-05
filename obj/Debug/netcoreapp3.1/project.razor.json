@@ -14422,6 +14422,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\DeleteInactive\\ViewDeleted.cshtml",
+      "TargetPath": "Views\\DeleteInactive\\ViewDeleted.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -14474,6 +14479,11 @@
     {
       "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\PasswordReset\\PasswordReset.cshtml",
       "TargetPath": "Views\\PasswordReset\\PasswordReset.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Views\\Household\\Home.cshtml",
+      "TargetPath": "Views\\Household\\Home.cshtml",
       "FileKind": "mvc"
     }
   ],

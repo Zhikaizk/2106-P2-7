@@ -151,3 +151,5 @@ C:\Users\gameb\Documents\GitHub\2106-P2-7\bin\Debug\netcoreapp3.1\runtimes\win\l
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackAdminReply.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\feedbackAdminUpdate.cshtml.g.cs
 C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\AdminPasswordReset\AdminPasswordResetPage.cshtml.g.cs
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\DeleteInactive\ViewDeleted.cshtml.g.cs
+C:\Users\gameb\Documents\GitHub\2106-P2-7\obj\Debug\netcoreapp3.1\Razor\Views\Household\Home.cshtml.g.cs
