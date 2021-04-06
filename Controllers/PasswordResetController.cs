@@ -64,22 +64,7 @@ namespace Project.Controllers
         [HttpPost]
         public ActionResult passwordReset(PasswordResetModel objPasswordResetModel, String householdEmail)
         {
-            find(householdEmail);
-            // String email = householdEmail;
-            // Console.WriteLine(email);
-
-            //addede this viewbag is alert message , modelstate is to validate that the email filled validation meets the requirement at the model
-            // ViewBag.Message = "Successsfully requested reset password";
-
-            // PasswordResetControl pw = new PasswordResetControl(householdEmail);
-            return View();
-        }
-
-
-        //check the credentials
-        private void find(String householdEmail)
-        {
-                            Console.WriteLine("enter find()");
+            Console.WriteLine("enter find()");
             String connStr = "server=t2-6.cthtaqebwmpy.us-east-1.rds.amazonaws.com;user=root;database=zk;port=3306;password=qwerty123";
             MySqlConnection conn = new MySqlConnection(connStr);
             try{
@@ -113,7 +98,7 @@ namespace Project.Controllers
                 Console.WriteLine(ex.ToString());
             }
             conn.Close();
-
+            return View();
         }
 
 //trying to retrieve the household email when they click on the url 
