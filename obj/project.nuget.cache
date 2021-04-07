@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SYawIjb9sc4c7D5SfDkSu55WKArwqLTHH+8eGxsI2idUSyaX97D22bUAVzA3kWulFHhrJ6BkgKY+BKjzeJDDNA==",
+  "dgSpecHash": "XIuYEijFbtr5+V8iAEDnAbbbTJNs7py2RFu08ZG5QHk1SeZuZcXdcF+my+gCkRyZKMQAwnpNjXyelzp9ykkXMQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gameb\\Documents\\GitHub\\2106-P2-7\\Project.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,7 @@
     "C:\\Users\\gameb\\.nuget\\packages\\mysql.data.entityframeworkcore\\8.0.22\\mysql.data.entityframeworkcore.8.0.22.nupkg.sha512",
     "C:\\Users\\gameb\\.nuget\\packages\\mysqlconnector\\1.2.1\\mysqlconnector.1.2.1.nupkg.sha512",
     "C:\\Users\\gameb\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
+    "C:\\Users\\gameb\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\gameb\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\gameb\\.nuget\\packages\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Users\\gameb\\.nuget\\packages\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",
