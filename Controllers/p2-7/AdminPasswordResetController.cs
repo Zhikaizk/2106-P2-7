@@ -35,9 +35,9 @@ namespace Project.Controllers
         //trying to retrieve url from the submit button
         // private string url;
 
-        private readonly ILogger<PasswordResetController> _logger;
+        private readonly ILogger<AdminPasswordResetController> _logger;
 
-        public AdminPasswordResetController(ILogger<PasswordResetController> logger)
+        public AdminPasswordResetController(ILogger<AdminPasswordResetController> logger)
         {
             _logger = logger;
 
