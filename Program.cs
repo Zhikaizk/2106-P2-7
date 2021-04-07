@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Project.Models.Feedback;
+using Project.Models.p2-7.Feedback;
 
 namespace Project
 {
